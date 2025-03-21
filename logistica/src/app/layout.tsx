@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
-
+import { createClient } from "@/prismicio";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -15,13 +17,19 @@ const roboto = Roboto({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Logistica Trasandes",
-  description: "Más de 20 años ofreciendo soluciones de transporte de carga pesada con seguridad y confianza. Soluciones logísticas para tu negocio.",
-  keywords: "logistica, transporte, carga pesaddaa, soluciones logísticas, trasandes, empresa de transporte",
-  openGraph: {} // Añadir OpenGraph metadata
-};
-
+export async function generateMetadata(): Promise<Metadata> {
+ 
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+  return {
+    title: settings.data.title,
+    description: settings.data.meta_info,
+    openGraph: {
+      images: [settings.data.og_image.url || ""],
+    },
+  }
+}
+ 
 export default function RootLayout({
   children,
 }: {
@@ -29,7 +37,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(montserrat.variable, roboto.variable)}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
