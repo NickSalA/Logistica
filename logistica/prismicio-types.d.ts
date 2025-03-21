@@ -4,6 +4,82 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type HomapageDocumentDataSlicesSlice = InicioSlice;
+
+/**
+ * Content for Homepage documents
+ */
+interface HomapageDocumentData {
+  /**
+   * title field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homapage.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homapage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomapageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: homapage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: homapage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homapage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Homepage document from Prismic
+ *
+ * - **API ID**: `homapage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomapageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HomapageDocumentData>,
+    "homapage",
+    Lang
+  >;
+
 /**
  * Item in *Settings → Navigation*
  */
@@ -34,7 +110,7 @@ export interface SettingsDocumentDataNavItem {
  */
 interface SettingsDocumentData {
   /**
-   * Main_Title field in *Settings*
+   * Main_title field in *Settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -94,7 +170,121 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = SettingsDocument;
+export type AllDocumentTypes = HomapageDocument | SettingsDocument;
+
+/**
+ * Primary content in *Inicio → Default → Primary*
+ */
+export interface InicioSliceDefaultPrimary {
+  /**
+   * main_info field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.main_info
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  main_info: prismic.RichTextField;
+
+  /**
+   * name field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Button_left field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.button_left
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_left: prismic.KeyTextField;
+
+  /**
+   * Button_Left_Link field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.button_left_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_left_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Button_Right field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.button_right
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_right: prismic.KeyTextField;
+
+  /**
+   * Button_Right_Link field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.button_right_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_right_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Images field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.images
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  images: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Inicio Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InicioSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<InicioSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Inicio*
+ */
+type InicioSliceVariation = InicioSliceDefault;
+
+/**
+ * Inicio Shared Slice
+ *
+ * - **API ID**: `inicio`
+ * - **Description**: Inicio
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InicioSlice = prismic.SharedSlice<"inicio", InicioSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -117,10 +307,17 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      HomapageDocument,
+      HomapageDocumentData,
+      HomapageDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavItem,
       AllDocumentTypes,
+      InicioSlice,
+      InicioSliceDefaultPrimary,
+      InicioSliceVariation,
+      InicioSliceDefault,
     };
   }
 }

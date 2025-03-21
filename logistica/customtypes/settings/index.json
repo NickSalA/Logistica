@@ -9,7 +9,7 @@
       "title": {
         "type": "Text",
         "config": {
-          "label": "Main_Title",
+          "label": "Main_title",
           "placeholder": ""
         }
       },
