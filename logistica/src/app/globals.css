@@ -1,7 +1,7 @@
 
 @import "tailwindcss";
 
-@source "@/slices";
+@source "../../slices";
 
 :root {
   --background: #ffffff;
@@ -13,12 +13,8 @@
   --font-primary: var(--font-montserrat);
 }
 
-@utility font-montserrat{
-  font-family: var(--font-primary);
-}
-
-@utility font-roboto{
-  font-family: var(--font-secondary);
+@theme{
+  --color-night: #003366;
 }
 
 @media (prefers-color-scheme: dark) {
