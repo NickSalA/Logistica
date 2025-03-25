@@ -25,11 +25,6 @@
 					}
 				]
 			},
-			"button_left": {
-				"__TYPE__": "FieldContent",
-				"value": "environment",
-				"type": "Text"
-			},
 			"button_left_link": {
 				"key": "8cc89908-6b0d-400b-8dc5-c44616d34d5b",
 				"__TYPE__": "LinkContent",
@@ -38,11 +33,6 @@
 					"url": "http://google.com",
 					"text": "enjoy"
 				}
-			},
-			"button_right": {
-				"__TYPE__": "FieldContent",
-				"value": "trip",
-				"type": "Text"
 			},
 			"button_right_link": {
 				"key": "15b11578-2c13-4fac-9d1b-92585e72c64f",
@@ -53,27 +43,73 @@
 					"text": "twenty"
 				}
 			},
+			"dots": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"active",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": true
+								}
+							],
+							[
+								"custom",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#dce027",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			},
 			"images": {
-				"__TYPE__": "ImageContent",
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
-					"width": 3456,
-					"height": 3456
-				},
-				"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
-				"width": 3456,
-				"height": 3456,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "sister",
-				"thumbnails": {}
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da",
+										"width": 4000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da",
+									"width": 4000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "depend",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"active",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

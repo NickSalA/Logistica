@@ -173,6 +173,58 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomapageDocument | SettingsDocument;
 
 /**
+ * Item in *Inicio → Default → Primary → dots*
+ */
+export interface InicioSliceDefaultPrimaryDotsItem {
+  /**
+   * active field in *Inicio → Default → Primary → dots*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: inicio.default.primary.dots[].active
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  active: prismic.BooleanField;
+
+  /**
+   * custom field in *Inicio → Default → Primary → dots*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.dots[].custom
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  custom: prismic.ColorField;
+}
+
+/**
+ * Item in *Inicio → Default → Primary → images*
+ */
+export interface InicioSliceDefaultPrimaryImagesItem {
+  /**
+   * image field in *Inicio → Default → Primary → images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * active field in *Inicio → Default → Primary → images*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: inicio.default.primary.images[].active
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  active: prismic.BooleanField;
+}
+
+/**
  * Primary content in *Inicio → Default → Primary*
  */
 export interface InicioSliceDefaultPrimary {
@@ -197,16 +249,6 @@ export interface InicioSliceDefaultPrimary {
   name: prismic.RichTextField;
 
   /**
-   * Button_left field in *Inicio → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.button_left
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button_left: prismic.KeyTextField;
-
-  /**
    * Button_Left_Link field in *Inicio → Default → Primary*
    *
    * - **Field Type**: Link
@@ -221,16 +263,6 @@ export interface InicioSliceDefaultPrimary {
     prismic.FieldState,
     never
   >;
-
-  /**
-   * Button_Right field in *Inicio → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.button_right
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button_right: prismic.KeyTextField;
 
   /**
    * Button_Right_Link field in *Inicio → Default → Primary*
@@ -249,14 +281,24 @@ export interface InicioSliceDefaultPrimary {
   >;
 
   /**
-   * Images field in *Inicio → Default → Primary*
+   * dots field in *Inicio → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.images
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: inicio.default.primary.dots[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  images: prismic.ImageField<never>;
+  dots: prismic.GroupField<Simplify<InicioSliceDefaultPrimaryDotsItem>>;
+
+  /**
+   * images field in *Inicio → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: inicio.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<InicioSliceDefaultPrimaryImagesItem>>;
 }
 
 /**
@@ -315,6 +357,8 @@ declare module "@prismicio/client" {
       SettingsDocumentDataNavItem,
       AllDocumentTypes,
       InicioSlice,
+      InicioSliceDefaultPrimaryDotsItem,
+      InicioSliceDefaultPrimaryImagesItem,
       InicioSliceDefaultPrimary,
       InicioSliceVariation,
       InicioSliceDefault,

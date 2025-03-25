@@ -30,13 +30,6 @@
             "multi": "heading1,strong,heading2"
           }
         },
-        "button_left": {
-          "type": "Text",
-          "config": {
-            "label": "Button_left",
-            "placeholder": ""
-          }
-        },
         "button_left_link": {
           "type": "Link",
           "config": {
@@ -46,13 +39,6 @@
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": false
-          }
-        },
-        "button_right": {
-          "type": "Text",
-          "config": {
-            "label": "Button_Right",
-            "placeholder": ""
           }
         },
         "button_right_link": {
@@ -66,12 +52,55 @@
             "repeat": false
           }
         },
-        "images": {
-          "type": "Image",
+        "dots": {
+          "type": "Group",
           "config": {
-            "label": "Images",
-            "constraint": {},
-            "thumbnails": []
+            "label": "dots",
+            "repeat": true,
+            "fields": {
+              "active": {
+                "type": "Boolean",
+                "config": {
+                  "label": "active",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              },
+              "custom": {
+                "type": "Color",
+                "config": {
+                  "label": "custom",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "images": {
+          "type": "Group",
+          "config": {
+            "label": "images",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "active": {
+                "type": "Boolean",
+                "config": {
+                  "label": "active",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              }
+            }
           }
         }
       },
