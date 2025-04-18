@@ -30,53 +30,6 @@
             "multi": "heading1,strong,heading2"
           }
         },
-        "button_left_link": {
-          "type": "Link",
-          "config": {
-            "label": "Button_Left_Link",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
-          }
-        },
-        "button_right_link": {
-          "type": "Link",
-          "config": {
-            "label": "Button_Right_Link",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
-          }
-        },
-        "dots": {
-          "type": "Group",
-          "config": {
-            "label": "dots",
-            "repeat": true,
-            "fields": {
-              "active": {
-                "type": "Boolean",
-                "config": {
-                  "label": "active",
-                  "placeholder_false": "false",
-                  "placeholder_true": "true",
-                  "default_value": false
-                }
-              },
-              "custom": {
-                "type": "Color",
-                "config": {
-                  "label": "custom",
-                  "placeholder": ""
-                }
-              }
-            }
-          }
-        },
         "images": {
           "type": "Group",
           "config": {

@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  experiencia: dynamic(() => import("./Experiencia")),
   inicio: dynamic(() => import("./Inicio")),
 };

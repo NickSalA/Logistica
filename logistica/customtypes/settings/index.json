@@ -6,13 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "Main_title",
-          "placeholder": ""
-        }
-      },
       "meta_info": {
         "type": "Text",
         "config": {
@@ -53,6 +46,21 @@
               }
             }
           }
+        }
+      },
+      "data_title": {
+        "type": "Image",
+        "config": {
+          "label": "data_title",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
         }
       }
     }

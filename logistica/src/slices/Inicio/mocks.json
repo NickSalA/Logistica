@@ -25,49 +25,6 @@
 					}
 				]
 			},
-			"button_left_link": {
-				"key": "8cc89908-6b0d-400b-8dc5-c44616d34d5b",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://google.com",
-					"text": "enjoy"
-				}
-			},
-			"button_right_link": {
-				"key": "15b11578-2c13-4fac-9d1b-92585e72c64f",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://twitter.com",
-					"text": "twenty"
-				}
-			},
-			"dots": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"active",
-								{
-									"__TYPE__": "BooleanContent",
-									"value": true
-								}
-							],
-							[
-								"custom",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "#dce027",
-									"type": "Color"
-								}
-							]
-						]
-					}
-				]
-			},
 			"images": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -79,11 +36,11 @@
 								{
 									"origin": {
 										"id": "main",
-										"url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da",
+										"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
 										"width": 4000,
 										"height": 4000
 									},
-									"url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da",
+									"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
 									"width": 4000,
 									"height": 4000,
 									"edit": {
@@ -94,7 +51,7 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "depend",
+									"alt": "knowledge",
 									"credits": null,
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}

@@ -110,17 +110,6 @@ export interface SettingsDocumentDataNavItem {
  */
 interface SettingsDocumentData {
   /**
-   * Main_title field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
    * Meta_Description field in *Settings*
    *
    * - **Field Type**: Text
@@ -152,6 +141,28 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   nav: prismic.GroupField<Simplify<SettingsDocumentDataNavItem>>;
+
+  /**
+   * data_title field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.data_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  data_title: prismic.ImageField<never>;
+
+  /**
+   * title field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
 }
 
 /**
@@ -173,30 +184,76 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomapageDocument | SettingsDocument;
 
 /**
- * Item in *Inicio → Default → Primary → dots*
+ * Item in *Experiencia → Default → Primary → images*
  */
-export interface InicioSliceDefaultPrimaryDotsItem {
+export interface ExperienciaSliceDefaultPrimaryImagesItem {
   /**
-   * active field in *Inicio → Default → Primary → dots*
+   * image field in *Experiencia → Default → Primary → images*
    *
-   * - **Field Type**: Boolean
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: inicio.default.primary.dots[].active
-   * - **Documentation**: https://prismic.io/docs/field#boolean
+   * - **API ID Path**: experiencia.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  active: prismic.BooleanField;
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Experiencia → Default → Primary*
+ */
+export interface ExperienciaSliceDefaultPrimary {
+  /**
+   * title field in *Experiencia → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiencia.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
 
   /**
-   * custom field in *Inicio → Default → Primary → dots*
+   * images field in *Experiencia → Default → Primary*
    *
-   * - **Field Type**: Color
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.dots[].custom
-   * - **Documentation**: https://prismic.io/docs/field#color
+   * - **API ID Path**: experiencia.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  custom: prismic.ColorField;
+  images: prismic.GroupField<
+    Simplify<ExperienciaSliceDefaultPrimaryImagesItem>
+  >;
 }
+
+/**
+ * Default variation for Experiencia Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExperienciaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ExperienciaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Experiencia*
+ */
+type ExperienciaSliceVariation = ExperienciaSliceDefault;
+
+/**
+ * Experiencia Shared Slice
+ *
+ * - **API ID**: `experiencia`
+ * - **Description**: Experiencia
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExperienciaSlice = prismic.SharedSlice<
+  "experiencia",
+  ExperienciaSliceVariation
+>;
 
 /**
  * Item in *Inicio → Default → Primary → images*
@@ -247,48 +304,6 @@ export interface InicioSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   name: prismic.RichTextField;
-
-  /**
-   * Button_Left_Link field in *Inicio → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.button_left_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_left_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Button_Right_Link field in *Inicio → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.button_right_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_right_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * dots field in *Inicio → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: inicio.default.primary.dots[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  dots: prismic.GroupField<Simplify<InicioSliceDefaultPrimaryDotsItem>>;
 
   /**
    * images field in *Inicio → Default → Primary*
@@ -356,8 +371,12 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItem,
       AllDocumentTypes,
+      ExperienciaSlice,
+      ExperienciaSliceDefaultPrimaryImagesItem,
+      ExperienciaSliceDefaultPrimary,
+      ExperienciaSliceVariation,
+      ExperienciaSliceDefault,
       InicioSlice,
-      InicioSliceDefaultPrimaryDotsItem,
       InicioSliceDefaultPrimaryImagesItem,
       InicioSliceDefaultPrimary,
       InicioSliceVariation,
