@@ -35,7 +35,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full h-[45vh] md:h-screen items-center flex"
+      className="relative w-full h-[50vh] md:h-screen items-center flex"
     >
       <div className="absolute inset-0 w-full h-full z-0">
         {slice.primary.images.map((item, index) => (
@@ -49,7 +49,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
           />
         ))}
       </div>
-      <div className="absolute w-7/8 opacity-80 bg-night rounded-lg px-6 py-4 left-1/2 top-4 transform -translate-x-1/2 md:transform-none md:translate-0 md:left-2 md:p-8 md:top-8 md:w-1/3">
+      <div className="absolute w-7/8 opacity-80 bg-night rounded-lg px-6 py-4 left-1/2 top-4 transform -translate-x-1/2 md:transform-none md:translate-0 md:left-2 md:p-8 md:top-8 md:w-3/5 lg:w-2/5 xl:w-1/3 2xl:w-1/4">
         <PrismicRichText field={slice.primary.main_info} components={{
           heading1: ({ children }) => (
             <h1 className="font-primary text-xl md:text-3xl text-white font-semibold mb-1.5">{children}</h1>
@@ -63,10 +63,10 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
         }} />
       </div>
       <button className="top-1/2 transform -translate-y-1/2 absolute right-0 md:right-4" onClick={() => changeSlide(1)}>
-        <ChevronRight size={48} className="md:size-16 text-white" />
+        <ChevronRight size={48} className="md:size-16 text-white cursor-pointer" />
       </button>
       <button className="top-1/2 transform -translate-y-1/2 absolute left-0 md:left-4" onClick={() => changeSlide(-1)}>
-        <ChevronLeft size={48} className="md:size-16 text-white" />
+        <ChevronLeft size={48} className="md:size-16 text-white cursor-pointer" />
       </button>
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {slice.items.map((_, index) => (

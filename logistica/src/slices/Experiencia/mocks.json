@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "FieldContent",
-				"value": "another",
-				"type": "Text"
-			},
 			"images": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -17,7 +12,6 @@
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
@@ -36,10 +30,23 @@
 										"background": "transparent"
 									},
 									"alt": "kind",
+									"credits": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							]
 						]
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Clock"
+						}
 					}
 				]
 			}

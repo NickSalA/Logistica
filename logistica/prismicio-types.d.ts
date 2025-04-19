@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomapageDocumentDataSlicesSlice = InicioSlice;
+type HomapageDocumentDataSlicesSlice = ExperienciaSlice | InicioSlice;
 
 /**
  * Content for Homepage documents
@@ -205,12 +205,12 @@ export interface ExperienciaSliceDefaultPrimary {
   /**
    * title field in *Experiencia → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: experiencia.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.KeyTextField;
+  title: prismic.RichTextField;
 
   /**
    * images field in *Experiencia → Default → Primary*

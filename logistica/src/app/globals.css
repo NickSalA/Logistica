@@ -14,7 +14,12 @@
 }
 
 @theme{
+  /*Colores de texto*/
   --color-night: #003366;
+
+  /*Tamaño de fuente*/
+  --text-md: 1 rem;
+
 }
 
 @media (prefers-color-scheme: dark) {
