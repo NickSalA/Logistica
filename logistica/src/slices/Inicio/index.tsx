@@ -35,7 +35,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full h-[50vh] md:h-screen items-center flex"
+      className="relative w-full h-[50vh] md:h-[90vh] items-center flex"
     >
       <div className="absolute inset-0 w-full h-full z-0">
         {slice.primary.images.map((item, index) => (
@@ -64,19 +64,21 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
       </div>
       <button className="top-1/2 transform -translate-y-1/2 absolute right-0 md:right-4" onClick={() => changeSlide(1)}>
         <ChevronRight size={48} className="md:size-16 text-white cursor-pointer" />
+        <span className="sr-only">boton derecho</span>
       </button>
       <button className="top-1/2 transform -translate-y-1/2 absolute left-0 md:left-4" onClick={() => changeSlide(-1)}>
         <ChevronLeft size={48} className="md:size-16 text-white cursor-pointer" />
+        <span className="sr-only">boton izquierdo</span>
       </button>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {slice.items.map((_, index) => (
+      <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" onClick={() => changeSlide(1)}>
+        {slice.primary.images.map((_, index) => (
           <div
             key={index}
-            className={`w-2 h-2 bg-white rounded-full ${index === currentSlide ? 'opacity-100' : 'opacity-50'
+            className={`w-2 h-2 md:w-4 md:h-4 bg-white rounded-full ${index === currentSlide ? 'opacity-100' : 'opacity-50 cursor-pointer'
               }`}
           ></div>
         ))}
-      </div>
+      </button>
     </section>
   );
 };

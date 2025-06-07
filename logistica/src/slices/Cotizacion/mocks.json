@@ -1,0 +1,82 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"contactenos": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco est tempor sunt amet mollit consectetur esse Lorem do cillum est culpa."
+						}
+					}
+				]
+			},
+			"horas": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat commodo proident commodo eu consequat."
+						}
+					}
+				]
+			},
+			"dias": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu deserunt labore veniam nulla fugiat anim laborum nostrud deserunt duis dolore magna sint incididunt. Exercitation nisi amet nostrud ipsum ad esse ullamco irure ex. Voluptate duis cillum sit pariatur."
+						}
+					}
+				]
+			},
+			"info": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"info",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Adipisicing deserunt enim elit ex anim incididunt pariatur reprehenderit tempor occaecat deserunt magna mollit esse. Officia anim reprehenderit voluptate sit fugiat dolor incididunt excepteur esse ut ex. Magna adipisicing deserunt dolor non dolore cillum exercitation tempor dolor enim anim in consectetur tempor."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"cotizacion": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat commodo dolor incididunt id irure enim adipisicing officia eiusmod."
+						}
+					}
+				]
+			},
+			"servicio": {
+				"__TYPE__": "FieldContent",
+				"value": "2",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

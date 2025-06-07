@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomapageDocumentDataSlicesSlice = ExperienciaSlice | InicioSlice;
+type HomapageDocumentDataSlicesSlice =
+  | MapaSlice
+  | ExperienciaSlice
+  | InicioSlice;
 
 /**
  * Content for Homepage documents
@@ -103,6 +106,98 @@ export interface SettingsDocumentDataNavItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * special field in *Settings → Navigation*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: settings.nav[].special
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  special: prismic.BooleanField;
+}
+
+/**
+ * Item in *Settings → telefono*
+ */
+export interface SettingsDocumentDataTelefonoItem {
+  /**
+   * telefono field in *Settings → telefono*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.telefono[].telefono
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  telefono: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * nombre field in *Settings → telefono*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.telefono[].nombre
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nombre: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → redes*
+ */
+export interface SettingsDocumentDataRedesItem {
+  /**
+   * red field in *Settings → redes*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.redes[].red
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  red: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * nombre field in *Settings → redes*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.redes[].nombre
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nombre: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Settings → correo*
+ */
+export interface SettingsDocumentDataCorreoItem {
+  /**
+   * nombre field in *Settings → correo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.correo[].nombre
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nombre: prismic.KeyTextField;
+
+  /**
+   * correo field in *Settings → correo*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.correo[].correo
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  correo: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -163,6 +258,61 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * description field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * telefono field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.telefono[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  telefono: prismic.GroupField<Simplify<SettingsDocumentDataTelefonoItem>>;
+
+  /**
+   * redes field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.redes[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  redes: prismic.GroupField<Simplify<SettingsDocumentDataRedesItem>>;
+
+  /**
+   * correo field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.correo[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  correo: prismic.GroupField<Simplify<SettingsDocumentDataCorreoItem>>;
+
+  /**
+   * derechos field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.derechos
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  derechos: prismic.RichTextField;
 }
 
 /**
@@ -182,6 +332,116 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomapageDocument | SettingsDocument;
+
+/**
+ * Item in *Cotizacion → Default → Primary → info*
+ */
+export interface CotizacionSliceDefaultPrimaryInfoItem {
+  /**
+   * info field in *Cotizacion → Default → Primary → info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.info[].info
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  info: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Cotizacion → Default → Primary*
+ */
+export interface CotizacionSliceDefaultPrimary {
+  /**
+   * contactenos field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.contactenos
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contactenos: prismic.RichTextField;
+
+  /**
+   * horas field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.horas
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  horas: prismic.RichTextField;
+
+  /**
+   * dias field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.dias
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  dias: prismic.RichTextField;
+
+  /**
+   * info field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.info[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  info: prismic.GroupField<Simplify<CotizacionSliceDefaultPrimaryInfoItem>>;
+
+  /**
+   * cotizacion field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.cotizacion
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  cotizacion: prismic.RichTextField;
+
+  /**
+   * servicio field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.servicio
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  servicio: prismic.SelectField<"1" | "2">;
+}
+
+/**
+ * Default variation for Cotizacion Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CotizacionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CotizacionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Cotizacion*
+ */
+type CotizacionSliceVariation = CotizacionSliceDefault;
+
+/**
+ * Cotizacion Shared Slice
+ *
+ * - **API ID**: `cotizacion`
+ * - **Description**: Cotizacion
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CotizacionSlice = prismic.SharedSlice<
+  "cotizacion",
+  CotizacionSliceVariation
+>;
 
 /**
  * Item in *Experiencia → Default → Primary → images*
@@ -343,6 +603,48 @@ type InicioSliceVariation = InicioSliceDefault;
  */
 export type InicioSlice = prismic.SharedSlice<"inicio", InicioSliceVariation>;
 
+/**
+ * Primary content in *Mapa → Default → Primary*
+ */
+export interface MapaSliceDefaultPrimary {
+  /**
+   * map field in *Mapa → Default → Primary*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mapa.default.primary.map
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  map: prismic.GeoPointField;
+}
+
+/**
+ * Default variation for Mapa Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MapaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Mapa*
+ */
+type MapaSliceVariation = MapaSliceDefault;
+
+/**
+ * Mapa Shared Slice
+ *
+ * - **API ID**: `mapa`
+ * - **Description**: Mapa
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapaSlice = prismic.SharedSlice<"mapa", MapaSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -370,7 +672,15 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavItem,
+      SettingsDocumentDataTelefonoItem,
+      SettingsDocumentDataRedesItem,
+      SettingsDocumentDataCorreoItem,
       AllDocumentTypes,
+      CotizacionSlice,
+      CotizacionSliceDefaultPrimaryInfoItem,
+      CotizacionSliceDefaultPrimary,
+      CotizacionSliceVariation,
+      CotizacionSliceDefault,
       ExperienciaSlice,
       ExperienciaSliceDefaultPrimaryImagesItem,
       ExperienciaSliceDefaultPrimary,
@@ -381,6 +691,10 @@ declare module "@prismicio/client" {
       InicioSliceDefaultPrimary,
       InicioSliceVariation,
       InicioSliceDefault,
+      MapaSlice,
+      MapaSliceDefaultPrimary,
+      MapaSliceVariation,
+      MapaSliceDefault,
     };
   }
 }

@@ -44,6 +44,15 @@
                 "label": "label",
                 "placeholder": ""
               }
+            },
+            "special": {
+              "type": "Boolean",
+              "config": {
+                "label": "special",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": false
+              }
             }
           }
         }
@@ -61,6 +70,105 @@
         "config": {
           "label": "title",
           "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "telefono": {
+        "type": "Group",
+        "config": {
+          "label": "telefono",
+          "repeat": true,
+          "fields": {
+            "telefono": {
+              "type": "Link",
+              "config": {
+                "label": "telefono",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "nombre": {
+              "type": "Text",
+              "config": {
+                "label": "nombre",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "redes": {
+        "type": "Group",
+        "config": {
+          "label": "redes",
+          "repeat": true,
+          "fields": {
+            "red": {
+              "type": "Link",
+              "config": {
+                "label": "red",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "nombre": {
+              "type": "Text",
+              "config": {
+                "label": "nombre",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "correo": {
+        "type": "Group",
+        "config": {
+          "label": "correo",
+          "repeat": true,
+          "fields": {
+            "nombre": {
+              "type": "Text",
+              "config": {
+                "label": "nombre",
+                "placeholder": ""
+              }
+            },
+            "correo": {
+              "type": "Link",
+              "config": {
+                "label": "correo",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "derechos": {
+        "type": "StructuredText",
+        "config": {
+          "label": "derechos",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
         }
       }
     }

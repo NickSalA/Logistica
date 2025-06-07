@@ -60,6 +60,7 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
       <div className="relative flex md:hidden flex-col items-center justify-center">
         <button className="absolute top-1/2 transform -translate-y-1/2 left-1 md:left-4" onClick={() => changeLogo(-1)}>
           <ChevronLeft size={48} className="cursor-pointer" />
+          <span className="sr-only">boton izquierdo</span>
         </button>
         <div className="relative w-full h-40 justify-center overflow-hidden">
           {slice.primary.images.map((item, index) => (
@@ -74,6 +75,7 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
 
         <button className="absolute top-1/2 transform -translate-y-1/2 right-1 md:right-4" onClick={() => changeLogo(1)}>
           <ChevronRight size={48} className="cursor-pointer" />
+          <span className="sr-only">boton derecho</span>
         </button>
 
       </div>

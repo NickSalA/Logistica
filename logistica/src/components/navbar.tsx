@@ -52,39 +52,71 @@ export default function NavBar({ settings }: NavBarProps) {
                         <span className="sr-only">Cerrar menú</span>
                     </button>
 
-                    <ul className="w-full flex flex-col items-end gap-6 mt-12">
-                        {settings.data.nav.map(({ link, label }) => (
-                            <li key={label}>
+                    <div className="w-full flex flex-col items-end gap-6 mt-12 text-2xl font-primary font-semibold">
+                        {settings.data.nav.map((item) => {
+                            if (item.special) {
+                                return (
+                                    <PrismicNextLink
+                                        field={item.link}
+                                        key={item.label}
+                                        className={clsx(
+                                            "p-4 hover:underline active:bg-gray-300 active:rounded-2xl", pathName.includes(asLink(item.link) || "") ? "text-night" : ""
+                                        )}>
+                                        {item.label}
+                                    </PrismicNextLink>
+                                );
+                            }
+                            return (
                                 <PrismicNextLink
-                                    field={link}
+                                    key={item.label}
+                                    field={item.link}
                                     onClick={() => setIsOpen(false)}
                                     className={clsx(
-                                        "text-2xl p-4 hover:underline font-primary font-semibold active:bg-gray-300 active:rounded-2xl",
-                                        pathName.includes(asLink(link) || "") ? "text-night" : ""
+                                        "p-4 hover:underline active:bg-gray-300 active:rounded-2xl",
+                                        pathName.includes(asLink(item.link) || "") ? "text-night" : ""
                                     )}
                                 >
-                                    {label}
+                                    {item.label}
                                 </PrismicNextLink>
-                            </li>
-                        ))}
-                    </ul>
+                            );
+                        })
+                        }
+                    </div>
                 </div>
 
                 {/* Menú escritorio */}
-                <ul className="hidden md:flex gap-4">
-                    {settings.data.nav.map(({ link, label }) => (
-                        <li key={label}>
-                            <PrismicNextLink
-                                field={link}
-                                className={clsx(
-                                    "text-md font-primary p-4 font-bold hover:underline active:bg-gray-100 active:rounded-3xl ",
-                                    pathName.includes(asLink(link) || "") ? "text-night" : ""
-                                )}
-                            >
-                                {label}
-                            </PrismicNextLink>
-                        </li>
-                    ))}
+                <ul className="hidden md:flex gap-4 text-md font-primary font-semibold">
+                    {settings.data.nav.map((item) => {
+                        if (item.special) {
+                            return (
+                                <li key={item.label}>
+                                    <PrismicNextLink
+                                        field={item.link}
+                                        className={clsx(
+                                            "hover:underline p-4 active:bg-gray-100 active:rounded-3xl ",
+                                            pathName.includes(asLink(item.link) || "") ? "text-night" : ""
+                                        )}
+                                    >
+                                        {item.label}
+                                    </PrismicNextLink>
+                                </li>
+                            );
+                        }
+                        return (
+                            <li key={item.label}>
+                                <PrismicNextLink
+                                    field={item.link}
+                                    className={clsx(
+                                        "p-4 hover:underline active:bg-gray-100 active:rounded-3xl ",
+                                        pathName.includes(asLink(item.link) || "") ? "text-night" : ""
+                                    )}
+                                >
+                                    {item.label}
+                                </PrismicNextLink>
+                            </li>
+                        );
+                    })
+                    }
                 </ul>
             </div>
         </nav>

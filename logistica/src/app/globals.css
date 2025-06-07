@@ -20,6 +20,7 @@
   /*Tamaño de fuente*/
   --text-md: 1 rem;
 
+  /*Lineas separadoras*/
 }
 
 @media (prefers-color-scheme: dark) {

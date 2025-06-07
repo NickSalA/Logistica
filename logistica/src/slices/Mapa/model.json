@@ -1,0 +1,25 @@
+{
+  "id": "mapa",
+  "type": "SharedSlice",
+  "name": "Mapa",
+  "description": "Mapa",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "map": {
+          "type": "GeoPoint",
+          "config": {
+            "label": "map"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

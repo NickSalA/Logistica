@@ -1,0 +1,84 @@
+{
+  "id": "cotizacion",
+  "type": "SharedSlice",
+  "name": "Cotizacion",
+  "description": "Cotizacion",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "contactenos": {
+          "type": "StructuredText",
+          "config": {
+            "label": "contactenos",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "horas": {
+          "type": "StructuredText",
+          "config": {
+            "label": "horas",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "dias": {
+          "type": "StructuredText",
+          "config": {
+            "label": "dias",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "info": {
+          "type": "Group",
+          "config": {
+            "label": "info",
+            "repeat": true,
+            "fields": {
+              "info": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "info",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              }
+            }
+          }
+        },
+        "cotizacion": {
+          "type": "StructuredText",
+          "config": {
+            "label": "cotizacion",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "servicio": {
+          "type": "Select",
+          "config": {
+            "label": "servicio",
+            "placeholder": "",
+            "options": [
+              "1",
+              "2"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
