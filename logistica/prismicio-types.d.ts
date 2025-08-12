@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomapageDocumentDataSlicesSlice =
+  | CotizacionSlice
   | MapaSlice
   | ExperienciaSlice
   | InicioSlice;
@@ -334,18 +335,39 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomapageDocument | SettingsDocument;
 
 /**
- * Item in *Cotizacion → Default → Primary → info*
+ * Item in *Cotizacion → Default → Primary → contenido*
  */
-export interface CotizacionSliceDefaultPrimaryInfoItem {
+export interface CotizacionSliceDefaultPrimaryContenidoItem {
   /**
-   * info field in *Cotizacion → Default → Primary → info*
+   * data field in *Cotizacion → Default → Primary → contenido*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: cotizacion.default.primary.info[].info
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **API ID Path**: cotizacion.default.primary.contenido[].data
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  info: prismic.RichTextField;
+  data: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * activo field in *Cotizacion → Default → Primary → contenido*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cotizacion.default.primary.contenido[].activo
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  activo: prismic.BooleanField;
+
+  /**
+   * datos field in *Cotizacion → Default → Primary → contenido*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.contenido[].datos
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  datos: prismic.KeyTextField;
 }
 
 /**
@@ -383,16 +405,6 @@ export interface CotizacionSliceDefaultPrimary {
   dias: prismic.RichTextField;
 
   /**
-   * info field in *Cotizacion → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cotizacion.default.primary.info[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  info: prismic.GroupField<Simplify<CotizacionSliceDefaultPrimaryInfoItem>>;
-
-  /**
    * cotizacion field in *Cotizacion → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -407,10 +419,26 @@ export interface CotizacionSliceDefaultPrimary {
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
+   * - **Default Value**: Transporte de carga
    * - **API ID Path**: cotizacion.default.primary.servicio
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  servicio: prismic.SelectField<"1" | "2">;
+  servicio: prismic.SelectField<
+    "Transporte de carga" | "2da opción" | "3ra opción",
+    "filled"
+  >;
+
+  /**
+   * contenido field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.contenido[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  contenido: prismic.GroupField<
+    Simplify<CotizacionSliceDefaultPrimaryContenidoItem>
+  >;
 }
 
 /**
@@ -677,7 +705,7 @@ declare module "@prismicio/client" {
       SettingsDocumentDataCorreoItem,
       AllDocumentTypes,
       CotizacionSlice,
-      CotizacionSliceDefaultPrimaryInfoItem,
+      CotizacionSliceDefaultPrimaryContenidoItem,
       CotizacionSliceDefaultPrimary,
       CotizacionSliceVariation,
       CotizacionSliceDefault,

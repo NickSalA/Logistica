@@ -36,30 +36,6 @@
 					}
 				]
 			},
-			"info": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"info",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Adipisicing deserunt enim elit ex anim incididunt pariatur reprehenderit tempor occaecat deserunt magna mollit esse. Officia anim reprehenderit voluptate sit fugiat dolor incididunt excepteur esse ut ex. Magna adipisicing deserunt dolor non dolore cillum exercitation tempor dolor enim anim in consectetur tempor."
-											}
-										}
-									]
-								}
-							]
-						]
-					}
-				]
-			},
 			"cotizacion": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -73,8 +49,45 @@
 			},
 			"servicio": {
 				"__TYPE__": "FieldContent",
-				"value": "2",
+				"value": "Transporte de carga",
 				"type": "Select"
+			},
+			"contenido": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"data",
+								{
+									"key": "8a9de1f2-d6fa-4cca-bb2e-99d34899b8bb",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "pond"
+									}
+								}
+							],
+							[
+								"activo",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							],
+							[
+								"datos",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "floor",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

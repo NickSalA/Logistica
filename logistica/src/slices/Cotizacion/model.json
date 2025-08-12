@@ -39,24 +39,6 @@
             "multi": "paragraph"
           }
         },
-        "info": {
-          "type": "Group",
-          "config": {
-            "label": "info",
-            "repeat": true,
-            "fields": {
-              "info": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "info",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph"
-                }
-              }
-            }
-          }
-        },
         "cotizacion": {
           "type": "StructuredText",
           "config": {
@@ -72,9 +54,47 @@
             "label": "servicio",
             "placeholder": "",
             "options": [
-              "1",
-              "2"
-            ]
+              "Transporte de carga",
+              "2da opción",
+              "3ra opción"
+            ],
+            "default_value": "Transporte de carga"
+          }
+        },
+        "contenido": {
+          "type": "Group",
+          "config": {
+            "label": "contenido",
+            "repeat": true,
+            "fields": {
+              "data": {
+                "type": "Link",
+                "config": {
+                  "label": "data",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "activo": {
+                "type": "Boolean",
+                "config": {
+                  "label": "activo",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              },
+              "datos": {
+                "type": "Text",
+                "config": {
+                  "label": "datos",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },

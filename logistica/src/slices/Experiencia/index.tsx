@@ -14,6 +14,7 @@ export type ExperienciaProps = SliceComponentProps<Content.ExperienciaSlice>;
 /**
  * Component for "Experiencia" Slices.
  */
+
 const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
 
   const [currentLogo, setCurrentLogo] = useState(0);

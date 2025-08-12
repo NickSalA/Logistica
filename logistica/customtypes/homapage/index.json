@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "cotizacion": {
+              "type": "SharedSlice"
+            },
             "mapa": {
               "type": "SharedSlice"
             },
