@@ -57,16 +57,12 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
           {/* Información de contacto: dirección, teléfono, horario */}
           <div className="" >
             {slice.primary.contenido.map((item, index) => (
-              <PrismicNextLink key={index} field={item.data} className="flex items-center text-gray-600 hover:text-gray-800 transition">
-                {getIcon(item.datos)}
+              <div key={index} className="flex items-center mb-2">
+                {getIcon(item.titulo)}
+              <PrismicNextLink key={index} field={item.link} className="flex items-center text-gray-600 hover:text-gray-800 transition">
+                {item.info}
               </PrismicNextLink>
-            ))}
-          </div>
-          <div className="" >
-            {slice.primary.contenido.map((item, index) => (
-              <PrismicNextLink key={index} field={item.data} className="flex items-center text-gray-600 hover:text-gray-800 transition">
-                {item.datos}
-              </PrismicNextLink>
+            </div>
             ))}
           </div>
           {/* Columna derecha */}

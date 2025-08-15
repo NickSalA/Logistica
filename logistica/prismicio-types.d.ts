@@ -339,14 +339,14 @@ export type AllDocumentTypes = HomapageDocument | SettingsDocument;
  */
 export interface CotizacionSliceDefaultPrimaryContenidoItem {
   /**
-   * data field in *Cotizacion → Default → Primary → contenido*
+   * link field in *Cotizacion → Default → Primary → contenido*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: cotizacion.default.primary.contenido[].data
+   * - **API ID Path**: cotizacion.default.primary.contenido[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  data: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * activo field in *Cotizacion → Default → Primary → contenido*
@@ -360,14 +360,24 @@ export interface CotizacionSliceDefaultPrimaryContenidoItem {
   activo: prismic.BooleanField;
 
   /**
-   * datos field in *Cotizacion → Default → Primary → contenido*
+   * info field in *Cotizacion → Default → Primary → contenido*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: cotizacion.default.primary.contenido[].datos
+   * - **API ID Path**: cotizacion.default.primary.contenido[].info
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  datos: prismic.KeyTextField;
+  info: prismic.KeyTextField;
+
+  /**
+   * titulo field in *Cotizacion → Default → Primary → contenido*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.contenido[].titulo
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  titulo: prismic.KeyTextField;
 }
 
 /**

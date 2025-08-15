@@ -67,10 +67,10 @@
             "label": "contenido",
             "repeat": true,
             "fields": {
-              "data": {
+              "link": {
                 "type": "Link",
                 "config": {
-                  "label": "data",
+                  "label": "link",
                   "placeholder": "",
                   "select": null,
                   "allowTargetBlank": true,
@@ -87,10 +87,17 @@
                   "default_value": false
                 }
               },
-              "datos": {
+              "info": {
                 "type": "Text",
                 "config": {
-                  "label": "datos",
+                  "label": "info",
+                  "placeholder": ""
+                }
+              },
+              "titulo": {
+                "type": "Text",
+                "config": {
+                  "label": "titulo",
                   "placeholder": ""
                 }
               }

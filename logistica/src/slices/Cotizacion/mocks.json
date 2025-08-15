@@ -59,18 +59,6 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"data",
-								{
-									"key": "8a9de1f2-d6fa-4cca-bb2e-99d34899b8bb",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://prismic.io",
-										"text": "pond"
-									}
-								}
-							],
-							[
 								"activo",
 								{
 									"__TYPE__": "BooleanContent",
@@ -78,10 +66,30 @@
 								}
 							],
 							[
-								"datos",
+								"titulo",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "floor",
+									"value": "swam",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"key": "855c7bcf-d941-4a3b-8689-22c4671b3121",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "dry"
+									}
+								}
+							],
+							[
+								"info",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "spirit",
 									"type": "Text"
 								}
 							]
