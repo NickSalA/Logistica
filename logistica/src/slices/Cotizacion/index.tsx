@@ -30,9 +30,9 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="container px-4 mx-auto"
     >
-      <div className="grid md:grid-cols-2 gap-8 p-5 m-8">
+      <div className="relative grid md:grid-cols-2 gap-0 p-5 m-8">
         {/* Columna izquierda */}
-        <div className="bg-[#F5F5DC] p-8 rounded-lg">
+        <div className="bg-[#F5F5DC] p-8 rounded-3xl md:pr-16 m-4">
           {/* Encabezados */}
           <div className="mb-8">
           <PrismicRichText
@@ -90,8 +90,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
         </div>
 
         {/* Columna derecha (formulario) */}
-        <div className="bg-white p-6 rounded-lg shadow space-y-4">
-          <h3 className="text-xl font-semibold mb-2 text-center">
+        <div className="bg-white p-8 rounded-3xl shadow-2xl relative z-10 md:-ml-8 space-y-6">
+          <h3 className="text-xl font-semibold mb-6 text-center">
             <PrismicRichText
               field={slice.primary.cotizacion}
               components={{
@@ -104,63 +104,74 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="space-y-4"
+            className="space-y-6"
             autoComplete="off"
           > 
-            <p>E-mail</p>
-            <input
-              type="email"
-              required
-              placeholder="example@email.com"
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
-            />
+            <div>
+              <p className="mb-2">E-mail:<span className="text-red-500">*</span></p>
+              <input
+                type="email"
+                required
+                placeholder="example@email.com"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col">
-              <p>Celular:</p>
-              <input
-                type="tel"
-                required
-                placeholder="Ingrese su número"
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
-              />
+                <p className="mb-2">Celular:</p>
+                <input
+                  type="tel"
+                  required
+                  placeholder="Ingrese su número aquí"
+                  className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                />
               </div>
               <div className="flex flex-col">
-              <p>DNI o RUC:</p>
-              <input
-                type="text"
-                required
-                placeholder="Ingrese su DNI o RUC"
-                className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
-              />
+                <p className="mb-2">DNI o RUC:<span className="text-red-500">*</span></p>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ingrese su DNI aquí"
+                  className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                />
               </div>
             </div>
 
-            <select
-              required
-              defaultValue={predeterminado}
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
-            >
-              {opcionesServicios.map((item, idx) => (
-                <option key={idx} value={item.servicio ?? ""}>
-                  {item.servicio}
-                </option>
-              ))}
-            </select>
-            <p>Fecha de servicio:</p>
-            <input
-              type="date"
-              defaultValue={new Date().toISOString().split("T")[0]}
-              required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
-            />
-            <p>Mensaje:</p>
-            <textarea
-              required
-              placeholder="Escriba aquí"
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600 max-h-48 min-h-32"
-              rows={4}
-            />
+            <div>
+              <select
+                required
+                defaultValue={predeterminado}
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+              >
+                {opcionesServicios.map((item, idx) => (
+                  <option key={idx} value={item.servicio ?? ""}>
+                    {item.servicio}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <p className="mb-2">Fecha del servicio:<span className="text-red-500">*</span></p>
+              <input
+                type="date"
+                defaultValue={new Date().toISOString().split("T")[0]}
+                required
+                placeholder="dd/mm/yyyy"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+              />
+            </div>
+
+            <div>
+              <p className="mb-2">Mensaje:<span className="text-red-500">*</span></p>
+              <textarea
+                required
+                placeholder="Escriba aquí"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600 max-h-32 min-h-32"
+                rows={4}
+              />
+            </div>
 
             <button
               type="submit"
