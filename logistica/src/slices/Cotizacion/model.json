@@ -103,6 +103,22 @@
               }
             }
           }
+        },
+        "servicios": {
+          "type": "Group",
+          "config": {
+            "label": "servicios",
+            "repeat": true,
+            "fields": {
+              "servicio": {
+                "type": "Text",
+                "config": {
+                  "label": "servicio",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
         }
       },
       "items": {}

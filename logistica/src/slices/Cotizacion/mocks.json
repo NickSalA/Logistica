@@ -96,6 +96,24 @@
 						]
 					}
 				]
+			},
+			"servicios": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"servicio",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "farm",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

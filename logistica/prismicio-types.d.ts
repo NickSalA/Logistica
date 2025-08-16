@@ -381,6 +381,21 @@ export interface CotizacionSliceDefaultPrimaryContenidoItem {
 }
 
 /**
+ * Item in *Cotizacion → Default → Primary → servicios*
+ */
+export interface CotizacionSliceDefaultPrimaryServiciosItem {
+  /**
+   * servicio field in *Cotizacion → Default → Primary → servicios*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.servicios[].servicio
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  servicio: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Cotizacion → Default → Primary*
  */
 export interface CotizacionSliceDefaultPrimary {
@@ -448,6 +463,18 @@ export interface CotizacionSliceDefaultPrimary {
    */
   contenido: prismic.GroupField<
     Simplify<CotizacionSliceDefaultPrimaryContenidoItem>
+  >;
+
+  /**
+   * servicios field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.servicios[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  servicios: prismic.GroupField<
+    Simplify<CotizacionSliceDefaultPrimaryServiciosItem>
   >;
 }
 
@@ -716,6 +743,7 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       CotizacionSlice,
       CotizacionSliceDefaultPrimaryContenidoItem,
+      CotizacionSliceDefaultPrimaryServiciosItem,
       CotizacionSliceDefaultPrimary,
       CotizacionSliceVariation,
       CotizacionSliceDefault,
