@@ -1,0 +1,108 @@
+{
+  "id": "servicios",
+  "type": "SharedSlice",
+  "name": "Servicios",
+  "description": "Servicios",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo_1": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo_1",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "titulo_2": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo_2",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "subtitulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "subtitulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
+          }
+        },
+        "servicios": {
+          "type": "Group",
+          "config": {
+            "label": "servicios",
+            "repeat": true,
+            "fields": {
+              "titulo": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "titulo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              },
+              "contenido": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "contenido",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              }
+            }
+          }
+        },
+        "boton": {
+          "type": "Link",
+          "config": {
+            "label": "boton",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "contenido_boton": {
+          "type": "Text",
+          "config": {
+            "label": "contenido_boton",
+            "placeholder": ""
+          }
+        },
+        "imagen": {
+          "type": "Image",
+          "config": {
+            "label": "imagen",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "texto_imagen": {
+          "type": "StructuredText",
+          "config": {
+            "label": "texto_imagen",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

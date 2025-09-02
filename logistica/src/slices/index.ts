@@ -7,4 +7,5 @@ export const components = {
   experiencia: dynamic(() => import("./Experiencia")),
   inicio: dynamic(() => import("./Inicio")),
   mapa: dynamic(() => import("./Mapa")),
+  servicios: dynamic(() => import("./Servicios")),
 };

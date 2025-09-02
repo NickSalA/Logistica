@@ -265,6 +265,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <input
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="example@email.com"
                   className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
                 />

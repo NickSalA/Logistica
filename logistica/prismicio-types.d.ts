@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomapageDocumentDataSlicesSlice =
+  | ServiciosSlice
   | CotizacionSlice
   | MapaSlice
   | ExperienciaSlice
@@ -710,6 +711,148 @@ type MapaSliceVariation = MapaSliceDefault;
  */
 export type MapaSlice = prismic.SharedSlice<"mapa", MapaSliceVariation>;
 
+/**
+ * Item in *Servicios → Default → Primary → servicios*
+ */
+export interface ServiciosSliceDefaultPrimaryServiciosItem {
+  /**
+   * titulo field in *Servicios → Default → Primary → servicios*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.servicios[].titulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * contenido field in *Servicios → Default → Primary → servicios*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.servicios[].contenido
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contenido: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Servicios → Default → Primary*
+ */
+export interface ServiciosSliceDefaultPrimary {
+  /**
+   * titulo_1 field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.titulo_1
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo_1: prismic.RichTextField;
+
+  /**
+   * titulo_2 field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.titulo_2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  titulo_2: prismic.RichTextField;
+
+  /**
+   * subtitulo field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.subtitulo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitulo: prismic.RichTextField;
+
+  /**
+   * servicios field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.servicios[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  servicios: prismic.GroupField<
+    Simplify<ServiciosSliceDefaultPrimaryServiciosItem>
+  >;
+
+  /**
+   * boton field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.boton
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  boton: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * contenido_boton field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.contenido_boton
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  contenido_boton: prismic.KeyTextField;
+
+  /**
+   * imagen field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+
+  /**
+   * texto_imagen field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.texto_imagen
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  texto_imagen: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Servicios Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiciosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiciosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Servicios*
+ */
+type ServiciosSliceVariation = ServiciosSliceDefault;
+
+/**
+ * Servicios Shared Slice
+ *
+ * - **API ID**: `servicios`
+ * - **Description**: Servicios
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ServiciosSlice = prismic.SharedSlice<
+  "servicios",
+  ServiciosSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -761,6 +904,11 @@ declare module "@prismicio/client" {
       MapaSliceDefaultPrimary,
       MapaSliceVariation,
       MapaSliceDefault,
+      ServiciosSlice,
+      ServiciosSliceDefaultPrimaryServiciosItem,
+      ServiciosSliceDefaultPrimary,
+      ServiciosSliceVariation,
+      ServiciosSliceDefault,
     };
   }
 }
