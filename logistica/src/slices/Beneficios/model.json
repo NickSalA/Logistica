@@ -1,0 +1,94 @@
+{
+  "id": "beneficios",
+  "type": "SharedSlice",
+  "name": "Beneficios",
+  "description": "Beneficios",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "badge_text": {
+          "type": "Text",
+          "config": {
+            "label": "badge_text",
+            "placeholder": "BENEFICIOS CLAVE"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "title",
+            "placeholder": "¿POR QUÉ ELEGIRNOS?",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "subtitle",
+            "placeholder": "Ventajas concretas que marcan la diferencia..."
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "cards",
+            "repeat": true,
+            "fields": {
+              "card_number": {
+                "type": "Text",
+                "config": {
+                  "label": "card_number",
+                  "placeholder": ""
+                }
+              },
+              "card_tag": {
+                "type": "Text",
+                "config": {
+                  "label": "card_tag",
+                  "placeholder": ""
+                }
+              },
+              "card_title": {
+                "type": "Text",
+                "config": {
+                  "label": "card_title",
+                  "placeholder": ""
+                }
+              },
+              "card_image": {
+                "type": "Image",
+                "config": {
+                  "label": "card_image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "card_icon": {
+                "type": "Text",
+                "config": {
+                  "label": "card_icon",
+                  "placeholder": ""
+                }
+              },
+              "card_description": {
+                "type": "Text",
+                "config": {
+                  "label": "card_description",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

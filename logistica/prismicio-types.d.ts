@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type HomapageDocumentDataSlicesSlice =
+  | BeneficiosSlice
   | ServiciosSlice
   | CotizacionSlice
   | MapaSlice
@@ -399,6 +400,146 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomapageDocument | SettingsDocument;
+
+/**
+ * Item in *Beneficios → Default → Primary → cards*
+ */
+export interface BeneficiosSliceDefaultPrimaryCardsItem {
+  /**
+   * card_number field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_number
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_number: prismic.KeyTextField;
+
+  /**
+   * card_tag field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_tag: prismic.KeyTextField;
+
+  /**
+   * card_title field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * card_image field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  card_image: prismic.ImageField<never>;
+
+  /**
+   * card_icon field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_icon: prismic.KeyTextField;
+
+  /**
+   * card_description field in *Beneficios → Default → Primary → cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[].card_description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Beneficios → Default → Primary*
+ */
+export interface BeneficiosSliceDefaultPrimary {
+  /**
+   * badge_text field in *Beneficios → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: BENEFICIOS CLAVE
+   * - **API ID Path**: beneficios.default.primary.badge_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  badge_text: prismic.KeyTextField;
+
+  /**
+   * title field in *Beneficios → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: ¿POR QUÉ ELEGIRNOS?
+   * - **API ID Path**: beneficios.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * subtitle field in *Beneficios → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Ventajas concretas que marcan la diferencia...
+   * - **API ID Path**: beneficios.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * cards field in *Beneficios → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: beneficios.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<Simplify<BeneficiosSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for Beneficios Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BeneficiosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BeneficiosSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Beneficios*
+ */
+type BeneficiosSliceVariation = BeneficiosSliceDefault;
+
+/**
+ * Beneficios Shared Slice
+ *
+ * - **API ID**: `beneficios`
+ * - **Description**: Beneficios
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BeneficiosSlice = prismic.SharedSlice<
+  "beneficios",
+  BeneficiosSliceVariation
+>;
 
 /**
  * Item in *Cotizacion → Default → Primary → contenido*
@@ -1031,6 +1172,11 @@ declare module "@prismicio/client" {
       SettingsDocumentDataRedesItem,
       SettingsDocumentDataCorreoItem,
       AllDocumentTypes,
+      BeneficiosSlice,
+      BeneficiosSliceDefaultPrimaryCardsItem,
+      BeneficiosSliceDefaultPrimary,
+      BeneficiosSliceVariation,
+      BeneficiosSliceDefault,
       CotizacionSlice,
       CotizacionSliceDefaultPrimaryContenidoItem,
       CotizacionSliceDefaultPrimaryServiciosItem,
