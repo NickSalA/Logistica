@@ -809,6 +809,26 @@ export interface MapaSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/geopoint
    */
   map: prismic.GeoPointField;
+
+  /**
+   * badge_text field in *Mapa → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mapa.default.primary.badge_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  badge_text: prismic.KeyTextField;
+
+  /**
+   * title field in *Mapa → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mapa.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
 }
 
 /**

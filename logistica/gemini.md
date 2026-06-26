@@ -86,3 +86,15 @@ Para fundir dos secciones de forma elegante en pantallas móviles y de escritori
 Las secciones deben "respirar". Nunca pegues el contenido a los bordes de la pantalla.
 *   **Contenedor Estándar:** `container mx-auto px-6 md:px-12 xl:px-20`
 *   **Relleno Vertical (Padding):** Usa `py-12 md:py-20 lg:py-24` para las transiciones entre secciones.
+
+---
+
+## 6. Integración de Textos y Prismic CMS
+
+**Regla de Oro para Contenidos de Texto:** 
+Cuando se necesite incorporar nuevo texto en un Slice que actualmente no tenga campos designados para ello (por ejemplo, títulos faltantes, badges o etiquetas de sección), **NO hardcodees (agregues directamente)** el texto en el código fuente de Next.js.
+
+En su lugar, debes notificar inmediatamente al usuario de la siguiente manera:
+1.  Indicar qué texto o contenido visual hace falta para mejorar la sección.
+2.  Especificar exactamente qué tipo de **Field** (ej. `Key Text`, `Rich Text`, `Title`) debe agregarse en el Custom Type o Slice dentro del panel de **Prismic Slice Machine**.
+3.  Esperar a que el usuario confirme que ha añadido el campo antes de mapear la variable (`slice.primary.nuevo_campo`) en el código.

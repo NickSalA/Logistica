@@ -4,11 +4,27 @@
 		"variation": "default",
 		"primary": {
 			"map": {
-				"__TYPE__": "GeoPointContent",
 				"position": {
 					"lat": 48.8703712,
 					"lng": 2.3865198
-				}
+				},
+				"__TYPE__": "GeoPointContent"
+			},
+			"badge_text": {
+				"__TYPE__": "FieldContent",
+				"value": "government",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat tempor nostrud consectetur. Consectetur labore qui dolore laborum fugiat incididunt incididunt Lorem tempor magna amet minim aliqua."
+						}
+					}
+				]
 			}
 		},
 		"items": []
