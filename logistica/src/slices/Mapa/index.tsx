@@ -24,11 +24,11 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
             {slice.primary.badge_text}
           </div>
         )}
-        
+
         {slice.primary.title && (
           <div className="max-w-3xl">
-            <PrismicRichText 
-              field={slice.primary.title} 
+            <PrismicRichText
+              field={slice.primary.title}
               components={{
                 heading2: ({ children }) => (
                   <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
@@ -49,7 +49,7 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
 
       {/* Contenedor del Mapa */}
       <div className="relative w-full max-w-6xl mx-auto h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 group bg-gray-100">
-        <iframe 
+        <iframe
           className="absolute inset-0 w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
           src={`https://maps.google.com/maps?q=${slice.primary.map.latitude},${slice.primary.map.longitude}&hl=es;z=15&output=embed`}
           allowFullScreen
