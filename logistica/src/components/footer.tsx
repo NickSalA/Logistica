@@ -22,74 +22,132 @@ export default async function Footer() {
                 return null;
         }
     }
+
     return (
-        <footer>
-            <div className="flex flex-col md:grid md:grid-cols-4 w-full py-4 px-4 mx-auto md:gap-12 md:items-start items-center lg:text-md md:text-xs sm:text-md">
-                {/* Logo */}
-                <div className="flex md:flex-col gap-4 items-center md:px-8 self-center py-4 md:py-0">
-                    <Link href="/">
-                        <PrismicNextImage field={settings.data.data_title} className="" />
-                    </Link>
-                    <PrismicRichText field={settings.data.description} components={{
-                        paragraph: ({ children }) => (
-                            <p className="hidden md:flex text-center md:text-xs lg:text-sm font-primary font-medium">{children}</p>
-                        )
-                    }} />
-                </div>
-                {/* Links */}
-                <div className="flex md:flex-col flex-row gap-12 md:gap-4 md:justify-start md:pl-12 py-4 md:py-0">
-                    <div className="hidden md:flex font-semibold"><p>Conocenos</p></div>
-                    {settings.data.nav.map((item, index) => (
-                        <PrismicNextLink key={index} field={item.link} className="hover:opacity-80 transition font-semibold md:font-normal">
-                            {item.label}
-                        </PrismicNextLink>
-                    ))}
-                </div>
-                {/* Contacto */}
-                <div className="flex flex-col gap-4 justify-center py-4 md:py-0">
-                    <div className="hidden md:flex font-semibold"><p>Contáctanos</p></div>
-                    <div className="flex flex-row items-center">
-                        <Mail size={32} className="mr-2" />
-                        <div className="flex flex-col">
-                            {settings.data.correo.map((item, index) => (
-                                <PrismicNextLink key={index} field={item.correo} className="hover:opacity-80 transition">
-                                    {item.nombre}
+        <footer className="bg-white relative">
+            {/* Separador Degradado Premium */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-70"></div>
+            
+            {/* Contenedor Principal */}
+            <div className="container mx-auto px-6 md:px-12 xl:px-20 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+                    
+                    {/* Columna 1: Marca y Descripción */}
+                    <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
+                        <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
+                            <PrismicNextImage field={settings.data.data_title} className="h-16 w-auto object-contain" />
+                        </Link>
+                        <PrismicRichText 
+                            field={settings.data.description} 
+                            components={{
+                                paragraph: ({ children }) => (
+                                    <p className="font-secondary text-sm leading-relaxed text-gray-600 max-w-sm">
+                                        {children}
+                                    </p>
+                                )
+                            }} 
+                        />
+                    </div>
+
+                    {/* Columna 2: Enlaces (Conócenos) */}
+                    <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                            Conócenos
+                        </h4>
+                        <nav className="flex flex-col gap-3">
+                            {settings.data.nav.map((item, index) => (
+                                <PrismicNextLink 
+                                    key={index} 
+                                    field={item.link} 
+                                    className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                >
+                                    {item.label}
                                 </PrismicNextLink>
-                            ))
-                            }
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Columna 3: Contacto */}
+                    <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                            Contáctanos
+                        </h4>
+                        <div className="flex flex-col gap-4 w-full">
+                            {/* Correos */}
+                            <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
+                                <div className="mt-0.5 text-accent">
+                                    <Mail size={20} strokeWidth={2.5} />
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    {settings.data.correo.map((item, index) => (
+                                        <PrismicNextLink 
+                                            key={index} 
+                                            field={item.correo} 
+                                            className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                        >
+                                            {item.nombre}
+                                        </PrismicNextLink>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            {/* Teléfonos */}
+                            <div className="flex flex-col md:flex-row items-center md:items-start gap-3">
+                                <div className="mt-0.5 text-accent">
+                                    <Phone size={20} strokeWidth={2.5} />
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    {settings.data.telefono.map((item, index) => (
+                                        <PrismicNextLink 
+                                            key={index} 
+                                            field={item.telefono} 
+                                            className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                        >
+                                            {item.nombre}
+                                        </PrismicNextLink>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="flex md:flex-row items-center">
-                        <Phone size={32} className="mr-2 justify-start" />
-                        <div className="flex flex-col self-center text-center items-center w-full">
-                            {settings.data.telefono.map((item, index) => (
-                                <PrismicNextLink key={index} field={item.telefono} className="hover:opacity-80 transition md:self-start self-center">
-                                    {item.nombre}
+
+                    {/* Columna 4: Redes Sociales */}
+                    <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                            Conectar
+                        </h4>
+                        <div className="flex flex-row gap-5">
+                            {settings.data.redes.map((item, index) => (
+                                <PrismicNextLink 
+                                    key={index} 
+                                    field={item.red} 
+                                    className="hover:-translate-y-1.5 hover:scale-110 transition-transform duration-300 drop-shadow-sm hover:drop-shadow-md"
+                                    aria-label={`Visitar ${item.nombre}`}
+                                >
+                                    {getIcon(item.nombre)}
                                 </PrismicNextLink>
-                            ))
-                            }
+                            ))}
                         </div>
                     </div>
-                </div>
-                <div className="flex md:flex-col gap-4 justify-start py-4 md:py-0">
-                    {/* Redes sociales */}
-                    <div className="hidden md:flex font-semibold"><p>Conectar</p></div>
-                    <div className="flex flex-row gap-6 "> {settings.data.redes.map((item, index) => (
-                        <PrismicNextLink key={index} field={item.red} className="hover:opacity-80 transition">
-                            {getIcon(item.nombre)}
-                        </PrismicNextLink>
-                    ))}</div>
+
                 </div>
             </div>
-            {/* Derechos */}
-            <div>
-                <div className="w-full h-[0.1] flex flex-grow bg-black mt-4 basis-1/4 rounded-lg"></div>
-                <PrismicRichText field={settings.data.derechos} components={{
-                    paragraph: ({ children }) => (
-                        <p className="text-center text-sm font-primary font-semibold p-4">{children}</p>
-                    )
-                }} />
+
+            {/* Barra de Derechos (Copyright) */}
+            <div className="bg-gray-50 border-t border-gray-200">
+                <div className="container mx-auto px-6 md:px-12 xl:px-20 py-6">
+                    <PrismicRichText 
+                        field={settings.data.derechos} 
+                        components={{
+                            paragraph: ({ children }) => (
+                                <p className="text-center font-secondary text-xs font-medium text-gray-500">
+                                    {children}
+                                </p>
+                            )
+                        }} 
+                    />
+                </div>
             </div>
         </footer>
-    )
+    );
 }
