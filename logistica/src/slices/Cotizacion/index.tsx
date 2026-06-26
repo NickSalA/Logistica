@@ -4,6 +4,7 @@ import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { MapPin, PhoneIcon, ClockIcon } from "lucide-react";
+import Button from "@/components/ui/button";
 
 export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 
@@ -11,11 +12,11 @@ export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 function getIcon(iconName: KeyTextField) {
   switch (iconName) {
     case "map":
-      return <MapPin className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
+      return <MapPin className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
     case "phone":
-      return <PhoneIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
+      return <PhoneIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
     case "clock":
-      return <ClockIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
+      return <ClockIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
     default:
       return null;
   }
@@ -25,213 +26,70 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
   
-  const inputClass = "w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-accent";
-  const submitButtonClass = "w-full bg-charcoal text-white py-2 px-4 rounded hover:bg-accent hover:text-night transition-colors text-sm font-semibold cursor-pointer";
+  const inputClass = "w-full bg-gray-50 border border-gray-200 text-gray-900 rounded-xl px-4 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300";
 
   return (
     <section
       id="cotizacion"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container px-4 mx-auto scroll-mt-24"
+      className="container px-4 sm:px-6 mx-auto scroll-mt-24 pt-2 pb-12 md:py-24"
     >
-      {/* Mobile: Layout vertical con dos bloques superpuestos */}
-      <div className="block md:hidden relative p-4">
-        {/* Bloque superior: Información de contacto */}
-        <div className="bg-sand rounded-3xl p-8 m-4 pb-12">
-          {/* Encabezados */}
-          <div className="mb-6">
-            <PrismicRichText
-              field={slice.primary.contactenos}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className="text-3xl font-light leading-tight text-night">
-                    {children}
-                  </p>
-                ),
-              }}
-            />
-            <PrismicRichText
-              field={slice.primary.horas}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className="text-3xl text-accent font-bold">{children}</p>
-                ),
-              }}
-            />
-            <PrismicRichText
-              field={slice.primary.dias}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className="text-3xl font-bold text-night">{children}</p>
-                ),
-              }}
-            />
-          </div>
-
-          {/* Información de contacto */}
-          <div className="mt-4">
-            {slice.primary.contenido?.map((item, index) => {
-              const icon = getIcon(item.titulo);
-
-              const content = (
-                <div className="flex items-center mb-4">
-                  {icon}
-                  <span className="text-gray-700 hover:text-gray-900 font-bold transition text-lg">
-                    {item.info}
-                  </span>
-                </div>
-              );
-
-              return item.activo && item.link ? (
-                <PrismicNextLink key={index} field={item.link}>
-                  {content}
-                </PrismicNextLink>
-              ) : (
-                <div key={index}>{content}</div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Bloque inferior superpuesto: Formulario */}
-        <div className="bg-white p-6 rounded-3xl shadow-2xl relative z-10 -mt-12">
-          <h3 className="text-lg font-semibold mb-4">
-            <PrismicRichText
-              field={slice.primary.cotizacion}
-              components={{
-                paragraph: ({ children }) => (
-                  <p className="text-accent text-2xl font-bold">{children}</p>
-                ),
-              }}
-            />
-          </h3>
-
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="space-y-4"
-            autoComplete="off"
-          >
-            <div>
-              <p className="mb-2 text-sm">E-mail:<span className="text-red-500">*</span></p>
-              <input
-                type="email"
-                required
-                placeholder="example@email.com"
-                className={inputClass}
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col">
-                <p className="mb-2 text-sm">Celular:</p>
-                <input
-                  type="tel"
-                  required
-                  placeholder="Ingrese su número aquí"
-                  className={inputClass}
-                />
-              </div>
-              <div className="flex flex-col">
-                <p className="mb-2 text-sm">DNI o RUC:<span className="text-red-500">*</span></p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Ingrese su DNI aquí"
-                  className={inputClass}
-                />
-              </div>
-            </div>
-
-            <div>
-              <p className="mb-2 text-sm">Tipo de servicio:<span className="text-red-500">*</span></p>
-              <select
-                required
-                defaultValue={predeterminado}
-                className={inputClass}
-              >
-                {opcionesServicios.map((item, idx) => (
-                  <option key={idx} value={item.servicio ?? ""}>
-                    {item.servicio}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <p className="mb-2 text-sm">Fecha del servicio:<span className="text-red-500">*</span></p>
-              <input
-                type="date"
-                defaultValue={new Date().toISOString().split("T")[0]}
-                required
-                placeholder="dd/mm/yyyy"
-                className={inputClass}
-              />
-            </div>
-
-            <div>
-              <p className="mb-2 text-sm">Mensaje:<span className="text-red-500">*</span></p>
-              <textarea
-                required
-                placeholder="Escriba aquí"
-                className={`${inputClass} min-h-20 resize-none`}
-                rows={3}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className={submitButtonClass}
-            >
-              Enviar
-            </button>
-          </form>
-        </div>
-      </div>
-
-      {/* Desktop: Layout original de dos columnas */}
-      <div className="hidden md:block">
-        <div className="relative grid md:grid-cols-2 gap-0 p-5 m-8">
-          {/* Columna izquierda */}
-          <div className="bg-sand p-8 rounded-3xl md:pr-16 m-4">
+      {/* Contenedor relativo para habilitar la superposición en escritorio */}
+      <div className="relative max-w-6xl mx-auto">
+        
+        {/* Bloque de Contacto (Azul Corporativo) - Base del Layout */}
+        <div className="w-full lg:w-2/3 bg-night text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-lg lg:min-h-[600px] flex flex-col justify-center">
+          {/* Elemento decorativo de fondo */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0" />
+          
+          <div className="relative z-10">
             {/* Encabezados */}
-            <div className="mb-8">
+            <div className="mb-10">
               <PrismicRichText
                 field={slice.primary.contactenos}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-6xl font-light leading-tight text-night">
+                    <p className="text-sm font-bold tracking-widest text-accent uppercase mb-3">
                       {children}
                     </p>
                   ),
                 }}
               />
-              <PrismicRichText
-                field={slice.primary.horas}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="text-6xl text-accent font-bold">{children}</p>
-                  ),
-                }}
-              />
-              <PrismicRichText
-                field={slice.primary.dias}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="text-6xl font-bold text-night">{children}</p>
-                  ),
-                }}
-              />
+              
+              <div className="flex flex-col gap-1">
+                <PrismicRichText
+                  field={slice.primary.horas}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="font-primary text-4xl md:text-5xl lg:text-6xl font-black text-white leading-none">
+                        {children}
+                      </p>
+                    ),
+                  }}
+                />
+                <PrismicRichText
+                  field={slice.primary.dias}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="font-primary text-4xl md:text-5xl lg:text-6xl font-black text-gray-300 leading-none">
+                        {children}
+                      </p>
+                    ),
+                  }}
+                />
+              </div>
             </div>
+
             {/* Información de contacto */}
-            <div className="mt-12">
+            <div className="flex flex-col gap-6">
               {slice.primary.contenido?.map((item, index) => {
                 const icon = getIcon(item.titulo);
 
                 const content = (
-                  <div className="flex items-center mb-12">
+                  <div className="flex items-center group">
                     {icon}
-                    <span className="text-gray-700 hover:text-gray-900 font-bold transition text-xl">
+                    <span className="text-gray-300 group-hover:text-white font-secondary text-base lg:text-lg transition-colors duration-300">
                       {item.info}
                     </span>
                   </div>
@@ -247,104 +105,117 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               })}
             </div>
           </div>
-
-          {/* Columna derecha (formulario) */}
-          <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 relative z-10 md:-ml-8 space-y-6">
-            <h3 className="text-xl font-semibold mb-6 text-center">
-              <PrismicRichText
-                field={slice.primary.cotizacion}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="text-accent text-3xl font-bold">{children}</p>
-                  ),
-                }}
-              />
-            </h3>
-
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="space-y-6"
-              autoComplete="off"
-            >
-              <div>
-                <p className="mb-2">E-mail:<span className="text-red-500">*</span></p>
-                <input
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="example@email.com"
-                  className={inputClass}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex flex-col">
-                  <p className="mb-2">Celular:</p>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Ingrese su número aquí"
-                    className={inputClass}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <p className="mb-2">DNI o RUC:<span className="text-red-500">*</span></p>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Ingrese su DNI aquí"
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <p className="mb-2">Tipo de servicio:<span className="text-red-500">*</span></p>
-                <select
-                  required
-                  defaultValue={predeterminado}
-                  className={inputClass}
-                >
-                  {opcionesServicios.map((item, idx) => (
-                    <option key={idx} value={item.servicio ?? ""}>
-                      {item.servicio}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <p className="mb-2">Fecha del servicio:<span className="text-red-500">*</span></p>
-                <input
-                  type="date"
-                  defaultValue={new Date().toISOString().split("T")[0]}
-                  required
-                  placeholder="dd/mm/yyyy"
-                  className={inputClass}
-                />
-              </div>
-
-              <div>
-                <p className="mb-2">Mensaje:<span className="text-red-500">*</span></p>
-                <textarea
-                  required
-                  placeholder="Escriba aquí"
-                  className={`${inputClass} max-h-32 min-h-32`}
-                  rows={4}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className={submitButtonClass}
-              >
-                Enviar
-              </button>
-            </form>
-          </div>
         </div>
+
+        {/* Bloque Formulario Superpuesto */}
+        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-[600px] bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0">
+          <div className="mb-8 text-center lg:text-left">
+            <PrismicRichText
+              field={slice.primary.cotizacion}
+              components={{
+                paragraph: ({ children }) => (
+                  <h3 className="font-primary text-2xl md:text-3xl font-extrabold text-night uppercase tracking-tight">
+                    {children}
+                  </h3>
+                ),
+              }}
+            />
+          </div>
+
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="space-y-5"
+            autoComplete="off"
+          >
+            <div>
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                E-mail:<span className="text-red-500 ml-0.5">*</span>
+              </label>
+              <input
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="ejemplo@correo.com"
+                className={inputClass}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="flex flex-col">
+                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                  Celular:
+                </label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="Ingrese número"
+                  className={inputClass}
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                  DNI o RUC:<span className="text-red-500 ml-0.5">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ingrese documento"
+                  className={inputClass}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                Tipo de servicio:<span className="text-red-500 ml-0.5">*</span>
+              </label>
+              <select
+                required
+                defaultValue={predeterminado}
+                className={`${inputClass} appearance-none cursor-pointer`}
+              >
+                {opcionesServicios.map((item, idx) => (
+                  <option key={idx} value={item.servicio ?? ""}>
+                    {item.servicio}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                Fecha del servicio:<span className="text-red-500 ml-0.5">*</span>
+              </label>
+              <input
+                type="date"
+                defaultValue={new Date().toISOString().split("T")[0]}
+                required
+                className={inputClass}
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
+                Mensaje:<span className="text-red-500 ml-0.5">*</span>
+              </label>
+              <textarea
+                required
+                placeholder="¿En qué podemos ayudarle?"
+                className={`${inputClass} min-h-[100px] resize-y`}
+                rows={3}
+              />
+            </div>
+
+            <div className="pt-2">
+              <Button type="submit" variant="primary" className="w-full uppercase tracking-wider text-sm shadow-md">
+                Enviar Solicitud
+              </Button>
+            </div>
+          </form>
+        </div>
+        
       </div>
-    </section >
+    </section>
   );
 };
 
