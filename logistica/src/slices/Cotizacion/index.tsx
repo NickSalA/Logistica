@@ -30,9 +30,10 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
   return (
     <section
+      id="cotizacion"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container px-4 mx-auto"
+      className="container px-4 mx-auto scroll-mt-24"
     >
       {/* Mobile: Layout vertical con dos bloques superpuestos */}
       <div className="block md:hidden relative p-4">

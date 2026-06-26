@@ -7,12 +7,10 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --font-secondary: var(--font-roboto);
-  --font-primary: var(--font-montserrat);
-}
-
 @theme {
+  --font-primary: var(--font-montserrat);
+  --font-secondary: var(--font-roboto);
+
   /*Colores de texto*/
   --color-night: #003366;
   --color-night-dark: #001122;
@@ -22,20 +20,28 @@
   --color-charcoal: #2C2C2C;
 
   /*Tamaño de fuente*/
-  --text-md: 1 rem;
+  --text-md: 1rem;
+}
 
-  /*Lineas separadoras*/
+body {
+  font-family: var(--font-roboto), sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 .shadow-super-strong {
   box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.4),
     0 35px 35px -5px rgba(0, 0, 0, 0.2),
     0 10px 20px -5px rgba(0, 0, 0, 0.1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }

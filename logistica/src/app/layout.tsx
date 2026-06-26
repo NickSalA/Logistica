@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(montserrat.variable, roboto.variable)}>
-      <body>
+      <body className="font-secondary">
         <Header />
         {children}
         <Footer />
