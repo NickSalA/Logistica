@@ -15,6 +15,11 @@
 @theme {
   /*Colores de texto*/
   --color-night: #003366;
+  --color-night-dark: #001122;
+  --color-accent: #FFC000;
+  --color-accent-hover: #E6AC00;
+  --color-sand: #F5F5DC;
+  --color-charcoal: #2C2C2C;
 
   /*Tamaño de fuente*/
   --text-md: 1 rem;

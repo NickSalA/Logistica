@@ -3,28 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"main_info": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Never"
-						}
-					}
-				]
-			},
-			"name": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Climb"
-						}
-					}
-				]
-			},
 			"images": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -67,6 +45,61 @@
 						]
 					}
 				]
+			},
+			"subtitulo": {
+				"__TYPE__": "FieldContent",
+				"value": "entirely",
+				"type": "Text"
+			},
+			"titulo": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco amet laboris nulla nisi pariatur ipsum deserunt in incididunt."
+						}
+					}
+				]
+			},
+			"descripcion": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Proident quis amet occaecat tempor commodo reprehenderit ad ad laborum exercitation culpa tempor."
+						}
+					}
+				]
+			},
+			"texto_boton_primario": {
+				"__TYPE__": "FieldContent",
+				"value": "chamber",
+				"type": "Text"
+			},
+			"enlace_boton_primario": {
+				"key": "653440b6-fd8e-49d7-a1fb-88b8c690894b",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "riding"
+				}
+			},
+			"texto_boton_secundario": {
+				"__TYPE__": "FieldContent",
+				"value": "travel",
+				"type": "Text"
+			},
+			"enlace_boton_secundario": {
+				"__TYPE__": "LinkContent",
+				"key": "dc271e49-e5b3-4a5a-8a20-047a67fe9471",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "coast"
+				}
 			}
 		},
 		"items": []

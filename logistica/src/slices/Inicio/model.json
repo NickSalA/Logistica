@@ -12,24 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "main_info": {
-          "type": "StructuredText",
-          "config": {
-            "label": "main_info",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading1,strong"
-          }
-        },
-        "name": {
-          "type": "StructuredText",
-          "config": {
-            "label": "name",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading1,strong,heading2"
-          }
-        },
         "images": {
           "type": "Group",
           "config": {
@@ -54,6 +36,67 @@
                 }
               }
             }
+          }
+        },
+        "subtitulo": {
+          "type": "Text",
+          "config": {
+            "label": "subtitulo",
+            "placeholder": ""
+          }
+        },
+        "titulo": {
+          "type": "StructuredText",
+          "config": {
+            "label": "titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "descripcion": {
+          "type": "StructuredText",
+          "config": {
+            "label": "descripcion",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "texto_boton_primario": {
+          "type": "Text",
+          "config": {
+            "label": "texto_boton_primario",
+            "placeholder": ""
+          }
+        },
+        "enlace_boton_primario": {
+          "type": "Link",
+          "config": {
+            "label": "enlace_boton_primario",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "texto_boton_secundario": {
+          "type": "Text",
+          "config": {
+            "label": "texto_boton_secundario",
+            "placeholder": ""
+          }
+        },
+        "enlace_boton_secundario": {
+          "type": "Link",
+          "config": {
+            "label": "enlace_boton_secundario",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         }
       },

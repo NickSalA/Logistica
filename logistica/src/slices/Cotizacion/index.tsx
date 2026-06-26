@@ -11,11 +11,11 @@ export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 function getIcon(iconName: KeyTextField) {
   switch (iconName) {
     case "map":
-      return <MapPin className="w-6 h-6 md:w-10 md:h-10 mr-2 text-yellow-600 flex-shrink-0" />;
+      return <MapPin className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
     case "phone":
-      return <PhoneIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-yellow-600 flex-shrink-0" />;
+      return <PhoneIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
     case "clock":
-      return <ClockIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-yellow-600 flex-shrink-0" />;
+      return <ClockIcon className="w-6 h-6 md:w-10 md:h-10 mr-2 text-accent flex-shrink-0" />;
     default:
       return null;
   }
@@ -24,6 +24,10 @@ function getIcon(iconName: KeyTextField) {
 const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
+  
+  const inputClass = "w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-accent";
+  const submitButtonClass = "w-full bg-charcoal text-white py-2 px-4 rounded hover:bg-accent hover:text-night transition-colors text-sm font-semibold cursor-pointer";
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -33,14 +37,14 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       {/* Mobile: Layout vertical con dos bloques superpuestos */}
       <div className="block md:hidden relative p-4">
         {/* Bloque superior: Información de contacto */}
-        <div className="bg-[#F5F5DC] rounded-3xl p-8 m-4 pb-12">
+        <div className="bg-sand rounded-3xl p-8 m-4 pb-12">
           {/* Encabezados */}
           <div className="mb-6">
             <PrismicRichText
               field={slice.primary.contactenos}
               components={{
                 paragraph: ({ children }) => (
-                  <p className="text-3xl font-light leading-tight">
+                  <p className="text-3xl font-light leading-tight text-night">
                     {children}
                   </p>
                 ),
@@ -50,7 +54,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               field={slice.primary.horas}
               components={{
                 paragraph: ({ children }) => (
-                  <p className="text-3xl text-yellow-400 font-bold">{children}</p>
+                  <p className="text-3xl text-accent font-bold">{children}</p>
                 ),
               }}
             />
@@ -58,7 +62,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               field={slice.primary.dias}
               components={{
                 paragraph: ({ children }) => (
-                  <p className="text-3xl font-bold">{children}</p>
+                  <p className="text-3xl font-bold text-night">{children}</p>
                 ),
               }}
             />
@@ -72,7 +76,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               const content = (
                 <div className="flex items-center mb-4">
                   {icon}
-                  <span className="text-gray-600 hover:text-gray-800 font-bold transition text-lg">
+                  <span className="text-gray-700 hover:text-gray-900 font-bold transition text-lg">
                     {item.info}
                   </span>
                 </div>
@@ -96,7 +100,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               field={slice.primary.cotizacion}
               components={{
                 paragraph: ({ children }) => (
-                  <p className="text-yellow-400 text-2xl">{children}</p>
+                  <p className="text-accent text-2xl font-bold">{children}</p>
                 ),
               }}
             />
@@ -113,7 +117,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 type="email"
                 required
                 placeholder="example@email.com"
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600"
+                className={inputClass}
               />
             </div>
 
@@ -124,7 +128,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   type="tel"
                   required
                   placeholder="Ingrese su número aquí"
-                  className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600"
+                  className={inputClass}
                 />
               </div>
               <div className="flex flex-col">
@@ -133,7 +137,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   type="text"
                   required
                   placeholder="Ingrese su DNI aquí"
-                  className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -143,7 +147,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               <select
                 required
                 defaultValue={predeterminado}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600"
+                className={inputClass}
               >
                 {opcionesServicios.map((item, idx) => (
                   <option key={idx} value={item.servicio ?? ""}>
@@ -160,7 +164,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 defaultValue={new Date().toISOString().split("T")[0]}
                 required
                 placeholder="dd/mm/yyyy"
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600"
+                className={inputClass}
               />
             </div>
 
@@ -169,32 +173,33 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               <textarea
                 required
                 placeholder="Escriba aquí"
-                className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-yellow-600 min-h-20 resize-none"
+                className={`${inputClass} min-h-20 resize-none`}
                 rows={3}
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#2C2C2C] text-white py-2 px-4 rounded hover:bg-yellow-700 transition-colors text-sm"
+              className={submitButtonClass}
             >
               Enviar
             </button>
           </form>
         </div>
       </div>
+
       {/* Desktop: Layout original de dos columnas */}
       <div className="hidden md:block">
         <div className="relative grid md:grid-cols-2 gap-0 p-5 m-8">
           {/* Columna izquierda */}
-          <div className="bg-[#F5F5DC] p-8 rounded-3xl md:pr-16 m-4">
+          <div className="bg-sand p-8 rounded-3xl md:pr-16 m-4">
             {/* Encabezados */}
             <div className="mb-8">
               <PrismicRichText
                 field={slice.primary.contactenos}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-6xl font-light leading-tight">
+                    <p className="text-6xl font-light leading-tight text-night">
                       {children}
                     </p>
                   ),
@@ -204,7 +209,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 field={slice.primary.horas}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-6xl text-yellow-400 font-bold">{children}</p>
+                    <p className="text-6xl text-accent font-bold">{children}</p>
                   ),
                 }}
               />
@@ -212,7 +217,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 field={slice.primary.dias}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-6xl font-bold">{children}</p>
+                    <p className="text-6xl font-bold text-night">{children}</p>
                   ),
                 }}
               />
@@ -225,7 +230,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 const content = (
                   <div className="flex items-center mb-12">
                     {icon}
-                    <span className="text-gray-600 hover:text-gray-800 font-bold transition text-xl">
+                    <span className="text-gray-700 hover:text-gray-900 font-bold transition text-xl">
                       {item.info}
                     </span>
                   </div>
@@ -243,13 +248,13 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
           </div>
 
           {/* Columna derecha (formulario) */}
-          <div className="bg-white p-8 rounded-3xl shadow-2xl border-1 relative z-10 md:-ml-8 space-y-6">
+          <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 relative z-10 md:-ml-8 space-y-6">
             <h3 className="text-xl font-semibold mb-6 text-center">
               <PrismicRichText
                 field={slice.primary.cotizacion}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-yellow-400 text-3xl">{children}</p>
+                    <p className="text-accent text-3xl font-bold">{children}</p>
                   ),
                 }}
               />
@@ -267,7 +272,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   required
                   autoComplete="email"
                   placeholder="example@email.com"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                  className={inputClass}
                 />
               </div>
 
@@ -278,7 +283,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                     type="tel"
                     required
                     placeholder="Ingrese su número aquí"
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                    className={inputClass}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -287,7 +292,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                     type="text"
                     required
                     placeholder="Ingrese su DNI aquí"
-                    className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                    className={inputClass}
                   />
                 </div>
               </div>
@@ -297,7 +302,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <select
                   required
                   defaultValue={predeterminado}
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                  className={inputClass}
                 >
                   {opcionesServicios.map((item, idx) => (
                     <option key={idx} value={item.servicio ?? ""}>
@@ -314,7 +319,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   defaultValue={new Date().toISOString().split("T")[0]}
                   required
                   placeholder="dd/mm/yyyy"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600"
+                  className={inputClass}
                 />
               </div>
 
@@ -323,14 +328,14 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <textarea
                   required
                   placeholder="Escriba aquí"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-yellow-600 max-h-32 min-h-32"
+                  className={`${inputClass} max-h-32 min-h-32`}
                   rows={4}
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#2C2C2C] text-white py-2 px-4 rounded hover:bg-yellow-700 transition-colors"
+                className={submitButtonClass}
               >
                 Enviar
               </button>

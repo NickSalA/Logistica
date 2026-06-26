@@ -6,6 +6,8 @@ import { PrismicNextImage } from "@prismicio/next";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from "react";
 import clsx from "clsx";
+import Button from "@/components/ui/button";
+
 /**
  * Props for `Inicio`.
  */
@@ -18,26 +20,32 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = slice.primary.images.length;
+  
   function changeSlide(index: number) {
+    if (totalSlides === 0) return;
     const nextSlide = (currentSlide + index + totalSlides) % totalSlides;
     setCurrentSlide(nextSlide);
   }
 
   useEffect(() => {
+    if (totalSlides <= 1) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
-  });
+  }, [totalSlides]);
 
+  // Estilo común para forzar el título a ser grande, blanco y responsivo
+  const titleClass = "font-primary text-4xl sm:text-5xl md:text-6xl text-white font-bold leading-[1.1] tracking-tight";
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full h-[50vh] md:h-[90vh] items-center flex"
+      className="relative w-full h-[75vh] md:h-[90vh] flex items-center overflow-hidden"
     >
-      <div className="absolute inset-0 w-full h-full z-0">
+      {/* Carrusel de Fondo */}
+      <div className="absolute inset-0 w-full h-full z-0 bg-night">
         {slice.primary.images.map((item, index) => (
           <PrismicNextImage
             key={index}
@@ -46,39 +54,99 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
               "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out",
               index === currentSlide ? "opacity-100" : "opacity-0"
             )}
+            priority={index === 0}
           />
         ))}
       </div>
-      <div className="absolute w-7/8 opacity-80 bg-night rounded-lg px-6 py-4 left-1/2 top-4 transform -translate-x-1/2 md:transform-none md:translate-0 md:left-2 md:p-8 md:top-8 md:w-3/5 lg:w-2/5 xl:w-1/3 2xl:w-1/4">
-        <PrismicRichText field={slice.primary.main_info} components={{
-          heading1: ({ children }) => (
-            <h1 className="font-primary text-xl md:text-3xl text-white font-semibold mb-1.5">{children}</h1>
-          )
-        }} />
-        <div className="w-full h-0.5 rounded-lg bg-white"></div>
-        <PrismicRichText field={slice.primary.name} components={{
-          heading1: ({ children }) => (
-            <h1 className="font-primary text-lg md:text-2xl text-white font-semibold text-right mt-1.5">{children}</h1>
-          )
-        }} />
+
+      {/* Degradado azul corporativo ultra oscuro para legibilidad (Gradient Overlay) */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-night-dark/98 via-night-dark/70 to-night-dark/10"></div>
+
+      {/* Contenido principal (Textos y Botones) */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 xl:px-20 flex flex-col justify-center h-full">
+        <div className="max-w-2xl flex flex-col gap-6">
+          
+          {/* Subtítulo (Amarillo) */}
+          {slice.primary.subtitulo && (
+            <span className="text-accent font-primary font-bold text-sm md:text-base lg:text-lg uppercase tracking-widest">
+              {slice.primary.subtitulo}
+            </span>
+          )}
+
+          {/* Título Principal (Forzado a ser Blanco y Grande sin importar el tag que venga de Prismic) */}
+          <PrismicRichText field={slice.primary.titulo} components={{
+            heading1: ({ children }) => <h1 className={titleClass}>{children}</h1>,
+            heading2: ({ children }) => <h2 className={titleClass}>{children}</h2>,
+            heading3: ({ children }) => <h3 className={titleClass}>{children}</h3>,
+            paragraph: ({ children }) => <p className={titleClass}>{children}</p>
+          }} />
+
+          {/* Línea Separadora */}
+          <div className="w-20 h-[3px] bg-accent"></div>
+
+          {/* Descripción (Forzado a ser Blanco con opacidad) */}
+          <div className="font-primary text-sm md:text-base lg:text-lg leading-relaxed text-white/80">
+            <PrismicRichText field={slice.primary.descripcion} components={{
+              paragraph: ({ children }) => <p className="mb-4 leading-relaxed text-white/85">{children}</p>,
+              heading1: ({ children }) => <h1 className="font-bold text-white mb-2">{children}</h1>,
+              heading2: ({ children }) => <h2 className="font-bold text-white mb-2">{children}</h2>,
+              heading3: ({ children }) => <h3 className="font-bold text-white mb-2">{children}</h3>
+            }} />
+          </div>
+
+          {/* Botones */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-2">
+            {slice.primary.texto_boton_primario && (
+              <Button field={slice.primary.enlace_boton_primario} variant="accent" size="lg" className="w-full sm:w-auto">
+                {slice.primary.texto_boton_primario}
+              </Button>
+            )}
+            {slice.primary.texto_boton_secundario && (
+              <Button field={slice.primary.enlace_boton_secundario} variant="outline-white" size="lg" className="w-full sm:w-auto">
+                {slice.primary.texto_boton_secundario}
+              </Button>
+            )}
+          </div>
+        </div>
       </div>
-      <button className="top-1/2 transform -translate-y-1/2 absolute right-0 md:right-4" onClick={() => changeSlide(1)}>
-        <ChevronRight size={48} className="md:size-16 text-white cursor-pointer" />
-        <span className="sr-only">boton derecho</span>
-      </button>
-      <button className="top-1/2 transform -translate-y-1/2 absolute left-0 md:left-4" onClick={() => changeSlide(-1)}>
-        <ChevronLeft size={48} className="md:size-16 text-white cursor-pointer" />
-        <span className="sr-only">boton izquierdo</span>
-      </button>
-      <button className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20" onClick={() => changeSlide(1)}>
-        {slice.primary.images.map((_, index) => (
-          <div
-            key={index}
-            className={`w-2 h-2 md:w-4 md:h-4 bg-white rounded-full ${index === currentSlide ? 'opacity-100' : 'opacity-50 cursor-pointer'
-              }`}
-          ></div>
-        ))}
-      </button>
+
+      {/* Controles del Carrusel (Flechas y Puntos) */}
+      {totalSlides > 1 && (
+        <>
+          {/* Flechas abajo a la derecha */}
+          <div className="absolute bottom-10 right-10 md:right-20 z-30 flex gap-4 hidden md:flex">
+            <button
+              onClick={() => changeSlide(-1)}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/30 transition-all backdrop-blur-sm"
+              aria-label="Anterior"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => changeSlide(1)}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/30 transition-all backdrop-blur-sm"
+              aria-label="Siguiente"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Indicadores (Dots) al centro abajo en móvil */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30 md:hidden">
+            {slice.primary.images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={clsx(
+                  "w-2 h-2 rounded-full transition-all duration-300",
+                  index === currentSlide ? "bg-white scale-125" : "bg-white/50"
+                )}
+                aria-label={`Ir a la diapositiva ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 };
