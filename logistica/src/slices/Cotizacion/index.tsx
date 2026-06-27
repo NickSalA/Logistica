@@ -129,7 +129,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
           >
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                E-mail:<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_email || "E-mail:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
                 type="email"
@@ -143,7 +143,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col">
                 <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                  Celular:
+                  {(slice.primary as any).label_celular || "Celular:"}
                 </label>
                 <input
                   type="tel"
@@ -154,7 +154,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               </div>
               <div className="flex flex-col">
                 <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                  DNI o RUC:<span className="text-red-500 ml-0.5">*</span>
+                  {(slice.primary as any).label_documento || "DNI o RUC:"}<span className="text-red-500 ml-0.5">*</span>
                 </label>
                 <input
                   type="text"
@@ -167,7 +167,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                Tipo de servicio:<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_servicio || "Tipo de servicio:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <select
                 required
@@ -184,7 +184,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                Fecha del servicio:<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_fecha || "Fecha del servicio:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
                 type="date"
@@ -196,7 +196,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700">
-                Mensaje:<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_mensaje || "Mensaje:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <textarea
                 required
@@ -208,7 +208,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div className="pt-2">
               <Button type="submit" variant="primary" className="w-full uppercase tracking-wider text-sm shadow-md">
-                Enviar Solicitud
+                {(slice.primary as any).texto_boton_enviar || "Enviar Solicitud"}
               </Button>
             </div>
           </form>

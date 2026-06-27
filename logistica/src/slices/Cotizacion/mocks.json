@@ -114,6 +114,41 @@
 						]
 					}
 				]
+			},
+			"label_email": {
+				"__TYPE__": "FieldContent",
+				"value": "warm",
+				"type": "Text"
+			},
+			"label_celular": {
+				"__TYPE__": "FieldContent",
+				"value": "common",
+				"type": "Text"
+			},
+			"label_documento": {
+				"__TYPE__": "FieldContent",
+				"value": "wear",
+				"type": "Text"
+			},
+			"label_servicio": {
+				"__TYPE__": "FieldContent",
+				"value": "regular",
+				"type": "Text"
+			},
+			"label_fecha": {
+				"__TYPE__": "FieldContent",
+				"value": "grabbed",
+				"type": "Text"
+			},
+			"label_mensaje": {
+				"__TYPE__": "FieldContent",
+				"value": "lungs",
+				"type": "Text"
+			},
+			"texto_boton_enviar": {
+				"__TYPE__": "FieldContent",
+				"value": "clear",
+				"type": "Text"
 			}
 		},
 		"items": []

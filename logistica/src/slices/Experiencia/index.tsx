@@ -3,6 +3,8 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
+import SectionHeader from "@/components/ui/section-header";
+
 /**
  * Props for `Experiencia`.
  */
@@ -25,30 +27,11 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="bg-white pt-12 pb-2 md:py-20 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6 md:px-12 xl:px-20 mb-6 md:mb-16">
-
-        {/* Cabecera Centralizada y Elegante */}
-        <div className="flex flex-col items-center justify-center text-center">
-          {/* Badge de Categoría / Sección */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold font-primary uppercase tracking-wider mb-4">
-            Nuestros Clientes
-          </div>
-
-          {slice.primary.title && (
-            <div className="max-w-2xl">
-              <PrismicRichText
-                field={slice.primary.title}
-                components={{
-                  heading1: ({ children }) => (
-                    <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
-                      {children}
-                    </h2>
-                  )
-                }}
-              />
-            </div>
-          )}
-        </div>
+      <div className="section-container mb-6 md:mb-16">
+        <SectionHeader 
+          badge={(slice.primary as any).badge_text || "Nuestros Clientes"}
+          title={slice.primary.title}
+        />
       </div>
 
       {/* Marquesina Infinita de Logotipos (Ticker) */}

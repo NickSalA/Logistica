@@ -59,7 +59,7 @@ export default function NavBar({ settings }: NavBarProps) {
         <nav aria-label="Main navigation" className="w-full relative">
             {/* Barra Principal con Glassmorphism */}
             <div className="bg-white/90 backdrop-blur-md border-b border-gray-100/80 shadow-xs transition-all duration-300">
-                <div className="container mx-auto px-6 md:px-12 xl:px-20 py-3.5 flex items-center justify-between">
+                <div className="section-container py-3.5 flex items-center justify-between">
                     
                     {/* Logo Branding */}
                     <Link 

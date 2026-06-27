@@ -119,6 +119,55 @@
               }
             }
           }
+        },
+        "label_email": {
+          "type": "Text",
+          "config": {
+            "label": "label_email",
+            "placeholder": ""
+          }
+        },
+        "label_celular": {
+          "type": "Text",
+          "config": {
+            "label": "label_celular",
+            "placeholder": ""
+          }
+        },
+        "label_documento": {
+          "type": "Text",
+          "config": {
+            "label": "label_documento",
+            "placeholder": ""
+          }
+        },
+        "label_servicio": {
+          "type": "Text",
+          "config": {
+            "label": "label_servicio",
+            "placeholder": ""
+          }
+        },
+        "label_fecha": {
+          "type": "Text",
+          "config": {
+            "label": "label_fecha",
+            "placeholder": ""
+          }
+        },
+        "label_mensaje": {
+          "type": "Text",
+          "config": {
+            "label": "label_mensaje",
+            "placeholder": ""
+          }
+        },
+        "texto_boton_enviar": {
+          "type": "Text",
+          "config": {
+            "label": "texto_boton_enviar",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

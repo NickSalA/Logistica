@@ -5,6 +5,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { Truck, Network, ClipboardCheck, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/button";
+import Badge from "@/components/ui/badge";
 
 /**
  * Props for `Servicios`.
@@ -60,17 +61,16 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-night/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3" />
 
-      <div className="container mx-auto px-6 md:px-12 xl:px-20 relative z-10">
+      <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Columna Izquierda (8/12): Contenido, Lista de Servicios y Botón */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-            
+
             {/* Badge de Categoría / Sección */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-night/5 border border-night/10 text-night text-xs font-bold font-primary uppercase tracking-wider w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              Nuestros Servicios
-            </div>
+            <Badge variant="accent" className="w-fit">
+              {(slice.primary as any).badge_text || "Nuestros Servicios"}
+            </Badge>
 
             {/* Títulos y Subtítulo */}
             <div className="flex flex-col gap-4">
@@ -84,8 +84,8 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                           {node.text.split(" ").map((word, idx) => {
                             if (word.toLowerCase().includes("eficientes")) {
                               return (
-                                <span 
-                                  key={idx} 
+                                <span
+                                  key={idx}
                                   className="relative inline-block px-3 py-0.5 mx-1 rounded-xl bg-accent text-night font-black shadow-xs transform -rotate-1 hover:rotate-0 transition-all duration-300 cursor-default"
                                 >
                                   {word}
@@ -138,7 +138,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
             <div className="flex flex-col">
               {slice.primary.servicios.map((item, index) => (
                 <div key={index} className="flex flex-col">
-                  <div 
+                  <div
                     className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50/80 hover:shadow-xs transition-all duration-350 group cursor-default"
                   >
                     {/* Contenedor del Icono */}
@@ -199,7 +199,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
               <div className="relative flex flex-col items-center">
                 {/* Aura/Brillo decorativo difuminado en el fondo de la imagen */}
                 <div className="absolute -inset-6 bg-accent/10 rounded-full blur-2xl -z-10 animate-pulse" />
-                
+
                 {/* Contenedor circular con borde offset y padding */}
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] rounded-full border border-gray-300 p-2 flex items-center justify-center bg-white shadow-xl transition-all duration-500 hover:border-accent">
                   <PrismicNextImage
@@ -207,7 +207,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                     className="w-full h-full rounded-full object-cover"
                   />
                 </div>
-                
+
                 {/* Leyenda / Epígrafe */}
                 {slice.primary.texto_imagen && (
                   <PrismicRichText

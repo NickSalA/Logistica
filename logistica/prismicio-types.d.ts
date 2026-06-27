@@ -741,6 +741,76 @@ export interface CotizacionSliceDefaultPrimary {
   servicios: prismic.GroupField<
     Simplify<CotizacionSliceDefaultPrimaryServiciosItem>
   >;
+
+  /**
+   * label_email field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_email
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_email: prismic.KeyTextField;
+
+  /**
+   * label_celular field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_celular
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_celular: prismic.KeyTextField;
+
+  /**
+   * label_documento field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_documento
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_documento: prismic.KeyTextField;
+
+  /**
+   * label_servicio field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_servicio
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_servicio: prismic.KeyTextField;
+
+  /**
+   * label_fecha field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_fecha
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_fecha: prismic.KeyTextField;
+
+  /**
+   * label_mensaje field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.label_mensaje
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_mensaje: prismic.KeyTextField;
+
+  /**
+   * texto_boton_enviar field in *Cotizacion → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cotizacion.default.primary.texto_boton_enviar
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  texto_boton_enviar: prismic.KeyTextField;
 }
 
 /**
@@ -813,6 +883,16 @@ export interface ExperienciaSliceDefaultPrimary {
   images: prismic.GroupField<
     Simplify<ExperienciaSliceDefaultPrimaryImagesItem>
   >;
+
+  /**
+   * badge_text field in *Experiencia → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experiencia.default.primary.badge_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  badge_text: prismic.KeyTextField;
 }
 
 /**
@@ -1167,6 +1247,16 @@ export interface ServiciosSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   texto_imagen: prismic.RichTextField;
+
+  /**
+   * badge_text field in *Servicios → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: servicios.default.primary.badge_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  badge_text: prismic.KeyTextField;
 }
 
 /**

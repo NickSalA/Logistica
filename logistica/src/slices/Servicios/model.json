@@ -100,6 +100,13 @@
             "allowTargetBlank": true,
             "multi": "paragraph"
           }
+        },
+        "badge_text": {
+          "type": "Text",
+          "config": {
+            "label": "badge_text",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

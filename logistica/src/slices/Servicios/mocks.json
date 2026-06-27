@@ -121,6 +121,11 @@
 						}
 					}
 				]
+			},
+			"badge_text": {
+				"__TYPE__": "FieldContent",
+				"value": "order",
+				"type": "Text"
 			}
 		},
 		"items": []

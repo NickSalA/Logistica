@@ -4,6 +4,8 @@ import { FC, useState } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import SectionHeader from "@/components/ui/section-header";
+import Badge from "@/components/ui/badge";
 import { Award, Shield, Users, Zap, LucideIcon, ChevronUp, ChevronDown } from "lucide-react";
 
 // Mapping Prismic card_icon names to Lucide Icon components
@@ -44,52 +46,14 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
       {/* Círculo decorativo de fondo */}
       <div className="absolute -top-12 -left-12 w-80 h-80 bg-night/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 xl:px-20">
+      <div className="section-container">
         
         {/* Cabecera de la Sección */}
-        <div className="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
-          {slice.primary.badge_text && (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold font-primary uppercase tracking-wider mb-4">
-              {slice.primary.badge_text}
-            </div>
-          )}
-
-          {slice.primary.title && (
-            <div className="max-w-3xl">
-              <PrismicRichText 
-                field={slice.primary.title} 
-                components={{
-                  heading1: ({ children }) => (
-                    <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
-                      {children}
-                    </h2>
-                  ),
-                  heading2: ({ children }) => (
-                    <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
-                      {children}
-                    </h2>
-                  ),
-                  heading3: ({ children }) => (
-                    <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
-                      {children}
-                    </h2>
-                  ),
-                  paragraph: ({ children }) => (
-                    <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
-                      {children}
-                    </h2>
-                  )
-                }}
-              />
-            </div>
-          )}
-
-          {slice.primary.subtitle && (
-            <p className="font-secondary text-sm md:text-base leading-relaxed text-gray-500 max-w-2xl mt-4">
-              {slice.primary.subtitle}
-            </p>
-          )}
-        </div>
+        <SectionHeader 
+          badge={slice.primary.badge_text}
+          title={slice.primary.title}
+          subtitle={slice.primary.subtitle}
+        />
 
         {/* Grilla de Tarjetas de Beneficios */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -129,14 +93,14 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
                   
                   {/* Píldora del Icono y Número */}
                   <div className="w-full flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 pl-2 pr-3.5 py-1 rounded-full bg-night-dark/70 backdrop-blur-md border border-white/10 shadow-inner">
+                    <Badge variant="dark" className="pl-2 pr-3.5 shadow-inner">
                       <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/10">
                         <IconComponent className="w-3 h-3 text-white" strokeWidth={2.5} />
                       </div>
                       <span className="text-[10px] font-bold tracking-widest text-accent font-primary uppercase">
                         {item.card_number && `${item.card_number} · `}{item.card_tag}
                       </span>
-                    </div>
+                    </Badge>
 
                     {/* Indicador de expansión */}
                     <div className="text-white/60 group-hover:text-white transition-colors">
