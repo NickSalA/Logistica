@@ -269,6 +269,51 @@ export interface SettingsDocumentDataCorreoItem {
 }
 
 /**
+ * Item in *Settings → servicios_menu*
+ */
+export interface SettingsDocumentDataServiciosMenuItem {
+  /**
+   * label field in *Settings → servicios_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.servicios_menu[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * description field in *Settings → servicios_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.servicios_menu[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * link field in *Settings → servicios_menu*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.servicios_menu[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * icon field in *Settings → servicios_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.servicios_menu[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon: prismic.KeyTextField;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -381,6 +426,19 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   derechos: prismic.RichTextField;
+
+  /**
+   * servicios_menu field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.servicios_menu[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  servicios_menu: prismic.GroupField<
+    Simplify<SettingsDocumentDataServiciosMenuItem>
+  >;
 }
 
 /**
@@ -1171,6 +1229,7 @@ declare module "@prismicio/client" {
       SettingsDocumentDataTelefonoItem,
       SettingsDocumentDataRedesItem,
       SettingsDocumentDataCorreoItem,
+      SettingsDocumentDataServiciosMenuItem,
       AllDocumentTypes,
       BeneficiosSlice,
       BeneficiosSliceDefaultPrimaryCardsItem,

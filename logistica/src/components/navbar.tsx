@@ -5,119 +5,289 @@ import { Content, asLink } from "@prismicio/client";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import Link from "next/link";
 import clsx from "clsx";
-import { Menu, X } from "lucide-react";
+import { 
+    Menu, 
+    X, 
+    ChevronDown, 
+    Truck, 
+    Network, 
+    ClipboardCheck, 
+    Award, 
+    Shield, 
+    Users, 
+    Zap, 
+    LucideIcon 
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 
 type NavBarProps = {
     settings: Content.SettingsDocument;
 };
 
+const iconMap: Record<string, LucideIcon> = {
+    truck: Truck,
+    network: Network,
+    "clipboard-check": ClipboardCheck,
+    clipboardcheck: ClipboardCheck,
+    award: Award,
+    shield: Shield,
+    users: Users,
+    zap: Zap,
+};
+
+function getSubServiceIcon(iconName: string | null): LucideIcon {
+    if (!iconName) return Truck;
+    const key = iconName.toLowerCase().trim();
+    return iconMap[key] || Truck;
+}
+
 export default function NavBar({ settings }: NavBarProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [mobileDropdownOpen, setMobileDropdownOpen] = useState(true);
     const pathName = usePathname();
 
+    const checkIsActive = (link: any) => {
+        const url = asLink(link);
+        if (!url) return false;
+        if (url === "/" && pathName === "/") return true;
+        return url !== "/" && pathName.includes(url);
+    };
+
+    const serviciosMenu = settings.data.servicios_menu || [];
+
     return (
-        <nav aria-label="Main navigation" className="p-2">
-            <div className="flex flex-col md:flex-row justify-between mx-auto px-4 md:items-center w-full">
-                {/* Logo + Hamburguesa */}
-                <div className="flex justify-between items-center w-full md:w-auto">
-                    <Link href="/" className="z-50" onClick={() => setIsOpen(false)}>
-                        <PrismicNextImage field={settings.data.data_title} className="h-12 w-auto md:h-16" />
-                    </Link>
-
-                    <button
-                        type="button"
-                        className="md:hidden p-2 text-night"
-                        aria-expanded={isOpen}
-                        onClick={() => setIsOpen(true)}
-                    >
-                        <Menu size={32} />
-                        <span className="sr-only">Abrir menú</span>
-                    </button>
-                </div>
-
-                {/* Menú móvil */}
-                <div
-                    className={clsx(
-                        " fixed inset-0 z-40 flex flex-col items-end bg-[#f5f5f5] opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
-                        isOpen ? "translate-x-0" : "translate-x-full"
-                    )}
-                >
-                    <button
-                        type="button"
-                        className="absolute right-4 top-4 block p-2 text-3xl text-night"
+        <nav aria-label="Main navigation" className="w-full relative">
+            {/* Barra Principal con Glassmorphism */}
+            <div className="bg-white/90 backdrop-blur-md border-b border-gray-100/80 shadow-xs transition-all duration-300">
+                <div className="container mx-auto px-6 md:px-12 xl:px-20 py-3.5 flex items-center justify-between">
+                    
+                    {/* Logo Branding */}
+                    <Link 
+                        href="/" 
+                        className="z-10 transition-transform duration-300 hover:scale-[1.02] active:scale-95 flex items-center" 
                         onClick={() => setIsOpen(false)}
                     >
-                        <X size={32} />
-                        <span className="sr-only">Cerrar menú</span>
-                    </button>
+                        <PrismicNextImage 
+                            field={settings.data.data_title} 
+                            className="h-10 md:h-14 w-auto object-contain" 
+                            priority
+                        />
+                    </Link>
 
-                    <div className="w-full flex flex-col items-end gap-6 mt-12 text-2xl font-primary font-semibold">
-                        {settings.data.nav.map((item) => {
-                            if (item.special) {
+                    {/* Menú Escritorio */}
+                    <ul className="hidden md:flex items-center gap-2 lg:gap-3 font-primary">
+                        {settings.data.nav.map((item, index) => {
+                            const isActive = checkIsActive(item.link);
+                            const isCTA = item.label?.toLowerCase().includes("cotizar") || 
+                                          item.label?.toLowerCase().includes("contacto") || 
+                                          (index === settings.data.nav.length - 1 && !item.special);
+
+                            // 1. Botón CTA Destacado (ej. Cotizar)
+                            if (isCTA && !item.special) {
                                 return (
-                                    <PrismicNextLink
-                                        field={item.link}
-                                        key={item.label}
-                                        className={clsx(
-                                            "p-4 hover:underline active:bg-gray-300 active:rounded-2xl", pathName.includes(asLink(item.link) || "") ? "text-night" : ""
-                                        )}>
-                                        {item.label}
-                                    </PrismicNextLink>
+                                    <li key={item.label} className="ml-2">
+                                        <PrismicNextLink
+                                            field={item.link}
+                                            className="font-primary text-sm font-bold tracking-wide bg-accent text-night px-5 py-2.5 rounded-full shadow-sm hover:shadow-md hover:bg-accent-hover transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 block text-center"
+                                        >
+                                            {item.label}
+                                        </PrismicNextLink>
+                                    </li>
                                 );
                             }
-                            return (
-                                <PrismicNextLink
-                                    key={item.label}
-                                    field={item.link}
-                                    onClick={() => setIsOpen(false)}
-                                    className={clsx(
-                                        "p-4 hover:underline active:bg-gray-300 active:rounded-2xl",
-                                        pathName.includes(asLink(item.link) || "") ? "text-night" : ""
-                                    )}
-                                >
-                                    {item.label}
-                                </PrismicNextLink>
-                            );
-                        })
-                        }
-                    </div>
-                </div>
 
-                {/* Menú escritorio */}
-                <ul className="hidden md:flex gap-4 text-md font-primary font-semibold">
-                    {settings.data.nav.map((item) => {
-                        if (item.special) {
+                            // 2. Menú Desplegable Dinámico desde Prismic (para Servicios)
+                            if (item.special) {
+                                return (
+                                    <li key={item.label} className="relative group py-2">
+                                        <PrismicNextLink
+                                            field={item.link}
+                                            className={clsx(
+                                                "flex items-center gap-1.5 font-primary text-sm font-semibold tracking-wide transition-all duration-300 px-4 py-2 rounded-full",
+                                                isActive 
+                                                    ? "text-night font-bold bg-gray-100/90 shadow-2xs" 
+                                                    : "text-gray-600 hover:text-night hover:bg-gray-50"
+                                            )}
+                                        >
+                                            <span>{item.label}</span>
+                                            <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-gray-500 group-hover:text-night" />
+                                        </PrismicNextLink>
+
+                                        {/* Tarjeta Flotante Dropdown */}
+                                        {serviciosMenu.length > 0 && (
+                                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-80 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-xl border border-gray-100 p-2.5 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-2 z-50">
+                                                <div className="flex flex-col gap-1">
+                                                    {serviciosMenu.map((sub, idx) => {
+                                                        const SubIcon = getSubServiceIcon(sub.icon);
+                                                        return (
+                                                            <PrismicNextLink
+                                                                key={idx}
+                                                                field={sub.link}
+                                                                className="flex items-start gap-3 p-3 rounded-xl hover:bg-accent/10 transition-all group/sub"
+                                                            >
+                                                                <div className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-night flex-shrink-0 group-hover/sub:bg-accent group-hover/sub:text-night transition-colors">
+                                                                    <SubIcon className="w-4 h-4" />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-xs font-bold font-primary text-night group-hover/sub:text-night transition-colors">
+                                                                        {sub.label}
+                                                                    </div>
+                                                                    {sub.description && (
+                                                                        <div className="text-[11px] text-gray-500 font-secondary leading-tight mt-0.5">
+                                                                            {sub.description}
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            </PrismicNextLink>
+                                                        );
+                                                    })}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </li>
+                                );
+                            }
+
+                            // 3. Enlace Normal
                             return (
                                 <li key={item.label}>
                                     <PrismicNextLink
                                         field={item.link}
                                         className={clsx(
-                                            "hover:underline p-4 active:bg-gray-100 active:rounded-3xl ",
-                                            pathName.includes(asLink(item.link) || "") ? "text-night" : ""
+                                            "font-primary text-sm font-semibold tracking-wide transition-all duration-300 px-4 py-2 rounded-full block",
+                                            isActive 
+                                                ? "text-night font-bold bg-gray-100/90 shadow-2xs" 
+                                                : "text-gray-600 hover:text-night hover:bg-gray-50"
                                         )}
                                     >
                                         {item.label}
                                     </PrismicNextLink>
                                 </li>
                             );
+                        })}
+                    </ul>
+
+                    {/* Botón Hamburguesa Móvil */}
+                    <button
+                        type="button"
+                        className="md:hidden p-2.5 rounded-xl text-night bg-gray-100 hover:bg-gray-200 active:scale-95 transition-all"
+                        aria-expanded={isOpen}
+                        onClick={() => setIsOpen(true)}
+                    >
+                        <Menu size={26} />
+                        <span className="sr-only">Abrir menú</span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Menú Desplegable Móvil (Independiente de backdrop-blur para abarcar toda la pantalla) */}
+            <div
+                className={clsx(
+                    "fixed inset-0 z-[100] flex flex-col bg-white px-6 py-6 transition-all duration-300 ease-in-out md:hidden overflow-y-auto h-screen w-screen",
+                    isOpen ? "opacity-100 pointer-events-auto translate-x-0" : "opacity-0 pointer-events-none translate-x-full"
+                )}
+            >
+                {/* Cabecera del Menú Móvil */}
+                <div className="flex justify-between items-center w-full border-b border-gray-100 pb-4 flex-shrink-0">
+                    <Link href="/" onClick={() => setIsOpen(false)}>
+                        <PrismicNextImage 
+                            field={settings.data.data_title} 
+                            className="h-10 w-auto object-contain" 
+                        />
+                    </Link>
+
+                    <button
+                        type="button"
+                        className="p-2.5 rounded-full text-night bg-gray-100 hover:bg-gray-200 active:scale-95 transition-all"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <X size={26} />
+                        <span className="sr-only">Cerrar menú</span>
+                    </button>
+                </div>
+
+                {/* Lista de Enlaces Móviles */}
+                <div className="flex flex-col gap-3 mt-6 w-full pb-12 flex-grow">
+                    {settings.data.nav.map((item, index) => {
+                        const isActive = checkIsActive(item.link);
+                        const isCTA = item.label?.toLowerCase().includes("cotizar") || 
+                                      item.label?.toLowerCase().includes("contacto") || 
+                                      (index === settings.data.nav.length - 1 && !item.special);
+
+                        // Botón CTA Móvil
+                        if (isCTA && !item.special) {
+                            return (
+                                <div key={item.label} className="mt-4 w-full">
+                                    <PrismicNextLink
+                                        field={item.link}
+                                        onClick={() => setIsOpen(false)}
+                                        className="w-full text-center font-primary text-base font-bold tracking-wide bg-accent text-night py-3.5 px-6 rounded-2xl shadow-md active:scale-[0.98] transition-all block"
+                                    >
+                                        {item.label}
+                                    </PrismicNextLink>
+                                </div>
+                            );
                         }
-                        return (
-                            <li key={item.label}>
-                                <PrismicNextLink
-                                    field={item.link}
-                                    className={clsx(
-                                        "p-4 hover:underline active:bg-gray-100 active:rounded-3xl ",
-                                        pathName.includes(asLink(item.link) || "") ? "text-night" : ""
+
+                        // Acordeón Desplegable Dinámico en Móvil
+                        if (item.special) {
+                            return (
+                                <div key={item.label} className="flex flex-col w-full bg-gray-50/80 rounded-2xl p-3 border border-gray-100">
+                                    <button
+                                        type="button"
+                                        onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                                        className="flex items-center justify-between w-full px-2 py-1 font-primary text-base font-bold text-night"
+                                    >
+                                        <span>{item.label}</span>
+                                        <ChevronDown className={clsx("w-5 h-5 text-gray-500 transition-transform duration-300", mobileDropdownOpen && "rotate-180")} />
+                                    </button>
+
+                                    {mobileDropdownOpen && serviciosMenu.length > 0 && (
+                                        <div className="flex flex-col gap-2 mt-3 pt-2 border-t border-gray-200/60">
+                                            {serviciosMenu.map((sub, idx) => {
+                                                const SubIcon = getSubServiceIcon(sub.icon);
+                                                return (
+                                                    <PrismicNextLink
+                                                        key={idx}
+                                                        field={sub.link}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-white hover:bg-gray-100 active:bg-gray-200 transition-all border border-gray-100 shadow-2xs"
+                                                    >
+                                                        <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-night flex-shrink-0">
+                                                            <SubIcon className="w-4 h-4" />
+                                                        </div>
+                                                        <div className="flex flex-col">
+                                                            <span className="font-primary text-xs font-bold text-night">
+                                                                {sub.label}
+                                                            </span>
+                                                        </div>
+                                                    </PrismicNextLink>
+                                                );
+                                            })}
+                                        </div>
                                     )}
-                                >
-                                    {item.label}
-                                </PrismicNextLink>
-                            </li>
+                                </div>
+                            );
+                        }
+
+                        // Enlace Normal Móvil
+                        return (
+                            <PrismicNextLink
+                                key={item.label}
+                                field={item.link}
+                                onClick={() => setIsOpen(false)}
+                                className={clsx(
+                                    "w-full px-5 py-3.5 rounded-2xl font-primary text-base font-semibold transition-all duration-200 block",
+                                    isActive 
+                                        ? "text-night font-bold bg-gray-100" 
+                                        : "text-gray-700 hover:bg-gray-50 active:bg-gray-100"
+                                )}
+                            >
+                                {item.label}
+                            </PrismicNextLink>
                         );
-                    })
-                    }
-                </ul>
+                    })}
+                </div>
             </div>
         </nav>
     );

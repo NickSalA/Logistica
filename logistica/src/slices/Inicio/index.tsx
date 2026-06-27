@@ -55,6 +55,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
               index === currentSlide ? "opacity-100" : "opacity-0"
             )}
             priority={index === 0}
+            loading={index === 0 ? "eager" : "lazy"}
           />
         ))}
       </div>
