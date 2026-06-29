@@ -196,13 +196,13 @@ export default function NavBar({ settings }: NavBarProps) {
                             );
                         })}
                         <li className="ml-2 flex items-center">
-                            <ThemeToggle />
+                            <ThemeToggle isSolid={isSolid} />
                         </li>
                     </ul>
 
                     {/* Botón Hamburguesa y ThemeToggle Móvil */}
                     <div className="flex md:hidden items-center gap-3">
-                        <ThemeToggle />
+                        <ThemeToggle isSolid={isSolid} />
                         <button
                             type="button"
                             className={clsx(

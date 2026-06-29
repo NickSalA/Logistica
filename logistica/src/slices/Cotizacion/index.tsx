@@ -26,7 +26,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
   
-  const inputClass = "w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300";
+  const inputClass = "w-full bg-gray-50 dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-white/40";
 
   return (
     <section
@@ -38,10 +38,10 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       {/* Contenedor relativo para habilitar la superposición en escritorio */}
       <div className="relative max-w-6xl mx-auto">
         
-        {/* Bloque de Contacto (Azul Corporativo) - Base del Layout */}
-        <div className="w-full lg:w-2/3 bg-night dark:bg-night-dark text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-lg lg:min-h-[600px] flex flex-col justify-center transition-colors duration-300">
+        {/* Bloque de Contacto (Azul Corporativo con degradado resplandeciente) - Base del Layout */}
+        <div className="w-full lg:w-2/3 bg-gradient-to-br from-night via-[#002b55] to-[#001c3a] dark:from-[#002855] dark:via-[#001d40] dark:to-[#001229] border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-[600px] flex flex-col justify-center transition-colors duration-300">
           {/* Elemento decorativo de fondo */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0" />
           
           <div className="relative z-10">
             {/* Encabezados */}
@@ -72,7 +72,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   field={slice.primary.dias}
                   components={{
                     paragraph: ({ children }) => (
-                      <p className="font-primary text-4xl md:text-5xl lg:text-6xl font-black text-gray-300 leading-none">
+                      <p className="font-primary text-4xl md:text-5xl lg:text-6xl font-black text-gray-300 dark:text-gray-400 leading-none">
                         {children}
                       </p>
                     ),
@@ -89,7 +89,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 const content = (
                   <div className="flex items-center group">
                     {icon}
-                    <span className="text-gray-300 group-hover:text-white font-secondary text-base lg:text-lg transition-colors duration-300">
+                    <span className="text-gray-300 dark:text-gray-300 group-hover:text-white font-secondary text-base lg:text-lg transition-colors duration-300">
                       {item.info}
                     </span>
                   </div>
@@ -107,8 +107,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
           </div>
         </div>
 
-        {/* Bloque Formulario Superpuesto */}
-        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-[600px] bg-white dark:bg-[#0a192f] p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-transparent dark:border-white/10">
+        {/* Bloque Formulario Superpuesto (Resaltado en modo oscuro) */}
+        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-[600px] bg-white dark:bg-[#132338] p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-gray-100 dark:border-white/15">
           <div className="mb-8 text-center lg:text-left">
             <PrismicRichText
               field={slice.primary.cotizacion}
@@ -128,7 +128,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             autoComplete="off"
           >
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                 {(slice.primary as any).label_email || "E-mail:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
@@ -142,7 +142,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col">
-                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                   {(slice.primary as any).label_celular || "Celular:"}
                 </label>
                 <input
@@ -153,7 +153,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 />
               </div>
               <div className="flex flex-col">
-                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                   {(slice.primary as any).label_documento || "DNI o RUC:"}<span className="text-red-500 ml-0.5">*</span>
                 </label>
                 <input
@@ -166,7 +166,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                 {(slice.primary as any).label_servicio || "Tipo de servicio:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <select
@@ -175,7 +175,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 className={`${inputClass} appearance-none cursor-pointer`}
               >
                 {opcionesServicios.map((item, idx) => (
-                  <option key={idx} value={item.servicio ?? ""}>
+                  <option key={idx} value={item.servicio ?? ""} className="bg-white dark:bg-[#0b1d33] text-gray-900 dark:text-white">
                     {item.servicio}
                   </option>
                 ))}
@@ -183,7 +183,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                 {(slice.primary as any).label_fecha || "Fecha del servicio:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
@@ -195,7 +195,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-300 transition-colors duration-300">
+              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                 {(slice.primary as any).label_mensaje || "Mensaje:"}<span className="text-red-500 ml-0.5">*</span>
               </label>
               <textarea

@@ -10,7 +10,7 @@
 }
 
 .dark {
-  --background: #001122; /* color-night-dark */
+  --background: #0f1d30; /* color-night-dark (azul marino suave y moderno) */
   --foreground: #ffffff;
 }
 
@@ -20,7 +20,7 @@
 
   /*Colores de texto*/
   --color-night: #003366;
-  --color-night-dark: #001122;
+  --color-night-dark: #0f1d30;
   --color-accent: #FFC000;
   --color-accent-hover: #E6AC00;
   --color-sand: #F5F5DC;

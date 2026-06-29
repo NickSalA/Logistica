@@ -121,7 +121,7 @@ export default async function Footer() {
                                 <PrismicNextLink 
                                     key={index} 
                                     field={item.red} 
-                                    className="hover:-translate-y-1.5 hover:scale-110 transition-transform duration-300 drop-shadow-sm hover:drop-shadow-md"
+                                    className="text-night dark:text-white hover:text-accent dark:hover:text-accent hover:-translate-y-1.5 hover:scale-110 transition-all duration-300 drop-shadow-sm hover:drop-shadow-md"
                                     aria-label={`Visitar ${item.nombre}`}
                                 >
                                     {getIcon(item.nombre)}
