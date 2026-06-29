@@ -41,7 +41,7 @@ export default function SectionHeader({
       {title && (
         <div className={clsx("max-w-3xl", isCenter && "mx-auto")}>
           {typeof title === "string" ? (
-            <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+            <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug">
               {title}
             </h2>
           ) : (
@@ -49,22 +49,22 @@ export default function SectionHeader({
               field={title}
               components={{
                 heading1: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug">
                     {children}
                   </h2>
                 ),
                 heading2: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug">
                     {children}
                   </h2>
                 ),
                 heading3: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug">
                     {children}
                   </h2>
                 ),
                 paragraph: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug">
                     {children}
                   </h2>
                 ),
@@ -76,7 +76,7 @@ export default function SectionHeader({
 
       {/* Subtítulo Descriptivo */}
       {subtitle && (
-        <p className={clsx("font-secondary text-sm md:text-base leading-relaxed text-gray-500 max-w-2xl mt-4", isCenter && "mx-auto")}>
+        <p className={clsx("font-secondary text-sm md:text-base leading-relaxed text-gray-500 dark:text-gray-400 max-w-2xl mt-4", isCenter && "mx-auto")}>
           {subtitle}
         </p>
       )}

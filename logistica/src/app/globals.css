@@ -1,10 +1,17 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @source "../../slices";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+.dark {
+  --background: #001122; /* color-night-dark */
+  --foreground: #ffffff;
 }
 
 @theme {
@@ -68,6 +75,13 @@ h6 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.dark .badge-accent {
+  color: #FFC000;
+  background-color: rgba(255, 192, 0, 0.1);
+  border: 1px solid rgba(255, 192, 0, 0.2);
 }
 
 .badge-dark {
@@ -85,6 +99,13 @@ h6 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.dark .badge-dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-card {

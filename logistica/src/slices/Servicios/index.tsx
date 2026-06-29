@@ -21,7 +21,7 @@ function getServiceIcon(tituloField: any, index: number) {
       ? (tituloField[0].text as string).toLowerCase()
       : "";
 
-  const iconClass = "w-6 h-6 md:w-7 md:h-7 text-night transition-transform duration-300 group-hover:scale-110";
+  const iconClass = "w-6 h-6 md:w-7 md:h-7 text-night dark:text-white transition-transform duration-300 group-hover:scale-110";
 
   if (titleText.includes("transporte") || titleText.includes("carga")) {
     return <Truck className={iconClass} />;
@@ -55,11 +55,11 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white py-16 md:py-24 relative overflow-hidden"
+      className="bg-white dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"
     >
       {/* Círculos difuminados de fondo para dar profundidad y evitar sensación de vacío */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-night/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-night/5 dark:bg-accent/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3 transition-colors duration-300" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3 transition-colors duration-300" />
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -80,7 +80,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                     field={slice.primary.titulo_1}
                     components={{
                       heading1: ({ node }) => (
-                        <h2 className="font-primary text-3xl md:text-4xl lg:text-5xl font-extrabold text-night uppercase tracking-tight leading-normal">
+                        <h2 className="font-primary text-3xl md:text-4xl lg:text-5xl font-extrabold text-night dark:text-white uppercase tracking-tight leading-normal transition-colors duration-300">
                           {node.text.split(" ").map((word, idx) => {
                             if (word.toLowerCase().includes("eficientes")) {
                               return (
@@ -119,12 +119,12 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                     field={slice.primary.subtitulo}
                     components={{
                       heading2: ({ children }) => (
-                        <h3 className="font-secondary text-base md:text-lg font-bold text-night leading-relaxed">
+                        <h3 className="font-secondary text-base md:text-lg font-bold text-night dark:text-white leading-relaxed transition-colors duration-300">
                           {children}
                         </h3>
                       ),
                       paragraph: ({ children }) => (
-                        <p className="font-secondary text-base md:text-lg font-semibold text-night leading-relaxed">
+                        <p className="font-secondary text-base md:text-lg font-semibold text-night dark:text-gray-300 leading-relaxed transition-colors duration-300">
                           {children}
                         </p>
                       ),
@@ -139,10 +139,10 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
               {slice.primary.servicios.map((item, index) => (
                 <div key={index} className="flex flex-col">
                   <div
-                    className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50/80 hover:shadow-xs transition-all duration-350 group cursor-default"
+                    className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default"
                   >
                     {/* Contenedor del Icono */}
-                    <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 rounded-2xl flex-shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
+                    <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl flex-shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
                       {getServiceIcon(item.titulo, index)}
                     </div>
 
@@ -152,7 +152,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                         field={item.titulo}
                         components={{
                           paragraph: ({ children }) => (
-                            <h4 className="font-primary font-bold text-night text-base md:text-lg leading-tight mb-1">
+                            <h4 className="font-primary font-bold text-night dark:text-white text-base md:text-lg leading-tight mb-1 transition-colors duration-300">
                               {children}
                             </h4>
                           ),
@@ -162,7 +162,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                         field={item.contenido}
                         components={{
                           paragraph: ({ children }) => (
-                            <p className="font-secondary text-gray-600 text-sm md:text-base leading-relaxed">
+                            <p className="font-secondary text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed transition-colors duration-300">
                               {children}
                             </p>
                           ),
@@ -172,7 +172,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                   </div>
                   {/* Separador entre elementos de la lista */}
                   {index < slice.primary.servicios.length - 1 && (
-                    <div className="h-px bg-gray-100 my-1 opacity-60" />
+                    <div className="h-px bg-gray-100 dark:bg-white/10 my-1 opacity-60 transition-colors duration-300" />
                   )}
                 </div>
               ))}
@@ -201,7 +201,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                 <div className="absolute -inset-6 bg-accent/10 rounded-full blur-2xl -z-10 animate-pulse" />
 
                 {/* Contenedor circular con borde offset y padding */}
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] rounded-full border border-gray-300 p-2 flex items-center justify-center bg-white shadow-xl transition-all duration-500 hover:border-accent">
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
                   <PrismicNextImage
                     field={slice.primary.imagen}
                     className="w-full h-full rounded-full object-cover"

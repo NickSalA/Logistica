@@ -31,13 +31,13 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
               field={slice.primary.title}
               components={{
                 heading2: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug transition-colors duration-300">
                     {children}
                   </h2>
                 ),
                 // Fallback en caso de que pongan Heading 1 por error
                 heading1: ({ children }) => (
-                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night tracking-tight uppercase leading-snug">
+                  <h2 className="font-primary text-2xl md:text-3xl lg:text-4xl font-extrabold text-night dark:text-white tracking-tight uppercase leading-snug transition-colors duration-300">
                     {children}
                   </h2>
                 )
@@ -48,7 +48,7 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
       </div>
 
       {/* Contenedor del Mapa */}
-      <div className="relative w-full max-w-6xl mx-auto h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 group bg-gray-100">
+      <div className="relative w-full max-w-6xl mx-auto h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden shadow-2xl border border-gray-200 dark:border-white/10 group bg-gray-100 dark:bg-white/5 transition-colors duration-300">
         <iframe
           className="absolute inset-0 w-full h-full border-0 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out"
           src={`https://maps.google.com/maps?q=${slice.primary.map.latitude},${slice.primary.map.longitude}&hl=es;z=15&output=embed`}
@@ -56,7 +56,7 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
           loading="lazy"
         />
         {/* Overlay sutil para evitar que el mapa sea demasiado brillante antes del hover */}
-        <div className="absolute inset-0 bg-night/5 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+        <div className="absolute inset-0 bg-night/5 dark:bg-night-dark/30 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
       </div>
     </section>
   );

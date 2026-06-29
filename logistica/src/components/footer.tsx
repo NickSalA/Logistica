@@ -24,7 +24,7 @@ export default async function Footer() {
     }
 
     return (
-        <footer className="bg-white relative">
+        <footer className="bg-white dark:bg-night-dark relative transition-colors duration-300">
             {/* Separador Degradado Premium */}
             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-70"></div>
             
@@ -41,7 +41,7 @@ export default async function Footer() {
                             field={settings.data.description} 
                             components={{
                                 paragraph: ({ children }) => (
-                                    <p className="font-secondary text-sm leading-relaxed text-gray-600 max-w-sm">
+                                    <p className="font-secondary text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-sm">
                                         {children}
                                     </p>
                                 )
@@ -51,7 +51,7 @@ export default async function Footer() {
 
                     {/* Columna 2: Enlaces (Conócenos) */}
                     <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
-                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                        <h4 className="font-primary text-night dark:text-white font-bold uppercase tracking-wider text-sm">
                             Conócenos
                         </h4>
                         <nav className="flex flex-col gap-3">
@@ -59,7 +59,7 @@ export default async function Footer() {
                                 <PrismicNextLink 
                                     key={index} 
                                     field={item.link} 
-                                    className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                    className="font-secondary text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors duration-300"
                                 >
                                     {item.label}
                                 </PrismicNextLink>
@@ -69,7 +69,7 @@ export default async function Footer() {
 
                     {/* Columna 3: Contacto */}
                     <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
-                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                        <h4 className="font-primary text-night dark:text-white font-bold uppercase tracking-wider text-sm">
                             Contáctanos
                         </h4>
                         <div className="flex flex-col gap-4 w-full">
@@ -83,7 +83,7 @@ export default async function Footer() {
                                         <PrismicNextLink 
                                             key={index} 
                                             field={item.correo} 
-                                            className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                            className="font-secondary text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors duration-300"
                                         >
                                             {item.nombre}
                                         </PrismicNextLink>
@@ -101,7 +101,7 @@ export default async function Footer() {
                                         <PrismicNextLink 
                                             key={index} 
                                             field={item.telefono} 
-                                            className="font-secondary text-sm text-gray-600 hover:text-accent transition-colors duration-300"
+                                            className="font-secondary text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors duration-300"
                                         >
                                             {item.nombre}
                                         </PrismicNextLink>
@@ -113,7 +113,7 @@ export default async function Footer() {
 
                     {/* Columna 4: Redes Sociales */}
                     <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
-                        <h4 className="font-primary text-night font-bold uppercase tracking-wider text-sm">
+                        <h4 className="font-primary text-night dark:text-white font-bold uppercase tracking-wider text-sm">
                             Conectar
                         </h4>
                         <div className="flex flex-row gap-5">
@@ -134,13 +134,13 @@ export default async function Footer() {
             </div>
 
             {/* Barra de Derechos (Copyright) */}
-            <div className="bg-gray-50 border-t border-gray-200">
+            <div className="bg-gray-50 dark:bg-white/5 border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
                 <div className="container mx-auto px-6 md:px-12 xl:px-20 py-6">
                     <PrismicRichText 
                         field={settings.data.derechos} 
                         components={{
                             paragraph: ({ children }) => (
-                                <p className="text-center font-secondary text-xs font-medium text-gray-500">
+                                <p className="text-center font-secondary text-xs font-medium text-gray-500 dark:text-gray-400">
                                     {children}
                                 </p>
                             )

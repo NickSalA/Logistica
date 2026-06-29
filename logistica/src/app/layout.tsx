@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { createClient } from "@/prismicio";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -36,11 +37,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx(montserrat.variable, roboto.variable)}>
+    <html lang="en" className={clsx(montserrat.variable, roboto.variable)} suppressHydrationWarning>
       <body className="font-secondary">
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
