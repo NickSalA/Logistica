@@ -33,10 +33,10 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       id="cotizacion"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container px-4 sm:px-6 mx-auto scroll-mt-24 pt-2 pb-12 md:py-24"
+      className="bg-white dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Contenedor relativo para habilitar la superposición en escritorio */}
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Bloque de Contacto (Azul Corporativo con degradado resplandeciente) - Base del Layout */}
         <div className="w-full lg:w-2/3 bg-gradient-to-br from-night via-[#002b55] to-[#001c3a] dark:from-[#002855] dark:via-[#001d40] dark:to-[#001229] border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-[600px] flex flex-col justify-center transition-colors duration-300">

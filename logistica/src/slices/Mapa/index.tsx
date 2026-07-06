@@ -15,8 +15,9 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container mx-auto px-4 sm:px-6 pb-16 md:pb-24"
+      className="bg-slate-50 dark:bg-[#0b1625] py-16 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
+      <div className="container mx-auto px-4 sm:px-6">
       {/* Cabecera Estilizada */}
       <div className="flex flex-col items-center justify-center text-center mb-10 md:mb-12">
         {slice.primary.badge_text && (
@@ -57,6 +58,7 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
         />
         {/* Overlay sutil para evitar que el mapa sea demasiado brillante antes del hover */}
         <div className="absolute inset-0 bg-night/5 dark:bg-night-dark/30 pointer-events-none group-hover:bg-transparent transition-colors duration-700" />
+      </div>
       </div>
     </section>
   );

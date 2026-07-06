@@ -41,7 +41,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"
+      className="bg-slate-50 dark:bg-[#0b1625] pt-16 pb-12 md:pt-24 md:pb-16 relative overflow-hidden transition-colors duration-300"
     >
       {/* Círculo decorativo de fondo */}
       <div className="absolute -top-12 -left-12 w-80 h-80 bg-night/5 dark:bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none transition-colors duration-300" />
