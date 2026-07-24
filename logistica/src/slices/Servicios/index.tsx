@@ -201,7 +201,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                 <div className="absolute -inset-6 bg-accent/10 rounded-full blur-2xl -z-10 animate-pulse" />
 
                 {/* Contenedor circular con borde offset y padding */}
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-85 lg:h-85 rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
                   <PrismicNextImage
                     field={slice.primary.imagen}
                     className="w-full h-full rounded-full object-cover"
