@@ -26,7 +26,7 @@ export default async function Footer() {
     return (
         <footer className="bg-white dark:bg-night-dark relative transition-colors duration-300">
             {/* Separador Degradado Premium */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-70"></div>
+            <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-accent to-transparent opacity-70"></div>
             
             {/* Contenedor Principal */}
             <div className="container mx-auto px-6 md:px-12 xl:px-20 py-16">

@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Logística Trasandes
 
-## Getting Started
+Plataforma web corporativa para **Logística Trasandes**, desarrollada con **Next.js**, **Tailwind CSS v4** y **Prismic CMS** (Slice Machine).
 
-First, run the development server:
+---
+
+## 🚀 Tecnologías Principales
+
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router, Turbopack)
+- **CMS Headless:** [Prismic CMS](https://prismic.io/) + [Slice Machine](https://prismic.io/docs/slice-machine)
+- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Lenguaje:** TypeScript
+- **Gestor de paquetes:** `pnpm`
+
+---
+
+## 🛠️ Comenzando
+
+### Prerrequisitos
+
+Asegúrate de tener instalado [Node.js](https://nodejs.org/) y `pnpm`:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Instalación
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Clona el repositorio e instala las dependencias:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm install
+```
 
-## Learn More
+### Servidor de Desarrollo
 
-To learn more about Next.js, take a look at the following resources:
+Para iniciar el servidor de desarrollo local:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Prismic Slice Machine
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para administrar las rebanadas (Slices), tipos personalizados y conectarte con el panel de Prismic:
+
+```bash
+pnpm slicemachine
+```
+
+Abre [http://localhost:9999](http://localhost:9999) para gestionar los componentes visuales e integrar campos de Prismic CMS.
+
+---
+
+## 📜 Comandos Disponibles
+
+| Comando | Descripción |
+| :--- | :--- |
+| `pnpm dev` | Inicia el servidor de desarrollo Next.js con Turbopack |
+| `pnpm build` | Compila la aplicación para producción |
+| `pnpm start` | Inicia el servidor de producción |
+| `pnpm lint` | Ejecuta el linter (ESLint) |
+| `pnpm slicemachine` | Inicia la interfaz local de Prismic Slice Machine |
+
+---
+
+## 📐 Guía de Diseño y Estilos
+
+El proyecto implementa una paleta de colores semántica y un sistema de diseño con Tailwind CSS v4 para mantener la consistencia estética y evitar transiciones bruscas ("stitches").
+
+Consulta la documentación detallada del sistema de diseño en [gemini.md](file:///home/daminin/Documents/Repositorios/Logistica/logistica/gemini.md).
