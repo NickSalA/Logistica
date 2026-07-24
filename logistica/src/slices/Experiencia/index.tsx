@@ -42,7 +42,7 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
           {duplicatedLogos.map((item, index) => (
             <div
               key={index}
-              className="w-32 md:w-48 h-12 md:h-16 flex items-center justify-center flex-shrink-0 group cursor-default"
+              className="w-32 md:w-48 h-12 md:h-16 flex items-center justify-center shrink-0 group cursor-default"
             >
               {item.image && (
                 <PrismicNextImage

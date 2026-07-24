@@ -250,8 +250,7 @@ export default function NavBar({ settings }: NavBarProps) {
           </button>
         </div>
 
-        {/* Lista de Enlaces Móviles */}
-        <div className="flex flex-col gap-3 mt-6 w-full pb-12 flex-grow">
+        <div className="flex flex-col gap-3 mt-6 w-full pb-12 grow">
           {settings.data.nav.map((item, index) => {
             const isActive = checkIsActive(item.link);
             const isCTA =

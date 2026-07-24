@@ -12,11 +12,11 @@ export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 function getIcon(iconName: KeyTextField) {
   switch (iconName) {
     case "map":
-      return <MapPin className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
+      return <MapPin className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
     case "phone":
-      return <PhoneIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
+      return <PhoneIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
     case "clock":
-      return <ClockIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent flex-shrink-0" />;
+      return <ClockIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
     default:
       return null;
   }

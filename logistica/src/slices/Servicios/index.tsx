@@ -142,7 +142,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                     className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default"
                   >
                     {/* Contenedor del Icono */}
-                    <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl flex-shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
+                    <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
                       {getServiceIcon(item.titulo, index)}
                     </div>
 
