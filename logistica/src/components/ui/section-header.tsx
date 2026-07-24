@@ -26,8 +26,10 @@ export default function SectionHeader({
     <div
       className={clsx(
         "flex flex-col mb-12 md:mb-16",
-        isCenter ? "items-center justify-center text-center mx-auto" : "items-start text-left",
-        className
+        isCenter
+          ? "items-center justify-center text-center mx-auto"
+          : "items-start text-left",
+        className,
       )}
     >
       {/* Badge de la Sección */}
@@ -76,7 +78,12 @@ export default function SectionHeader({
 
       {/* Subtítulo Descriptivo */}
       {subtitle && (
-        <p className={clsx("font-secondary text-sm md:text-base leading-relaxed text-gray-500 dark:text-gray-400 max-w-2xl mt-4", isCenter && "mx-auto")}>
+        <p
+          className={clsx(
+            "font-secondary text-sm md:text-base leading-relaxed text-gray-500 dark:text-gray-400 max-w-2xl mt-4",
+            isCenter && "mx-auto",
+          )}
+        >
           {subtitle}
         </p>
       )}

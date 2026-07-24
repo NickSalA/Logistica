@@ -28,7 +28,7 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
       className="bg-slate-50 dark:bg-[#0b1625] pt-12 pb-16 md:pt-16 md:pb-24 relative overflow-hidden transition-colors duration-300"
     >
       <div className="section-container mb-6 md:mb-16">
-        <SectionHeader 
+        <SectionHeader
           badge={(slice.primary as any).badge_text || "Nuestros Clientes"}
           title={slice.primary.title}
         />
@@ -36,7 +36,6 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
 
       {/* Marquesina Infinita de Logotipos (Ticker) */}
       <div className="relative w-full overflow-hidden bg-slate-50 dark:bg-[#0b1625] before:absolute before:left-0 before:top-0 before:w-16 md:before:w-32 before:h-full before:bg-gradient-to-r before:from-slate-50 dark:before:from-[#0b1625] before:to-transparent before:z-10 after:absolute after:right-0 after:top-0 after:w-16 md:after:w-32 after:h-full after:bg-gradient-to-l after:from-slate-50 dark:after:from-[#0b1625] after:to-transparent after:z-10 transition-colors duration-300">
-
         {/* Track de la marquesina con animación infinita */}
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center gap-16 md:gap-24 px-8">
           {duplicatedLogos.map((item, index) => (
@@ -54,7 +53,6 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
           ))}
         </div>
       </div>
-
     </section>
   );
 };

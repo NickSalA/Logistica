@@ -1,9 +1,9 @@
-'use client'
+"use client";
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import Button from "@/components/ui/button";
@@ -17,7 +17,6 @@ export type InicioProps = SliceComponentProps<Content.InicioSlice>;
  * Component for "Inicio" Slices.
  */
 const Inicio: FC<InicioProps> = ({ slice }) => {
-
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = slice.primary.images.length;
 
@@ -36,7 +35,8 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
   }, [totalSlides]);
 
   // Estilo Yape: Título súper grande, centrado y con mucho impacto
-  const titleClass = "font-primary text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-white font-extrabold leading-[1.05] tracking-tight";
+  const titleClass =
+    "font-primary text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-white font-extrabold leading-[1.05] tracking-tight";
 
   return (
     <section
@@ -52,7 +52,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
             field={item.image}
             className={clsx(
               "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out",
-              index === currentSlide ? "opacity-100" : "opacity-0"
+              index === currentSlide ? "opacity-100" : "opacity-0",
             )}
             priority={index === 0}
             loading={index === 0 ? "eager" : "lazy"}
@@ -65,7 +65,6 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
 
       {/* Contenido principal (Textos y Botones Centrados) */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-6 md:px-12 py-32 flex flex-col items-center text-center mt-12">
-
         {/* Subtítulo (Amarillo) */}
         {slice.primary.subtitulo && (
           <span className="text-accent font-primary font-bold text-sm md:text-base lg:text-lg uppercase tracking-[0.2em] mb-6">
@@ -75,19 +74,35 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
 
         {/* Título Principal (Extra Grande) */}
         <div className="mb-8">
-          <PrismicRichText field={slice.primary.titulo} components={{
-            heading1: ({ children }) => <h1 className={titleClass}>{children}</h1>,
-            heading2: ({ children }) => <h2 className={titleClass}>{children}</h2>,
-            heading3: ({ children }) => <h3 className={titleClass}>{children}</h3>,
-            paragraph: ({ children }) => <p className={titleClass}>{children}</p>
-          }} />
+          <PrismicRichText
+            field={slice.primary.titulo}
+            components={{
+              heading1: ({ children }) => (
+                <h1 className={titleClass}>{children}</h1>
+              ),
+              heading2: ({ children }) => (
+                <h2 className={titleClass}>{children}</h2>
+              ),
+              heading3: ({ children }) => (
+                <h3 className={titleClass}>{children}</h3>
+              ),
+              paragraph: ({ children }) => (
+                <p className={titleClass}>{children}</p>
+              ),
+            }}
+          />
         </div>
 
         {/* Descripción */}
         <div className="font-primary text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl mb-10">
-          <PrismicRichText field={slice.primary.descripcion} components={{
-            paragraph: ({ children }) => <p className="leading-relaxed">{children}</p>,
-          }} />
+          <PrismicRichText
+            field={slice.primary.descripcion}
+            components={{
+              paragraph: ({ children }) => (
+                <p className="leading-relaxed">{children}</p>
+              ),
+            }}
+          />
         </div>
 
         {/* Botones estilo Yape (Redondeados con resplandor) */}
@@ -133,7 +148,9 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
                 onClick={() => setCurrentSlide(idx)}
                 className={clsx(
                   "h-2 rounded-full transition-all duration-500",
-                  currentSlide === idx ? "w-8 bg-accent" : "w-2 bg-white/30 hover:bg-white/50"
+                  currentSlide === idx
+                    ? "w-8 bg-accent"
+                    : "w-2 bg-white/30 hover:bg-white/50",
                 )}
                 aria-label={`Ir a imagen ${idx + 1}`}
               />

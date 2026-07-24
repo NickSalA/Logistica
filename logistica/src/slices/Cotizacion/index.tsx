@@ -12,11 +12,17 @@ export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 function getIcon(iconName: KeyTextField) {
   switch (iconName) {
     case "map":
-      return <MapPin className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
+      return (
+        <MapPin className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />
+      );
     case "phone":
-      return <PhoneIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
+      return (
+        <PhoneIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />
+      );
     case "clock":
-      return <ClockIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />;
+      return (
+        <ClockIcon className="w-6 h-6 md:w-8 md:h-8 mr-3 text-accent shrink-0" />
+      );
     default:
       return null;
   }
@@ -25,8 +31,9 @@ function getIcon(iconName: KeyTextField) {
 const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
-  
-  const inputClass = "w-full bg-gray-50 dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-white/40";
+
+  const inputClass =
+    "w-full bg-gray-50 dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-white/40";
 
   return (
     <section
@@ -37,12 +44,11 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
     >
       {/* Contenedor relativo para habilitar la superposición en escritorio */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        
         {/* Bloque de Contacto (Azul Corporativo con degradado resplandeciente) - Base del Layout */}
-        <div className="w-full lg:w-2/3 bg-gradient-to-br from-night via-[#002b55] to-[#001c3a] dark:from-[#002855] dark:via-[#001d40] dark:to-[#001229] border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-150 flex flex-col justify-center transition-colors duration-300">
+        <div className="w-full lg:w-2/3 bg-linear-to-br from-night via-[#002b55] to-[#001c3a] dark:from-[#002855] dark:via-[#001d40] dark:to-[#001229] border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-150 flex flex-col justify-center transition-colors duration-300">
           {/* Elemento decorativo de fondo */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0" />
-          
+
           <div className="relative z-10">
             {/* Encabezados */}
             <div className="mb-10">
@@ -56,7 +62,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   ),
                 }}
               />
-              
+
               <div className="flex flex-col gap-1">
                 <PrismicRichText
                   field={slice.primary.horas}
@@ -129,7 +135,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
           >
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_email || "E-mail:"}<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_email || "E-mail:"}
+                <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
                 type="email"
@@ -154,7 +161,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               </div>
               <div className="flex flex-col">
                 <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                  {(slice.primary as any).label_documento || "DNI o RUC:"}<span className="text-red-500 ml-0.5">*</span>
+                  {(slice.primary as any).label_documento || "DNI o RUC:"}
+                  <span className="text-red-500 ml-0.5">*</span>
                 </label>
                 <input
                   type="text"
@@ -167,7 +175,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_servicio || "Tipo de servicio:"}<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_servicio || "Tipo de servicio:"}
+                <span className="text-red-500 ml-0.5">*</span>
               </label>
               <select
                 required
@@ -175,7 +184,11 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 className={`${inputClass} appearance-none cursor-pointer`}
               >
                 {opcionesServicios.map((item, idx) => (
-                  <option key={idx} value={item.servicio ?? ""} className="bg-white dark:bg-[#0b1d33] text-gray-900 dark:text-white">
+                  <option
+                    key={idx}
+                    value={item.servicio ?? ""}
+                    className="bg-white dark:bg-[#0b1d33] text-gray-900 dark:text-white"
+                  >
                     {item.servicio}
                   </option>
                 ))}
@@ -184,7 +197,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_fecha || "Fecha del servicio:"}<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_fecha || "Fecha del servicio:"}
+                <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
                 type="date"
@@ -196,7 +210,8 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_mensaje || "Mensaje:"}<span className="text-red-500 ml-0.5">*</span>
+                {(slice.primary as any).label_mensaje || "Mensaje:"}
+                <span className="text-red-500 ml-0.5">*</span>
               </label>
               <textarea
                 required
@@ -207,13 +222,17 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div className="pt-2">
-              <Button type="submit" variant="primary" className="w-full uppercase tracking-wider text-sm shadow-md">
-                {(slice.primary as any).texto_boton_enviar || "Enviar Solicitud"}
+              <Button
+                type="submit"
+                variant="primary"
+                className="w-full uppercase tracking-wider text-sm shadow-md"
+              >
+                {(slice.primary as any).texto_boton_enviar ||
+                  "Enviar Solicitud"}
               </Button>
             </div>
           </form>
         </div>
-        
       </div>
     </section>
   );

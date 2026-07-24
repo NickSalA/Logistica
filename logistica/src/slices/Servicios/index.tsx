@@ -21,7 +21,8 @@ function getServiceIcon(tituloField: any, index: number) {
       ? (tituloField[0].text as string).toLowerCase()
       : "";
 
-  const iconClass = "w-6 h-6 md:w-7 md:h-7 text-night dark:text-white transition-transform duration-300 group-hover:scale-110";
+  const iconClass =
+    "w-6 h-6 md:w-7 md:h-7 text-night dark:text-white transition-transform duration-300 group-hover:scale-110";
 
   if (titleText.includes("transporte") || titleText.includes("carga")) {
     return <Truck className={iconClass} />;
@@ -63,10 +64,8 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
           {/* Columna Izquierda (8/12): Contenido, Lista de Servicios y Botón */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-
             {/* Badge de Categoría / Sección */}
             <Badge variant="accent" className="w-fit">
               {(slice.primary as any).badge_text || "Nuestros Servicios"}
@@ -138,9 +137,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
             <div className="flex flex-col">
               {slice.primary.servicios.map((item, index) => (
                 <div key={index} className="flex flex-col">
-                  <div
-                    className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default"
-                  >
+                  <div className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default">
                     {/* Contenedor del Icono */}
                     <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
                       {getServiceIcon(item.titulo, index)}
@@ -224,7 +221,6 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
               </div>
             )}
           </div>
-
         </div>
       </div>
     </section>

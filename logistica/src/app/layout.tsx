@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
@@ -19,7 +19,6 @@ const roboto = Roboto({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
- 
   const client = createClient();
   const settings = await client.getSingle("settings");
   return {
@@ -28,16 +27,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       images: [settings.data.og_image.url || ""],
     },
-  }
+  };
 }
- 
+
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={clsx(montserrat.variable, roboto.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={clsx(montserrat.variable, roboto.variable)}
+      suppressHydrationWarning
+    >
       <body className="font-secondary">
         <ThemeProvider
           attribute="class"
@@ -51,5 +54,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

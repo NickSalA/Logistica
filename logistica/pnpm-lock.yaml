@@ -72,6 +72,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
         version: 0.8.1(prettier@3.9.6)
+      rustywind:
+        specifier: ^0.26.0
+        version: 0.26.0
       slice-machine-ui:
         specifier: ^2.21.3
         version: 2.21.3(zod@4.4.3)
@@ -2702,6 +2705,51 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  rustywind-darwin-arm64@0.26.0:
+    resolution: {integrity: sha512-5FI0LkhcftX3xpijUFT8OYcVmKxVRlotO4TlELIqFMQyNl9vgmLIvwSp5Gvm9cqLGZmOPs3Es22S4cLkXClacQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  rustywind-darwin-x64@0.26.0:
+    resolution: {integrity: sha512-jl6JcrfI6DxA/lThz5EkiQ+31CTviwxbJLeNn1bflZe/jYLV4R4W9bw0Fi9ljVRw9fqWExEyPOyZQ7/wvT9KhQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  rustywind-linux-arm-gnueabihf@0.26.0:
+    resolution: {integrity: sha512-2EClqJZDrCv8uNOjzy1oW3G1PA7IP25UFg+OfxnJNLph6feElPAcfq/LZGVZFsEpH28pmV34qfjeia7f2ELTOQ==}
+    cpu: [arm]
+    os: [linux]
+
+  rustywind-linux-arm64-gnu@0.26.0:
+    resolution: {integrity: sha512-EPVS8OHnua42RgMlFF+W/ALuwch96CArQ1dN8dV00NCIw/RrnWMpSWZbLZDkOvqw0jF9l+0vPBZGcq11uL3+7Q==}
+    cpu: [arm64]
+    os: [linux]
+
+  rustywind-linux-arm64-musl@0.26.0:
+    resolution: {integrity: sha512-HSj0/MGrfv2uui+3nwdTWfhut0NJA7qFv1K9jhQeHIRIRgudQARK4t/6eif4VCc6sakGfvR/juNOXzUo1M7YeA==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  rustywind-linux-x64-musl@0.26.0:
+    resolution: {integrity: sha512-pydjLHKkgSvxtTrKLPPhgKyP/OJBkkNQebbPEJ8xsyPUzUkmveNAXiL48s/B+lHOynboZxCjvAql+nf74IBzFg==}
+    cpu: [x64]
+    os: [linux]
+
+  rustywind-win32-ia32-msvc@0.26.0:
+    resolution: {integrity: sha512-dtCmbDn9krYI7NhbPJUMH+eTKrZAilTNNY/3voNgMlMxlkuUvQlj4lu+dPePe1vyJzIkx+3IaG6mMtkeEKAExw==}
+    cpu: [ia32]
+    os: [win32]
+
+  rustywind-win32-x64-msvc@0.26.0:
+    resolution: {integrity: sha512-oJPDvXqzK4fzTRgyNvaq2cwEBGZY4uc++cih2kuJAwNf+pdiabygYQe3QNERtWZE+0kMSlQ7cCqfCn1TXUkKrw==}
+    cpu: [x64]
+    os: [win32]
+
+  rustywind@0.26.0:
+    resolution: {integrity: sha512-5Ge4G2ipzq963m6CZ/2NRWGZCOX3DhgAkArUYJfPP+FJV1HdcaCczcpfwycug/sCJ84oRMYcz5xF1nf6vQ/vAg==}
+    hasBin: true
 
   safe-array-concat@1.1.4:
     resolution: {integrity: sha512-wtZlHyOje6OZTGqAoaDKxFkgRtkF9CnHAVnCHKfuj200wAgL+bSJhdsCD2l0Qx/2ekEXjPWcyKkfGb5CPboslg==}
@@ -5791,6 +5839,43 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  rustywind-darwin-arm64@0.26.0:
+    optional: true
+
+  rustywind-darwin-x64@0.26.0:
+    optional: true
+
+  rustywind-linux-arm-gnueabihf@0.26.0:
+    optional: true
+
+  rustywind-linux-arm64-gnu@0.26.0:
+    optional: true
+
+  rustywind-linux-arm64-musl@0.26.0:
+    optional: true
+
+  rustywind-linux-x64-musl@0.26.0:
+    optional: true
+
+  rustywind-win32-ia32-msvc@0.26.0:
+    optional: true
+
+  rustywind-win32-x64-msvc@0.26.0:
+    optional: true
+
+  rustywind@0.26.0:
+    dependencies:
+      detect-libc: 2.1.2
+    optionalDependencies:
+      rustywind-darwin-arm64: 0.26.0
+      rustywind-darwin-x64: 0.26.0
+      rustywind-linux-arm-gnueabihf: 0.26.0
+      rustywind-linux-arm64-gnu: 0.26.0
+      rustywind-linux-arm64-musl: 0.26.0
+      rustywind-linux-x64-musl: 0.26.0
+      rustywind-win32-ia32-msvc: 0.26.0
+      rustywind-win32-x64-msvc: 0.26.0
 
   safe-array-concat@1.1.4:
     dependencies:
