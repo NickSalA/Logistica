@@ -6,8 +6,6 @@ import Experiencia from "./Experiencia";
 import Inicio from "./Inicio";
 import Mapa from "./Mapa";
 import Servicios from "./Servicios";
-import Slices from "./Slices";
-import Slicess from "./Slicess";
 
 export const components = {
 	beneficios: Beneficios,
@@ -15,7 +13,5 @@ export const components = {
 	experiencia: Experiencia,
 	inicio: Inicio,
 	mapa: Mapa,
-	servicios: Servicios,
-	slices: Slices,
-	slicess: Slicess
+	servicios: Servicios
 };

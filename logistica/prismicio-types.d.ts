@@ -117,7 +117,7 @@ interface HomapageDocumentData {
  */
 export type HomapageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomapageDocumentData>, "homapage", Lang>;
 
-type PageDocumentDataSlicesSlice = SlicesSlice
+type PageDocumentDataSlicesSlice = never
 
 /**
  * Content for pagina documents
@@ -1243,52 +1243,6 @@ type ServiciosSliceVariation = ServiciosSliceDefault
  */
 export type ServiciosSlice = prismic.SharedSlice<"servicios", ServiciosSliceVariation>;
 
-/**
- * Default variation for Slices Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type SlicesSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
-
-/**
- * Slice variation for *Slices*
- */
-type SlicesSliceVariation = SlicesSliceDefault
-
-/**
- * Slices Shared Slice
- *
- * - **API ID**: `slices`
- * - **Description**: Slices
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type SlicesSlice = prismic.SharedSlice<"slices", SlicesSliceVariation>;
-
-/**
- * Default variation for Slicess Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type SlicessSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
-
-/**
- * Slice variation for *Slicess*
- */
-type SlicessSliceVariation = SlicessSliceDefault
-
-/**
- * Slicess Shared Slice
- *
- * - **API ID**: `slicess`
- * - **Description**: Slicess
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type SlicessSlice = prismic.SharedSlice<"slicess", SlicessSliceVariation>;
-
 declare module "@prismicio/client" {
 	interface CreateClient {
 		(repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -1347,13 +1301,7 @@ declare module "@prismicio/client" {
 			ServiciosSliceDefaultPrimaryServiciosItem,
 			ServiciosSliceDefaultPrimary,
 			ServiciosSliceVariation,
-			ServiciosSliceDefault,
-			SlicesSlice,
-			SlicesSliceVariation,
-			SlicesSliceDefault,
-			SlicessSlice,
-			SlicessSliceVariation,
-			SlicessSliceDefault
+			ServiciosSliceDefault
 		}
 	}
 }

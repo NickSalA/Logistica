@@ -11,11 +11,7 @@
       },
       "slices": {
         "config": {
-          "choices": {
-            "slices": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         },
         "fieldset": "Slice Zone",
         "type": "Slices"
