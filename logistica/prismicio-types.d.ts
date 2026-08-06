@@ -117,7 +117,7 @@ interface HomapageDocumentData {
  */
 export type HomapageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomapageDocumentData>, "homapage", Lang>;
 
-type PageDocumentDataSlicesSlice = InicioSlice
+type PageDocumentDataSlicesSlice = PresentacionInstitucionalSlice | TrayectoriaSlice | MisionVisionSlice | GerenciaSlice
 
 /**
  * Content for pagina documents
@@ -909,6 +909,29 @@ type ExperienciaSliceVariation = ExperienciaSliceDefault
 export type ExperienciaSlice = prismic.SharedSlice<"experiencia", ExperienciaSliceVariation>;
 
 /**
+ * Default variation for Gerencia Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GerenciaSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+
+/**
+ * Slice variation for *Gerencia*
+ */
+type GerenciaSliceVariation = GerenciaSliceDefault
+
+/**
+ * Gerencia Shared Slice
+ *
+ * - **API ID**: `gerencia`
+ * - **Description**: Gerencia
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type GerenciaSlice = prismic.SharedSlice<"gerencia", GerenciaSliceVariation>;
+
+/**
  * Item in *Inicio → Default → Primary → images*
  */
 export interface InicioSliceDefaultPrimaryImagesItem {
@@ -1101,6 +1124,52 @@ type MapaSliceVariation = MapaSliceDefault
 export type MapaSlice = prismic.SharedSlice<"mapa", MapaSliceVariation>;
 
 /**
+ * Default variation for MisionVision Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MisionVisionSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+
+/**
+ * Slice variation for *MisionVision*
+ */
+type MisionVisionSliceVariation = MisionVisionSliceDefault
+
+/**
+ * MisionVision Shared Slice
+ *
+ * - **API ID**: `mision_vision`
+ * - **Description**: MisionVision
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MisionVisionSlice = prismic.SharedSlice<"mision_vision", MisionVisionSliceVariation>;
+
+/**
+ * Default variation for PresentacionInstitucional Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PresentacionInstitucionalSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+
+/**
+ * Slice variation for *PresentacionInstitucional*
+ */
+type PresentacionInstitucionalSliceVariation = PresentacionInstitucionalSliceDefault
+
+/**
+ * PresentacionInstitucional Shared Slice
+ *
+ * - **API ID**: `presentacion_institucional`
+ * - **Description**: PresentacionInstitucional
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PresentacionInstitucionalSlice = prismic.SharedSlice<"presentacion_institucional", PresentacionInstitucionalSliceVariation>;
+
+/**
  * Item in *Servicios → Default → Primary → servicios*
  */
 export interface ServiciosSliceDefaultPrimaryServiciosItem {
@@ -1243,6 +1312,29 @@ type ServiciosSliceVariation = ServiciosSliceDefault
  */
 export type ServiciosSlice = prismic.SharedSlice<"servicios", ServiciosSliceVariation>;
 
+/**
+ * Default variation for Trayectoria Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TrayectoriaSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+
+/**
+ * Slice variation for *Trayectoria*
+ */
+type TrayectoriaSliceVariation = TrayectoriaSliceDefault
+
+/**
+ * Trayectoria Shared Slice
+ *
+ * - **API ID**: `trayectoria`
+ * - **Description**: Trayectoria
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TrayectoriaSlice = prismic.SharedSlice<"trayectoria", TrayectoriaSliceVariation>;
+
 declare module "@prismicio/client" {
 	interface CreateClient {
 		(repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -1288,6 +1380,9 @@ declare module "@prismicio/client" {
 			ExperienciaSliceDefaultPrimary,
 			ExperienciaSliceVariation,
 			ExperienciaSliceDefault,
+			GerenciaSlice,
+			GerenciaSliceVariation,
+			GerenciaSliceDefault,
 			InicioSlice,
 			InicioSliceDefaultPrimaryImagesItem,
 			InicioSliceDefaultPrimary,
@@ -1297,11 +1392,20 @@ declare module "@prismicio/client" {
 			MapaSliceDefaultPrimary,
 			MapaSliceVariation,
 			MapaSliceDefault,
+			MisionVisionSlice,
+			MisionVisionSliceVariation,
+			MisionVisionSliceDefault,
+			PresentacionInstitucionalSlice,
+			PresentacionInstitucionalSliceVariation,
+			PresentacionInstitucionalSliceDefault,
 			ServiciosSlice,
 			ServiciosSliceDefaultPrimaryServiciosItem,
 			ServiciosSliceDefaultPrimary,
 			ServiciosSliceVariation,
-			ServiciosSliceDefault
+			ServiciosSliceDefault,
+			TrayectoriaSlice,
+			TrayectoriaSliceVariation,
+			TrayectoriaSliceDefault
 		}
 	}
 }

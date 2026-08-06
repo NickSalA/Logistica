@@ -3,15 +3,23 @@
 import Beneficios from "./Beneficios";
 import Cotizacion from "./Cotizacion";
 import Experiencia from "./Experiencia";
+import Gerencia from "./Gerencia";
 import Inicio from "./Inicio";
 import Mapa from "./Mapa";
+import MisionVision from "./MisionVision";
+import PresentacionInstitucional from "./PresentacionInstitucional";
 import Servicios from "./Servicios";
+import Trayectoria from "./Trayectoria";
 
 export const components = {
 	beneficios: Beneficios,
 	cotizacion: Cotizacion,
 	experiencia: Experiencia,
+	gerencia: Gerencia,
 	inicio: Inicio,
 	mapa: Mapa,
-	servicios: Servicios
+	mision_vision: MisionVision,
+	presentacion_institucional: PresentacionInstitucional,
+	servicios: Servicios,
+	trayectoria: Trayectoria
 };

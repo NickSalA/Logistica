@@ -1,0 +1,16 @@
+{
+  "description": "MisionVision",
+  "id": "mision_vision",
+  "name": "MisionVision",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "version": "initial"
+    }
+  ]
+}

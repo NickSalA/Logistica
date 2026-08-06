@@ -1,0 +1,16 @@
+{
+  "description": "PresentacionInstitucional",
+  "id": "presentacion_institucional",
+  "name": "PresentacionInstitucional",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "version": "initial"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "description": "Trayectoria",
+  "id": "trayectoria",
+  "name": "Trayectoria",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "version": "initial"
+    }
+  ]
+}

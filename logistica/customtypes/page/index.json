@@ -12,7 +12,16 @@
       "slices": {
         "config": {
           "choices": {
-            "inicio": {
+            "presentacion_institucional": {
+              "type": "SharedSlice"
+            },
+            "trayectoria": {
+              "type": "SharedSlice"
+            },
+            "mision_vision": {
+              "type": "SharedSlice"
+            },
+            "gerencia": {
               "type": "SharedSlice"
             }
           }
