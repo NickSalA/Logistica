@@ -117,7 +117,7 @@ interface HomapageDocumentData {
  */
 export type HomapageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomapageDocumentData>, "homapage", Lang>;
 
-type PageDocumentDataSlicesSlice = never
+type PageDocumentDataSlicesSlice = InicioSlice
 
 /**
  * Content for pagina documents

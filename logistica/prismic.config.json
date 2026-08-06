@@ -5,6 +5,10 @@
     {
       "type": "homapage",
       "path": "/"
+    },
+    {
+      "type": "page",
+      "path": "/:uid"
     }
   ]
 }
