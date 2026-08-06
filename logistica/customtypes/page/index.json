@@ -49,7 +49,7 @@
         "config": {
           "constraint": {
             "width": 1200,
-            "height": 360
+            "height": 630
           },
           "label": "Meta Image",
           "thumbnails": []

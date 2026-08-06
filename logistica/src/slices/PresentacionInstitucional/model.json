@@ -10,6 +10,41 @@
       "id": "default",
       "imageUrl": "",
       "name": "Default",
+      "primary": {
+        "badge_text": {
+          "config": {
+            "label": "badge_text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "allowTargetBlank": true,
+            "label": "title",
+            "multi": "paragraph,heading1,heading2",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "allowTargetBlank": true,
+            "label": "description",
+            "multi": "paragraph,strong,em",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
+        },
+        "image": {
+          "config": {
+            "constraint": {},
+            "label": "image",
+            "thumbnails": []
+          },
+          "type": "Image"
+        }
+      },
       "version": "initial"
     }
   ]

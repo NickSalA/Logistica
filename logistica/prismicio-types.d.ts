@@ -909,13 +909,78 @@ type ExperienciaSliceVariation = ExperienciaSliceDefault
 export type ExperienciaSlice = prismic.SharedSlice<"experiencia", ExperienciaSliceVariation>;
 
 /**
+ * Primary content in *Gerencia → Default → Primary*
+ */
+export interface GerenciaSliceDefaultPrimary {
+	/**
+	 * badge_text field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.badge_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	badge_text: prismic.KeyTextField;
+	
+	/**
+	 * title field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+	
+	/**
+	 * message field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.message
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	message: prismic.RichTextField;
+	
+	/**
+	 * name field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.name
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	name: prismic.KeyTextField;
+	
+	/**
+	 * role field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.role
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	role: prismic.KeyTextField;
+	
+	/**
+	 * photo field in *Gerencia → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gerencia.default.primary.photo
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	photo: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for Gerencia Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type GerenciaSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+export type GerenciaSliceDefault = prismic.SharedSliceVariation<"default", Simplify<GerenciaSliceDefaultPrimary>, never>;
 
 /**
  * Slice variation for *Gerencia*
@@ -1124,13 +1189,78 @@ type MapaSliceVariation = MapaSliceDefault
 export type MapaSlice = prismic.SharedSlice<"mapa", MapaSliceVariation>;
 
 /**
+ * Primary content in *MisionVision → Default → Primary*
+ */
+export interface MisionVisionSliceDefaultPrimary {
+	/**
+	 * badge_text field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.badge_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	badge_text: prismic.KeyTextField;
+	
+	/**
+	 * title field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+	
+	/**
+	 * mission_title field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.mission_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	mission_title: prismic.KeyTextField;
+	
+	/**
+	 * mission_description field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.mission_description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	mission_description: prismic.RichTextField;
+	
+	/**
+	 * vision_title field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.vision_title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	vision_title: prismic.KeyTextField;
+	
+	/**
+	 * vision_description field in *MisionVision → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: mision_vision.default.primary.vision_description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	vision_description: prismic.RichTextField;
+}
+
+/**
  * Default variation for MisionVision Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type MisionVisionSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+export type MisionVisionSliceDefault = prismic.SharedSliceVariation<"default", Simplify<MisionVisionSliceDefaultPrimary>, never>;
 
 /**
  * Slice variation for *MisionVision*
@@ -1147,13 +1277,58 @@ type MisionVisionSliceVariation = MisionVisionSliceDefault
 export type MisionVisionSlice = prismic.SharedSlice<"mision_vision", MisionVisionSliceVariation>;
 
 /**
+ * Primary content in *PresentacionInstitucional → Default → Primary*
+ */
+export interface PresentacionInstitucionalSliceDefaultPrimary {
+	/**
+	 * badge_text field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.badge_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	badge_text: prismic.KeyTextField;
+	
+	/**
+	 * title field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+	
+	/**
+	 * description field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * image field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for PresentacionInstitucional Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type PresentacionInstitucionalSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+export type PresentacionInstitucionalSliceDefault = prismic.SharedSliceVariation<"default", Simplify<PresentacionInstitucionalSliceDefaultPrimary>, never>;
 
 /**
  * Slice variation for *PresentacionInstitucional*
@@ -1313,13 +1488,103 @@ type ServiciosSliceVariation = ServiciosSliceDefault
 export type ServiciosSlice = prismic.SharedSlice<"servicios", ServiciosSliceVariation>;
 
 /**
+ * Item in *Trayectoria → Default → Primary → milestones*
+ */
+export interface TrayectoriaSliceDefaultPrimaryMilestonesItem {
+	/**
+	 * year field in *Trayectoria → Default → Primary → milestones*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.milestones[].year
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	year: prismic.KeyTextField;
+	
+	/**
+	 * title field in *Trayectoria → Default → Primary → milestones*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.milestones[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	title: prismic.KeyTextField;
+	
+	/**
+	 * description field in *Trayectoria → Default → Primary → milestones*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.milestones[].description
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Trayectoria → Default → Primary*
+ */
+export interface TrayectoriaSliceDefaultPrimary {
+	/**
+	 * badge_text field in *Trayectoria → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.badge_text
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	badge_text: prismic.KeyTextField;
+	
+	/**
+	 * title field in *Trayectoria → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+	
+	/**
+	 * description field in *Trayectoria → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * image field in *Trayectoria → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+	
+	/**
+	 * milestones field in *Trayectoria → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: trayectoria.default.primary.milestones[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	milestones: prismic.GroupField<Simplify<TrayectoriaSliceDefaultPrimaryMilestonesItem>>;
+}
+
+/**
  * Default variation for Trayectoria Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type TrayectoriaSliceDefault = prismic.SharedSliceVariation<"default", Record<string, never>, never>;
+export type TrayectoriaSliceDefault = prismic.SharedSliceVariation<"default", Simplify<TrayectoriaSliceDefaultPrimary>, never>;
 
 /**
  * Slice variation for *Trayectoria*
@@ -1381,6 +1646,7 @@ declare module "@prismicio/client" {
 			ExperienciaSliceVariation,
 			ExperienciaSliceDefault,
 			GerenciaSlice,
+			GerenciaSliceDefaultPrimary,
 			GerenciaSliceVariation,
 			GerenciaSliceDefault,
 			InicioSlice,
@@ -1393,9 +1659,11 @@ declare module "@prismicio/client" {
 			MapaSliceVariation,
 			MapaSliceDefault,
 			MisionVisionSlice,
+			MisionVisionSliceDefaultPrimary,
 			MisionVisionSliceVariation,
 			MisionVisionSliceDefault,
 			PresentacionInstitucionalSlice,
+			PresentacionInstitucionalSliceDefaultPrimary,
 			PresentacionInstitucionalSliceVariation,
 			PresentacionInstitucionalSliceDefault,
 			ServiciosSlice,
@@ -1404,6 +1672,8 @@ declare module "@prismicio/client" {
 			ServiciosSliceVariation,
 			ServiciosSliceDefault,
 			TrayectoriaSlice,
+			TrayectoriaSliceDefaultPrimaryMilestonesItem,
+			TrayectoriaSliceDefaultPrimary,
 			TrayectoriaSliceVariation,
 			TrayectoriaSliceDefault
 		}

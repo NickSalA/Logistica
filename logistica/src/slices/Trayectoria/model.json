@@ -10,6 +10,71 @@
       "id": "default",
       "imageUrl": "",
       "name": "Default",
+      "primary": {
+        "badge_text": {
+          "config": {
+            "label": "badge_text",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "allowTargetBlank": true,
+            "label": "title",
+            "multi": "heading1,heading2,paragraph",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "allowTargetBlank": true,
+            "label": "description",
+            "multi": "paragraph,strong,em",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
+        },
+        "image": {
+          "config": {
+            "constraint": {},
+            "label": "image",
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "milestones": {
+          "config": {
+            "fields": {
+              "year": {
+                "config": {
+                  "label": "year",
+                  "placeholder": ""
+                },
+                "type": "Text"
+              },
+              "title": {
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                },
+                "type": "Text"
+              },
+              "description": {
+                "config": {
+                  "label": "description",
+                  "placeholder": ""
+                },
+                "type": "Text"
+              }
+            },
+            "label": "milestones",
+            "repeat": true
+          },
+          "type": "Group"
+        }
+      },
       "version": "initial"
     }
   ]
