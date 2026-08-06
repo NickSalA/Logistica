@@ -61,7 +61,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
       </div>
 
       {/* Degradado Suave y Elegante para legibilidad sin oscurecer en exceso la foto */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-night-dark/100 via-night-dark/85 to-night-dark/80"></div>
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-night-dark via-night-dark/85 to-night-dark/80"></div>
 
       {/* Contenido principal (Textos y Botones Centrados) */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-6 md:px-12 py-32 flex flex-col items-center text-center mt-12">

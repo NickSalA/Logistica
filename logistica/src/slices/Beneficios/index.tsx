@@ -72,7 +72,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
               <div
                 key={index}
                 onClick={() => handleCardClick(index)}
-                className={`group relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
+                className={`group relative aspect-3/4 rounded-2rem overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
                   isActive ? "-translate-y-2 shadow-2xl ring-2 ring-accent" : ""
                 }`}
               >
@@ -92,7 +92,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
 
                 {/* Degradado oscuro para asegurar la legibilidad del texto */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-t transition-all duration-500 z-10 ${
+                  className={`absolute inset-0 bg-linear-to-t transition-all duration-500 z-10 ${
                     isActive
                       ? "from-night-dark via-night-dark/95 to-night-dark/70"
                       : "from-night-dark via-night/45 to-transparent opacity-85 group-hover:opacity-90"

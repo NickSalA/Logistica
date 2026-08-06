@@ -3,6 +3,6 @@ packages:
 
 allowBuilds:
   "@scarf/scarf": false
-  rustywind: set this to true or false
+  rustywind: false
   sharp: true
   unrs-resolver: true
