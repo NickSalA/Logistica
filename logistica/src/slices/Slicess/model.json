@@ -1,0 +1,16 @@
+{
+  "description": "Slicess",
+  "id": "slicess",
+  "name": "Slicess",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "version": "initial"
+    }
+  ]
+}
