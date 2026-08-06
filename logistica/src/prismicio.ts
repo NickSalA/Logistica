@@ -1,7 +1,6 @@
 import {
   createClient as baseCreateClient,
   type ClientConfig,
-  type Route,
 } from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
 import sm from "../prismic.config.json";
@@ -12,17 +11,8 @@ import sm from "../prismic.config.json";
 export const repositoryName =
   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
 
-/**
- * A list of Route Resolver objects that define how a document's `url` field is resolved.
- *
- * {@link https://prismic.io/docs/route-resolver#route-resolver}
- */
-// TODO: Update the routes array to match your project's route structure.
-const routes: Route[] = [
-  // Examples:
-  { type: "homapage", path: "/" },
-  // { type: "page", path: "/:uid" },
-];
+// Las rutas se versionan en prismic.config.json y deben coincidir con App Router.
+const routes = sm.routes;
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
