@@ -1,21 +1,16 @@
 {
   "format": "page",
   "id": "homapage",
-  "label": "Homepage",
-  "repeatable": false,
-  "status": true,
   "json": {
     "Main": {
       "title": {
-        "type": "Text",
         "config": {
           "label": "title",
           "placeholder": ""
-        }
+        },
+        "type": "Text"
       },
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
           "choices": {
             "beneficios": {
@@ -37,7 +32,9 @@
               "type": "SharedSlice"
             }
           }
-        }
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -58,8 +55,8 @@
       "meta_image": {
         "config": {
           "constraint": {
-            "height": 1260,
-            "width": 2400
+            "width": 2400,
+            "height": 1260
           },
           "label": "Meta Image",
           "thumbnails": []
@@ -67,5 +64,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "Homepage",
+  "repeatable": false,
+  "status": true
 }

@@ -1,106 +1,106 @@
 {
-  "id": "inicio",
-  "type": "SharedSlice",
-  "name": "Inicio",
   "description": "Inicio",
+  "id": "inicio",
+  "name": "Inicio",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/logistica/shared-slices/inicio/default/1028a2d7339bb966c920f0d74b5c13332b53e99e.png?auto=compress%2Cformat",
+      "items": {},
+      "name": "Default",
       "primary": {
         "images": {
-          "type": "Group",
           "config": {
-            "label": "images",
-            "repeat": true,
             "fields": {
               "image": {
-                "type": "Image",
                 "config": {
-                  "label": "image",
                   "constraint": {},
+                  "label": "image",
                   "thumbnails": []
-                }
+                },
+                "type": "Image"
               },
               "active": {
-                "type": "Boolean",
                 "config": {
+                  "default_value": false,
                   "label": "active",
                   "placeholder_false": "false",
-                  "placeholder_true": "true",
-                  "default_value": false
-                }
+                  "placeholder_true": "true"
+                },
+                "type": "Boolean"
               }
-            }
-          }
+            },
+            "label": "images",
+            "repeat": true
+          },
+          "type": "Group"
         },
         "subtitulo": {
-          "type": "Text",
           "config": {
             "label": "subtitulo",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "titulo": {
-          "type": "StructuredText",
           "config": {
-            "label": "titulo",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
+            "label": "titulo",
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "descripcion": {
-          "type": "StructuredText",
           "config": {
-            "label": "descripcion",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
+            "label": "descripcion",
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "texto_boton_primario": {
-          "type": "Text",
           "config": {
             "label": "texto_boton_primario",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "enlace_boton_primario": {
-          "type": "Link",
           "config": {
-            "label": "enlace_boton_primario",
-            "placeholder": "",
-            "select": null,
             "allowTargetBlank": true,
             "allowText": true,
-            "repeat": false
-          }
+            "label": "enlace_boton_primario",
+            "placeholder": "",
+            "repeat": false,
+            "select": null
+          },
+          "type": "Link"
         },
         "texto_boton_secundario": {
-          "type": "Text",
           "config": {
             "label": "texto_boton_secundario",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "enlace_boton_secundario": {
-          "type": "Link",
           "config": {
-            "label": "enlace_boton_secundario",
-            "placeholder": "",
-            "select": null,
             "allowTargetBlank": true,
             "allowText": true,
-            "repeat": false
-          }
+            "label": "enlace_boton_secundario",
+            "placeholder": "",
+            "repeat": false,
+            "select": null
+          },
+          "type": "Link"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }

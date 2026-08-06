@@ -82,13 +82,13 @@ Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo per
 ### Tareas
 
 - [x] Identificar textos de negocio, etiquetas y CTAs que actualmente tengan fallback en código.
-- [ ] Añadir los fields necesarios en Slice Machine:
+- [ ] Añadir los fields necesarios en Type Builder cloud:
   - `Key Text` para etiquetas breves.
   - `StructuredText` para títulos y contenido enriquecido.
   - `Image` para recursos visuales.
   - `Link` para destinos y CTAs.
-- [ ] Actualizar los modelos versionados en `src/slices/<Slice>/model.json` y `customtypes/<tipo>/index.json`.
-- [ ] Regenerar `prismicio-types.d.ts`.
+- [ ] Sincronizar los modelos cloud y generar tipos con `npx prismic pull`; no editar manualmente los archivos de modelo.
+- [ ] Migrar definitivamente de Slice Machine a Type Builder con `npx prismic init` después de respaldar, sincronizar y versionar el estado local.
 - [x] Reemplazar los accesos `(slice.primary as any)` por campos tipados existentes.
 - [ ] Publicar y verificar las modificaciones en los documentos de Prismic.
 
@@ -129,7 +129,8 @@ Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo per
 ### Tareas
 
 - [ ] Definir plataforma de hosting y variables de entorno necesarias.
-- [ ] Configurar previews de Prismic y revalidación de contenido.
+- [ ] Configurar previews de Prismic con la URL pública de despliegue.
+- [ ] Proteger `/api/revalidate` con un secreto y configurar un webhook de Prismic para revalidar contenido publicado.
 - [ ] Configurar dominio, HTTPS y redirecciones necesarias.
 - [ ] Ejecutar build de producción antes de cada despliegue.
 - [ ] Añadir monitorización básica de errores y del formulario de cotización.

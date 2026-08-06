@@ -1,0 +1,12 @@
+{
+  "repositoryName": "logistica",
+  "libraries": [
+    "./src/slices"
+  ],
+  "routes": [
+    {
+      "type": "homapage",
+      "path": "/homapage"
+    }
+  ]
+}

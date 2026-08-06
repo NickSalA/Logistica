@@ -1,41 +1,41 @@
 {
-  "id": "mapa",
-  "type": "SharedSlice",
-  "name": "Mapa",
   "description": "Mapa",
+  "id": "mapa",
+  "name": "Mapa",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/logistica/shared-slices/mapa/default/867cf94b91794b3a32e4b6e82e44043d8927d824.png?auto=compress%2Cformat",
+      "items": {},
+      "name": "Default",
       "primary": {
         "map": {
-          "type": "GeoPoint",
           "config": {
             "label": "map"
-          }
+          },
+          "type": "GeoPoint"
         },
         "badge_text": {
-          "type": "Text",
           "config": {
             "label": "badge_text",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "title": {
-          "type": "StructuredText",
           "config": {
-            "label": "title",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading2,heading1"
-          }
+            "label": "title",
+            "multi": "heading2,heading1",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }

@@ -1,115 +1,115 @@
 {
-  "id": "servicios",
-  "type": "SharedSlice",
-  "name": "Servicios",
   "description": "Servicios",
+  "id": "servicios",
+  "name": "Servicios",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/logistica/shared-slices/servicios/default/03405eae9f4e423b4d573527558296094718ad26.png?auto=compress%2Cformat",
+      "items": {},
+      "name": "Default",
       "primary": {
         "titulo_1": {
-          "type": "StructuredText",
           "config": {
-            "label": "titulo_1",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1"
-          }
+            "label": "titulo_1",
+            "multi": "heading1",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "titulo_2": {
-          "type": "StructuredText",
           "config": {
-            "label": "titulo_2",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1"
-          }
+            "label": "titulo_2",
+            "multi": "heading1",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "subtitulo": {
-          "type": "StructuredText",
           "config": {
-            "label": "subtitulo",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading2"
-          }
+            "label": "subtitulo",
+            "multi": "heading2",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "servicios": {
-          "type": "Group",
           "config": {
-            "label": "servicios",
-            "repeat": true,
             "fields": {
               "titulo": {
-                "type": "StructuredText",
                 "config": {
-                  "label": "titulo",
-                  "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph"
-                }
+                  "label": "titulo",
+                  "multi": "paragraph",
+                  "placeholder": ""
+                },
+                "type": "StructuredText"
               },
               "contenido": {
-                "type": "StructuredText",
                 "config": {
-                  "label": "contenido",
-                  "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph"
-                }
+                  "label": "contenido",
+                  "multi": "paragraph",
+                  "placeholder": ""
+                },
+                "type": "StructuredText"
               }
-            }
-          }
+            },
+            "label": "servicios",
+            "repeat": true
+          },
+          "type": "Group"
         },
         "boton": {
-          "type": "Link",
           "config": {
-            "label": "boton",
-            "placeholder": "",
-            "select": null,
             "allowTargetBlank": true,
             "allowText": true,
-            "repeat": false
-          }
+            "label": "boton",
+            "placeholder": "",
+            "repeat": false,
+            "select": null
+          },
+          "type": "Link"
         },
         "contenido_boton": {
-          "type": "Text",
           "config": {
             "label": "contenido_boton",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "imagen": {
-          "type": "Image",
           "config": {
-            "label": "imagen",
             "constraint": {},
+            "label": "imagen",
             "thumbnails": []
-          }
+          },
+          "type": "Image"
         },
         "texto_imagen": {
-          "type": "StructuredText",
           "config": {
-            "label": "texto_imagen",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
+            "label": "texto_imagen",
+            "multi": "paragraph",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "badge_text": {
-          "type": "Text",
           "config": {
             "label": "badge_text",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }

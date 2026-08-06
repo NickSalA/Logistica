@@ -1,176 +1,176 @@
 {
-  "id": "cotizacion",
-  "type": "SharedSlice",
-  "name": "Cotizacion",
   "description": "Cotizacion",
+  "id": "cotizacion",
+  "name": "Cotizacion",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/logistica/shared-slices/cotizacion/default/fe4a84d0c2c1ce18c8b4d5a2b33f74891c47a47c.png?auto=compress%2Cformat",
+      "items": {},
+      "name": "Default",
       "primary": {
         "contactenos": {
-          "type": "StructuredText",
           "config": {
-            "label": "contactenos",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
+            "label": "contactenos",
+            "multi": "paragraph",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "horas": {
-          "type": "StructuredText",
           "config": {
-            "label": "horas",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
+            "label": "horas",
+            "multi": "paragraph",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "dias": {
-          "type": "StructuredText",
           "config": {
-            "label": "dias",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
+            "label": "dias",
+            "multi": "paragraph",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "cotizacion": {
-          "type": "StructuredText",
           "config": {
-            "label": "cotizacion",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
+            "label": "cotizacion",
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "servicio": {
-          "type": "Select",
           "config": {
+            "default_value": "Transporte de carga",
             "label": "servicio",
-            "placeholder": "",
             "options": [
               "Transporte de carga",
               "2da opción",
               "3ra opción"
             ],
-            "default_value": "Transporte de carga"
-          }
+            "placeholder": ""
+          },
+          "type": "Select"
         },
         "contenido": {
-          "type": "Group",
           "config": {
-            "label": "contenido",
-            "repeat": true,
             "fields": {
               "link": {
-                "type": "Link",
                 "config": {
-                  "label": "link",
-                  "placeholder": "",
-                  "select": null,
                   "allowTargetBlank": true,
                   "allowText": true,
-                  "repeat": false
-                }
+                  "label": "link",
+                  "placeholder": "",
+                  "repeat": false,
+                  "select": null
+                },
+                "type": "Link"
               },
               "activo": {
-                "type": "Boolean",
                 "config": {
+                  "default_value": false,
                   "label": "activo",
                   "placeholder_false": "false",
-                  "placeholder_true": "true",
-                  "default_value": false
-                }
+                  "placeholder_true": "true"
+                },
+                "type": "Boolean"
               },
               "info": {
-                "type": "Text",
                 "config": {
                   "label": "info",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               },
               "titulo": {
-                "type": "Text",
                 "config": {
                   "label": "titulo",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               }
-            }
-          }
+            },
+            "label": "contenido",
+            "repeat": true
+          },
+          "type": "Group"
         },
         "servicios": {
-          "type": "Group",
           "config": {
-            "label": "servicios",
-            "repeat": true,
             "fields": {
               "servicio": {
-                "type": "Text",
                 "config": {
                   "label": "servicio",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               }
-            }
-          }
+            },
+            "label": "servicios",
+            "repeat": true
+          },
+          "type": "Group"
         },
         "label_email": {
-          "type": "Text",
           "config": {
             "label": "label_email",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "label_celular": {
-          "type": "Text",
           "config": {
             "label": "label_celular",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "label_documento": {
-          "type": "Text",
           "config": {
             "label": "label_documento",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "label_servicio": {
-          "type": "Text",
           "config": {
             "label": "label_servicio",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "label_fecha": {
-          "type": "Text",
           "config": {
             "label": "label_fecha",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "label_mensaje": {
-          "type": "Text",
           "config": {
             "label": "label_mensaje",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         },
         "texto_boton_enviar": {
-          "type": "Text",
           "config": {
             "label": "texto_boton_enviar",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }

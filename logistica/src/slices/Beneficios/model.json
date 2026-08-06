@@ -1,94 +1,94 @@
 {
-  "id": "beneficios",
-  "type": "SharedSlice",
-  "name": "Beneficios",
   "description": "Beneficios",
+  "id": "beneficios",
+  "name": "Beneficios",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
+      "items": {},
+      "name": "Default",
       "primary": {
         "badge_text": {
-          "type": "Text",
           "config": {
             "label": "badge_text",
             "placeholder": "BENEFICIOS CLAVE"
-          }
+          },
+          "type": "Text"
         },
         "title": {
-          "type": "StructuredText",
           "config": {
-            "label": "title",
-            "placeholder": "¿POR QUÉ ELEGIRNOS?",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
+            "label": "title",
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+            "placeholder": "¿POR QUÉ ELEGIRNOS?"
+          },
+          "type": "StructuredText"
         },
         "subtitle": {
-          "type": "Text",
           "config": {
             "label": "subtitle",
             "placeholder": "Ventajas concretas que marcan la diferencia..."
-          }
+          },
+          "type": "Text"
         },
         "cards": {
-          "type": "Group",
           "config": {
-            "label": "cards",
-            "repeat": true,
             "fields": {
               "card_number": {
-                "type": "Text",
                 "config": {
                   "label": "card_number",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               },
               "card_tag": {
-                "type": "Text",
                 "config": {
                   "label": "card_tag",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               },
               "card_title": {
-                "type": "Text",
                 "config": {
                   "label": "card_title",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               },
               "card_image": {
-                "type": "Image",
                 "config": {
-                  "label": "card_image",
                   "constraint": {},
+                  "label": "card_image",
                   "thumbnails": []
-                }
+                },
+                "type": "Image"
               },
               "card_icon": {
-                "type": "Text",
                 "config": {
                   "label": "card_icon",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               },
               "card_description": {
-                "type": "Text",
                 "config": {
                   "label": "card_description",
                   "placeholder": ""
-                }
+                },
+                "type": "Text"
               }
-            }
-          }
+            },
+            "label": "cards",
+            "repeat": true
+          },
+          "type": "Group"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }

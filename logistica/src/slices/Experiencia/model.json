@@ -1,52 +1,52 @@
 {
-  "id": "experiencia",
-  "type": "SharedSlice",
-  "name": "Experiencia",
   "description": "Experiencia",
+  "id": "experiencia",
+  "name": "Experiencia",
+  "type": "SharedSlice",
   "variations": [
     {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "initial",
       "description": "Default",
-      "imageUrl": "",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/logistica/shared-slices/experiencia/default/b36ad9a2383d2fd97a66cf08ebb03699cf31ae59.png?auto=compress%2Cformat",
+      "items": {},
+      "name": "Default",
       "primary": {
         "title": {
-          "type": "StructuredText",
           "config": {
-            "label": "title",
-            "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1"
-          }
+            "label": "title",
+            "multi": "heading1",
+            "placeholder": ""
+          },
+          "type": "StructuredText"
         },
         "images": {
-          "type": "Group",
           "config": {
-            "label": "images",
-            "repeat": true,
             "fields": {
               "image": {
-                "type": "Image",
                 "config": {
-                  "label": "image",
                   "constraint": {},
+                  "label": "image",
                   "thumbnails": []
-                }
+                },
+                "type": "Image"
               }
-            }
-          }
+            },
+            "label": "images",
+            "repeat": true
+          },
+          "type": "Group"
         },
         "badge_text": {
-          "type": "Text",
           "config": {
             "label": "badge_text",
             "placeholder": ""
-          }
+          },
+          "type": "Text"
         }
       },
-      "items": {}
+      "version": "initial"
     }
   ]
 }
