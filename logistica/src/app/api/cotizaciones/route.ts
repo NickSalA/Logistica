@@ -1,9 +1,24 @@
 import { NextResponse } from "next/server";
+import type {
+  ApiErrorCode,
+  ApiErrorResponse,
+  CreateCotizacionResponse,
+} from "@/types/api";
 import { notifyNewQuotation } from "@/server/cotizaciones/notifications";
 import { createQuotation } from "@/server/cotizaciones/repository";
 import { validateCotizacion } from "@/features/cotizaciones/lib/validation";
 
 export const runtime = "nodejs";
+
+function errorResponse(code: ApiErrorCode, message: string, status: number) {
+  const body: ApiErrorResponse = { error: { code, message } };
+  return NextResponse.json(body, { status });
+}
+
+function acceptedResponse() {
+  const body: CreateCotizacionResponse = { data: { status: "received" } };
+  return NextResponse.json(body, { status: 201 });
+}
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -11,9 +26,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { message: "La solicitud debe contener datos válidos." },
-      { status: 400 },
+    return errorResponse(
+      "BAD_REQUEST",
+      "La solicitud debe contener datos válidos.",
+      400,
     );
   }
 
@@ -30,25 +46,26 @@ export async function POST(request: Request) {
 
   // Honeypot: respondemos como éxito para no dar señales útiles a bots.
   if (input.website) {
-    return NextResponse.json({ ok: true }, { status: 201 });
+    return acceptedResponse();
   }
 
   const validation = validateCotizacion(input);
   if (!validation.success) {
-    return NextResponse.json({ message: validation.message }, { status: 400 });
+    return errorResponse("VALIDATION_ERROR", validation.message, 400);
   }
 
   try {
     const quotation = await createQuotation(validation.data);
     await notifyNewQuotation({ quotationId: quotation.id });
 
-    return NextResponse.json({ ok: true }, { status: 201 });
+    return acceptedResponse();
   } catch (error) {
     console.error("[cotizaciones] No se pudo registrar la solicitud", error);
 
-    return NextResponse.json(
-      { message: "No pudimos enviar tu solicitud. Inténtalo nuevamente." },
-      { status: 503 },
+    return errorResponse(
+      "SERVICE_UNAVAILABLE",
+      "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+      503,
     );
   }
 }

@@ -1,3 +1,5 @@
+import type { ApiSuccessResponse } from "./common";
+
 export type CreateCotizacionRequest = {
   email: string;
   celular: string;
@@ -8,10 +10,6 @@ export type CreateCotizacionRequest = {
   website?: string;
 };
 
-export type CreateCotizacionResponse = {
-  ok: true;
-};
-
-export type ApiErrorResponse = {
-  message: string;
-};
+export type CreateCotizacionResponse = ApiSuccessResponse<{
+  status: "received";
+}>;
