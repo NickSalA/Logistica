@@ -21,10 +21,10 @@
   /*Colores de texto*/
   --color-night: #003366;
   --color-night-dark: #0f1d30;
-  --color-accent: #FFC000;
-  --color-accent-hover: #E6AC00;
-  --color-sand: #F5F5DC;
-  --color-charcoal: #2C2C2C;
+  --color-accent: #ffc000;
+  --color-accent-hover: #e6ac00;
+  --color-sand: #f5f5dc;
+  --color-charcoal: #2c2c2c;
 
   /*Tamaño de fuente*/
   --text-md: 1rem;
@@ -39,6 +39,16 @@
     to {
       transform: translateX(-50%);
     }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -79,7 +89,7 @@ h6 {
 }
 
 .dark .badge-accent {
-  color: #FFC000;
+  color: #ffc000;
   background-color: rgba(255, 192, 0, 0.1);
   border: 1px solid rgba(255, 192, 0, 0.2);
 }
@@ -93,7 +103,7 @@ h6 {
   background-color: rgba(0, 17, 34, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #FFC000;
+  color: #ffc000;
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.625rem;
   font-weight: 700;
@@ -104,7 +114,7 @@ h6 {
 
 .dark .badge-dark {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -138,7 +148,8 @@ h6 {
 }
 
 .shadow-super-strong {
-  box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.4),
+  box-shadow:
+    0 35px 70px -12px rgba(0, 0, 0, 0.4),
     0 35px 35px -5px rgba(0, 0, 0, 0.2),
     0 10px 20px -5px rgba(0, 0, 0, 0.1);
 }

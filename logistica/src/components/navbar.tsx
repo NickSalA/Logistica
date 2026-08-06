@@ -71,7 +71,8 @@ export default function NavBar({ settings }: NavBarProps) {
 
   const serviciosMenu = settings.data.servicios_menu || [];
 
-  const isSolid = scrolled || isOpen;
+  // Solo la home inicia sobre el hero oscuro; las páginas internas usan fondo claro.
+  const isSolid = scrolled || isOpen || pathName !== "/";
 
   return (
     <nav aria-label="Main navigation" className="w-full relative">

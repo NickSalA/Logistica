@@ -63,6 +63,16 @@ export default function Button({
     );
   }
 
+  // Las anclas usan un enlace nativo para que el navegador siempre vuelva a
+  // desplazar la vista, incluso si la URL ya contiene el mismo hash.
+  if (href?.startsWith("#")) {
+    return (
+      <a href={href} className={classes}>
+        {children}
+      </a>
+    );
+  }
+
   // Si se le pasa un href de Next.js/HTML (string)
   if (href) {
     return (

@@ -1319,6 +1319,26 @@ export interface PresentacionInstitucionalSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/image
 	 */
 	image: prismic.ImageField<never>;
+	
+	/**
+	 * cta_label field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.cta_label
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	cta_label: prismic.KeyTextField;
+	
+	/**
+	 * cta_link field in *PresentacionInstitucional → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: presentacion_institucional.default.primary.cta_link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	cta_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

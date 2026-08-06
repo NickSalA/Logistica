@@ -43,6 +43,24 @@
             "thumbnails": []
           },
           "type": "Image"
+        },
+        "cta_label": {
+          "config": {
+            "label": "cta_label",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "cta_link": {
+          "config": {
+            "allowTargetBlank": true,
+            "allowText": true,
+            "label": "cta_link",
+            "placeholder": "",
+            "repeat": false,
+            "select": null
+          },
+          "type": "Link"
         }
       },
       "version": "initial"
