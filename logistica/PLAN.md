@@ -81,7 +81,7 @@ Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo per
 
 ### Tareas
 
-- [ ] Identificar textos de negocio, etiquetas y CTAs que actualmente tengan fallback en código.
+- [x] Identificar textos de negocio, etiquetas y CTAs que actualmente tengan fallback en código.
 - [ ] Añadir los fields necesarios en Slice Machine:
   - `Key Text` para etiquetas breves.
   - `StructuredText` para títulos y contenido enriquecido.
@@ -89,7 +89,7 @@ Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo per
   - `Link` para destinos y CTAs.
 - [ ] Actualizar los modelos versionados en `src/slices/<Slice>/model.json` y `customtypes/<tipo>/index.json`.
 - [ ] Regenerar `prismicio-types.d.ts`.
-- [ ] Reemplazar los accesos `(slice.primary as any)` por campos tipados.
+- [x] Reemplazar los accesos `(slice.primary as any)` por campos tipados existentes.
 - [ ] Publicar y verificar las modificaciones en los documentos de Prismic.
 
 ### Criterio de cierre
@@ -106,10 +106,10 @@ Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo per
 
 ### Tareas
 
-- [ ] Cambiar el idioma raíz de `lang="en"` a `lang="es"` en `src/app/layout.tsx`.
-- [ ] Convertir las tarjetas expandibles de beneficios en controles accesibles por teclado o añadir interacción de teclado y atributos ARIA equivalentes.
-- [ ] Añadir un `title` descriptivo al `iframe` de Google Maps.
-- [ ] Evitar que la fecha inicial de cotización genere diferencias entre SSR e hidratación.
+- [x] Cambiar el idioma raíz de `lang="en"` a `lang="es"` en `src/app/layout.tsx`.
+- [x] Convertir las tarjetas expandibles de beneficios en controles accesibles por teclado y añadir atributos ARIA equivalentes.
+- [x] Añadir un `title` descriptivo al `iframe` de Google Maps.
+- [x] Evitar que la fecha inicial de cotización genere diferencias entre SSR e hidratación.
 - [ ] Revisar foco visible, labels y navegación por teclado en carrusel, menú móvil, formularios y acordeones.
 - [ ] Revisar los metadatos, imagen Open Graph y descripciones con contenido publicado.
 - [ ] Probar escritorio y móvil, en tema claro y oscuro.

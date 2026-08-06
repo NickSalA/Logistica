@@ -29,7 +29,7 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
     >
       <div className="section-container mb-6 md:mb-16">
         <SectionHeader
-          badge={(slice.primary as any).badge_text || "Nuestros Clientes"}
+          badge={slice.primary.badge_text}
           title={slice.primary.title}
         />
       </div>

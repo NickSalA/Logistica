@@ -1,5 +1,5 @@
 "use client";
-import { FC, FormEvent } from "react";
+import { FC, FormEvent, useEffect, useState } from "react";
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
@@ -35,8 +35,13 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
     send,
     status: formStatus,
   } = useEnviarCotizacion();
+  const [serviceDate, setServiceDate] = useState("");
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
+
+  useEffect(() => {
+    setServiceDate(new Date().toISOString().split("T")[0]);
+  }, []);
 
   const inputClass =
     "w-full bg-gray-50 dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-white/40";
@@ -169,11 +174,15 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               />
             </div>
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_email || "E-mail:"}
+              <label
+                htmlFor="cotizacion-email"
+                className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+              >
+                {slice.primary.label_email}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
+                id="cotizacion-email"
                 name="email"
                 type="email"
                 required
@@ -185,10 +194,14 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="flex flex-col">
-                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                  {(slice.primary as any).label_celular || "Celular:"}
+                <label
+                  htmlFor="cotizacion-celular"
+                  className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+                >
+                  {slice.primary.label_celular}
                 </label>
                 <input
+                  id="cotizacion-celular"
                   name="celular"
                   type="tel"
                   required
@@ -198,11 +211,15 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 />
               </div>
               <div className="flex flex-col">
-                <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                  {(slice.primary as any).label_documento || "DNI o RUC:"}
+                <label
+                  htmlFor="cotizacion-documento"
+                  className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+                >
+                  {slice.primary.label_documento}
                   <span className="text-red-500 ml-0.5">*</span>
                 </label>
                 <input
+                  id="cotizacion-documento"
                   name="documento"
                   type="text"
                   required
@@ -213,11 +230,15 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_servicio || "Tipo de servicio:"}
+              <label
+                htmlFor="cotizacion-servicio"
+                className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+              >
+                {slice.primary.label_servicio}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <select
+                id="cotizacion-servicio"
                 name="servicio"
                 required
                 defaultValue={predeterminado}
@@ -236,25 +257,34 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_fecha || "Fecha del servicio:"}
+              <label
+                htmlFor="cotizacion-fecha"
+                className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+              >
+                {slice.primary.label_fecha}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
+                id="cotizacion-fecha"
                 name="fechaServicio"
                 type="date"
-                defaultValue={new Date().toISOString().split("T")[0]}
+                value={serviceDate}
+                onChange={(event) => setServiceDate(event.target.value)}
                 required
                 className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
-                {(slice.primary as any).label_mensaje || "Mensaje:"}
+              <label
+                htmlFor="cotizacion-mensaje"
+                className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300"
+              >
+                {slice.primary.label_mensaje}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <textarea
+                id="cotizacion-mensaje"
                 name="mensaje"
                 required
                 placeholder="¿En qué podemos ayudarle?"
@@ -272,8 +302,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               >
                 {formStatus === "sending"
                   ? "Enviando..."
-                  : (slice.primary as any).texto_boton_enviar ||
-                    "Enviar Solicitud"}
+                  : slice.primary.texto_boton_enviar}
               </Button>
               {formStatus !== "idle" && (
                 <p

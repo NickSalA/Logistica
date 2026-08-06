@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={clsx(montserrat.variable, roboto.variable)}
       suppressHydrationWarning
     >

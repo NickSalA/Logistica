@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, KeyboardEvent, useState } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
@@ -45,6 +45,16 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const handleCardKeyDown = (
+    event: KeyboardEvent<HTMLDivElement>,
+    index: number,
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleCardClick(index);
+    }
+  };
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -71,8 +81,13 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
             return (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isActive}
+                aria-label={`${isActive ? "Ocultar" : "Mostrar"} detalles de ${item.card_title}`}
                 onClick={() => handleCardClick(index)}
-                className={`group relative aspect-3/4 rounded-2rem overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
+                onKeyDown={(event) => handleCardKeyDown(event, index)}
+                className={`group relative aspect-3/4 rounded-2rem overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
                   isActive ? "-translate-y-2 shadow-2xl ring-2 ring-accent" : ""
                 }`}
               >

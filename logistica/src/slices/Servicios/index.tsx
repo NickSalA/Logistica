@@ -67,9 +67,11 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
           {/* Columna Izquierda (8/12): Contenido, Lista de Servicios y Botón */}
           <div className="lg:col-span-8 flex flex-col gap-6">
             {/* Badge de Categoría / Sección */}
-            <Badge variant="accent" className="w-fit">
-              {(slice.primary as any).badge_text || "Nuestros Servicios"}
-            </Badge>
+            {slice.primary.badge_text && (
+              <Badge variant="accent" className="w-fit">
+                {slice.primary.badge_text}
+              </Badge>
+            )}
 
             {/* Títulos y Subtítulo */}
             <div className="flex flex-col gap-4">
