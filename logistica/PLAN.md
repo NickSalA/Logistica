@@ -15,11 +15,7 @@ Publicar y mantener un sitio corporativo confiable, editable desde Prismic y cap
 ### Tareas
 
 - [x] Instalar dependencias con `pnpm`.
-- [ ] Si el sandbox no permite escribir en la caché global de `pnpm`, usar un store local:
-
-  ```sh
-  pnpm --config.store-dir=.pnpm-store install
-  ```
+- [ ] Si el sandbox no permite escribir en la caché global de `pnpm`, ejecutar la instalación desde una terminal local con acceso al store habitual.
 
 - [x] Actualizar el script `lint` de `next lint` a `eslint .`; Next.js 16 ya no utiliza el comando anterior.
 - [x] Ejecutar lint:
@@ -54,31 +50,28 @@ Publicar y mantener un sitio corporativo confiable, editable desde Prismic y cap
 
 **Objetivo:** convertir el formulario visual existente en un canal real y seguro de captación de leads.
 
-### Decisión requerida
+### Decisión adoptada
 
-Definir el destino de una solicitud. Elegir uno o combinar varios:
-
-1. Correo transaccional mediante Resend, Brevo, SendGrid u otro proveedor.
-2. CRM comercial existente.
-3. Base de datos propia y panel administrativo.
-4. WhatsApp con un mensaje prellenado, si el flujo comercial es manual.
+Las solicitudes se almacenan en Supabase como base del pseudo-CRM. El correo permanece como adaptador mock hasta elegir un proveedor transaccional. El futuro panel administrativo gestionará estados y notas internas.
 
 ### Tareas
 
-- [ ] Definir campos obligatorios, validaciones y destinatarios del lead.
-- [ ] Crear una Route Handler de Next.js para recibir la solicitud.
-- [ ] Validar los datos en cliente y servidor.
-- [ ] Añadir estados de carga, éxito y error al formulario.
-- [ ] Guardar credenciales únicamente como variables de entorno no públicas.
-- [ ] Añadir protección básica contra spam y limitación de solicitudes.
-- [ ] Definir trazabilidad: correo recibido, registro en CRM o almacenamiento persistente.
-- [ ] Probar el flujo completo con datos reales y casos inválidos.
+- [x] Definir campos obligatorios y validaciones del lead.
+- [x] Crear una Route Handler de Next.js para recibir la solicitud.
+- [x] Validar los datos en cliente y servidor.
+- [x] Añadir estados de carga, éxito y error al formulario.
+- [x] Guardar credenciales únicamente como variables de entorno no públicas.
+- [x] Añadir protección básica contra spam mediante honeypot. La limitación de solicitudes queda pendiente de elegir proveedor o infraestructura.
+- [x] Aplicar la migración y confirmar persistencia en Supabase.
+- [x] Probar el flujo completo desde el formulario con una solicitud válida.
+- [ ] Probar casos inválidos y la protección anti-spam de forma manual.
 
 ### Criterio de cierre
 
-- Una solicitud válida llega al destino comercial definido.
+- Una solicitud válida se registra en Supabase con estado `nuevo`.
 - El usuario recibe confirmación clara de éxito o error.
 - Las claves y datos sensibles no se exponen al navegador ni al repositorio.
+- El correo transaccional queda pendiente de seleccionar e integrar.
 
 ---
 

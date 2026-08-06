@@ -125,6 +125,21 @@ Los fallbacks técnicos vacíos son aceptables para evitar errores de renderizad
 - Validar tanto en el navegador como en el servidor, proteger contra spam y mostrar estados de carga, éxito y error.
 - Las credenciales deben guardarse exclusivamente en variables de entorno que no empiecen por `NEXT_PUBLIC_`.
 
+## 7. Arquitectura de features y APIs
+
+Cuando una funcionalidad requiera llamadas HTTP o lógica de servidor, mantener estas responsabilidades separadas:
+
+- `src/app/api`: Route Handlers; reciben y devuelven HTTP, sin concentrar lógica de negocio.
+- `src/api`: cliente Axios y adaptadores por recurso para uso desde componentes cliente.
+- `src/features/<feature>`: hooks, validación, tipos y componentes específicos de la feature.
+- `src/server`: repositorios, proveedores externos y secretos; estos módulos no se importan desde el cliente.
+- `src/types/api`: contratos de request/response compartidos entre UI y Route Handlers.
+- `src/types/database.ts`: tipos temporales de base de datos; reemplazarlos por tipos generados desde Supabase al construir el panel administrativo.
+
+No llamar `fetch` o Axios directamente desde slices/componentes si existe un adaptador de `src/api`. No crear instancias nuevas de Axios por feature: configurar interceptores, timeout y errores comunes en `src/api/axiosInstance.ts`.
+
+Prismic sigue siendo una integración transversal y se conserva en `src/prismicio.ts`; sus tipos generados permanecen en `prismicio-types.d.ts`.
+
 ### Tailwind CSS v4
 
 El proyecto usa Tailwind CSS v4. Para gradientes se usa la sintaxis actual, por ejemplo `bg-linear-to-b`, no `bg-gradient-to-b`.

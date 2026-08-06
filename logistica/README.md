@@ -12,6 +12,8 @@ Sitio corporativo de **Logística Trasandes**, construido con **Next.js**, **Tai
 - **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **Tema:** `next-themes` (claro/oscuro)
 - **Iconos:** `lucide-react`
+- **Datos y autenticación futura:** Supabase
+- **Cliente HTTP interno:** Axios
 - **Gestor de paquetes:** `pnpm`
 
 ---
@@ -29,7 +31,27 @@ La ruta `/` consulta el singleton `homapage` de Prismic y renderiza sus slices c
 
 El singleton `settings` proporciona los metadatos globales, logo, navegación, datos de contacto, redes sociales, footer y menú desplegable de servicios.
 
-> El formulario de `cotizacion` tiene la interfaz terminada, pero aún no cuenta con integración de envío a correo, CRM o API.
+> El formulario de `cotizacion` registra solicitudes en Supabase mediante una Route Handler de Next.js. La notificación por correo está implementada como mock y queda lista para conectar un proveedor transaccional.
+
+---
+
+## Arquitectura de aplicación
+
+El proyecto mantiene las rutas HTTP en `src/app/api` y separa los módulos por responsabilidad:
+
+```text
+src/
+├── api/                  # Clientes Axios y adaptadores por recurso
+├── app/api/              # Route Handlers de Next.js
+├── features/             # Hooks, validación y tipos propios de cada feature
+├── server/               # Repositorios e integraciones exclusivas de servidor
+├── types/api/            # Contratos request/response compartidos
+├── types/database.ts     # Tipos temporales de datos de Supabase
+├── prismicio.ts          # Cliente de Prismic
+└── slices/               # Presentación basada en Slice Machine
+```
+
+El módulo inicial es `cotizaciones`: la UI llama a `src/api/cotizaciones.ts`, la API de Next valida la solicitud y el repositorio server-only la guarda en Supabase. Las claves privilegiadas no se importan en componentes cliente.
 
 ---
 
@@ -51,13 +73,7 @@ Instala las dependencias:
 pnpm install
 ```
 
-Si `pnpm` no puede escribir en su caché global —por ejemplo, al trabajar dentro de un sandbox— usa un store local al proyecto:
-
-```bash
-pnpm --config.store-dir=.pnpm-store install
-```
-
-El proyecto incluye `.npmrc` con `store-dir=.pnpm-store`, por lo que, tras esa configuración, los comandos normales de `pnpm` usan el store local automáticamente.
+Si `pnpm` no puede escribir en su caché global —por ejemplo, al trabajar dentro de un sandbox— ejecuta la instalación desde una terminal local con acceso a tu store habitual.
 
 ### Servidor de Desarrollo
 
@@ -93,13 +109,14 @@ Abre [http://localhost:9999](http://localhost:9999) para gestionar los component
 | `pnpm lint`         | Ejecuta el script de lint definido en `package.json`. |
 | `pnpm slicemachine` | Inicia la interfaz local de Prismic Slice Machine.    |
 
-El store local se configura en `.npmrc`; usa los comandos habituales de `pnpm`.
+Usa los comandos habituales de `pnpm`.
 
 ## Estado técnico y próximos puntos
 
 - La aplicación requiere que los documentos `homapage` y `settings` estén publicados en el repositorio de Prismic configurado.
-- El envío del formulario de cotización está pendiente de integrar con un proveedor o API. No se deben exponer credenciales en el cliente.
-- Antes de desplegar, ejecutar `pnpm build` y revisar la navegación, slices y metadatos con contenido publicado.
+- Las cotizaciones se guardan en `public.cotizaciones` de Supabase con estado inicial `nuevo`. Consulta [`supabase/README.md`](./supabase/README.md) para la operación y variables necesarias.
+- El correo es un mock en `src/server/cotizaciones/notifications.ts`; al elegir proveedor, se reemplaza ese adaptador sin modificar la UI ni la Route Handler.
+- Antes de desplegar, ejecutar `pnpm build` y revisar la navegación, slices, cotizaciones y metadatos con contenido publicado.
 - `README.md` documenta el estado funcional; las convenciones de diseño y contenido viven en [`gemini.md`](./gemini.md).
 
 ---

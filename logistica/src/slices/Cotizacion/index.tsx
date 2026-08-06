@@ -1,10 +1,11 @@
 "use client";
-import { FC } from "react";
+import { FC, FormEvent } from "react";
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import { MapPin, PhoneIcon, ClockIcon } from "lucide-react";
 import Button from "@/components/ui/button";
+import { useEnviarCotizacion } from "@/features/cotizaciones/hooks/useEnviarCotizacion";
 
 export type CotizacionProps = SliceComponentProps<Content.CotizacionSlice>;
 
@@ -29,11 +30,36 @@ function getIcon(iconName: KeyTextField) {
 }
 
 const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
+  const {
+    message: formMessage,
+    send,
+    status: formStatus,
+  } = useEnviarCotizacion();
   const opcionesServicios = slice.primary.servicios ?? [];
   const predeterminado = (slice.primary.servicio as string | null) ?? undefined;
 
   const inputClass =
     "w-full bg-gray-50 dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white rounded-xl px-4 py-3 text-sm focus:bg-white dark:focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-white/40";
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const submitted = await send({
+      email: String(formData.get("email") ?? ""),
+      celular: String(formData.get("celular") ?? ""),
+      documento: String(formData.get("documento") ?? ""),
+      servicio: String(formData.get("servicio") ?? ""),
+      fechaServicio: String(formData.get("fechaServicio") ?? ""),
+      mensaje: String(formData.get("mensaje") ?? ""),
+      website: String(formData.get("website") ?? ""),
+    });
+
+    if (submitted) {
+      form.reset();
+    }
+  }
 
   return (
     <section
@@ -128,17 +154,27 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
             />
           </div>
 
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="space-y-5"
-            autoComplete="off"
-          >
+          <form onSubmit={handleSubmit} className="space-y-5" autoComplete="on">
+            <div
+              className="absolute h-px w-px overflow-hidden opacity-0"
+              aria-hidden="true"
+            >
+              <label htmlFor="website">Sitio web</label>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             <div>
               <label className="block mb-1.5 font-secondary text-sm font-semibold text-gray-700 dark:text-gray-200 transition-colors duration-300">
                 {(slice.primary as any).label_email || "E-mail:"}
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
+                name="email"
                 type="email"
                 required
                 autoComplete="email"
@@ -153,8 +189,10 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   {(slice.primary as any).label_celular || "Celular:"}
                 </label>
                 <input
+                  name="celular"
                   type="tel"
                   required
+                  autoComplete="tel"
                   placeholder="Ingrese número"
                   className={inputClass}
                 />
@@ -165,6 +203,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   <span className="text-red-500 ml-0.5">*</span>
                 </label>
                 <input
+                  name="documento"
                   type="text"
                   required
                   placeholder="Ingrese documento"
@@ -179,6 +218,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <select
+                name="servicio"
                 required
                 defaultValue={predeterminado}
                 className={`${inputClass} appearance-none cursor-pointer`}
@@ -201,6 +241,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <input
+                name="fechaServicio"
                 type="date"
                 defaultValue={new Date().toISOString().split("T")[0]}
                 required
@@ -214,6 +255,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                 <span className="text-red-500 ml-0.5">*</span>
               </label>
               <textarea
+                name="mensaje"
                 required
                 placeholder="¿En qué podemos ayudarle?"
                 className={`${inputClass} min-h-25 resize-y`}
@@ -225,11 +267,28 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
               <Button
                 type="submit"
                 variant="primary"
+                disabled={formStatus === "sending"}
                 className="w-full uppercase tracking-wider text-sm shadow-md"
               >
-                {(slice.primary as any).texto_boton_enviar ||
-                  "Enviar Solicitud"}
+                {formStatus === "sending"
+                  ? "Enviando..."
+                  : (slice.primary as any).texto_boton_enviar ||
+                    "Enviar Solicitud"}
               </Button>
+              {formStatus !== "idle" && (
+                <p
+                  role={formStatus === "error" ? "alert" : "status"}
+                  className={`mt-3 text-center text-sm font-medium ${
+                    formStatus === "success"
+                      ? "text-emerald-700 dark:text-emerald-400"
+                      : formStatus === "error"
+                        ? "text-red-600 dark:text-red-400"
+                        : "text-gray-600 dark:text-gray-300"
+                  }`}
+                >
+                  {formMessage}
+                </p>
+              )}
             </div>
           </form>
         </div>
