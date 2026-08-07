@@ -18,7 +18,7 @@ const MisionVision: FC<MisionVisionProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-surface py-16 transition-colors duration-300 dark:bg-night-dark md:py-24"
+      className="bg-white py-16 transition-colors duration-300 dark:bg-night-dark md:py-24"
     >
       <div className="section-container">
         <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center">
@@ -51,7 +51,7 @@ const MisionVision: FC<MisionVisionProps> = ({ slice }) => {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {hasMission && (
-            <article className="rounded-3xl border border-gray-200 bg-surface-muted p-8 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 md:p-10">
+            <article className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 md:p-10">
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent text-night">
                 <Target aria-hidden="true" className="h-7 w-7" />
               </div>
@@ -74,7 +74,7 @@ const MisionVision: FC<MisionVisionProps> = ({ slice }) => {
           )}
 
           {hasVision && (
-            <article className="rounded-3xl border border-gray-200 bg-surface-muted p-8 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 md:p-10">
+            <article className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-colors dark:border-white/10 dark:bg-white/5 md:p-10">
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-night text-white dark:bg-accent dark:text-night">
                 <Eye aria-hidden="true" className="h-7 w-7" />
               </div>

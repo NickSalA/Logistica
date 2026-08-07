@@ -16,7 +16,7 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-surface-muted dark:bg-surface-dark py-16 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-night-dark py-16 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Cabecera Estilizada */}

@@ -56,7 +56,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-surface dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"
+      className="bg-white dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"
     >
       {/* Círculos difuminados de fondo para dar profundidad y evitar sensación de vacío */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-night/5 dark:bg-accent/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3 transition-colors duration-300" />
@@ -200,7 +200,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                 <div className="absolute -inset-6 bg-accent/10 rounded-full blur-2xl -z-10 animate-pulse" />
 
                 {/* Contenedor circular con borde offset y padding */}
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-85 lg:h-85 rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-surface dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
+                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-85 lg:h-85 rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
                   <PrismicNextImage
                     field={slice.primary.imagen}
                     className="w-full h-full rounded-full object-cover"

@@ -12,7 +12,7 @@ const Gerencia: FC<GerenciaProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-surface-muted py-16 transition-colors duration-300 dark:bg-surface-dark md:py-24"
+      className="bg-white py-16 transition-colors duration-300 dark:bg-night-dark md:py-24"
     >
       <div className="section-container grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {slice.primary.photo && (

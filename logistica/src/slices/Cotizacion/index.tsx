@@ -71,7 +71,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       id="cotizacion"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-surface dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
+      className="bg-white dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Contenedor relativo para habilitar la superposición en escritorio */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -145,7 +145,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
         </div>
 
         {/* Bloque Formulario Superpuesto (Resaltado en modo oscuro) */}
-        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-150 bg-surface dark:bg-surface-dark-elevated p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong dark:shadow-dark-elevated relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-gray-100 dark:border-white/15">
+        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-150 bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-gray-100 dark:border-white/15 dark:bg-surface-dark-elevated">
           <div className="mb-8 text-center lg:text-left">
             <PrismicRichText
               field={slice.primary.cotizacion}
@@ -248,7 +248,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   <option
                     key={idx}
                     value={item.servicio ?? ""}
-                    className="bg-surface dark:bg-surface-dark text-gray-900 dark:text-white"
+                    className="bg-white dark:bg-night-dark text-gray-900 dark:text-white"
                   >
                     {item.servicio}
                   </option>
