@@ -42,7 +42,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden transition-all duration-300"
+      className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden transition-all duration-300 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-10 after:bg-linear-to-b after:from-transparent after:to-white dark:after:to-night-dark md:after:h-10"
     >
       {/* Carrusel de Fondo */}
       <div className="absolute inset-0 w-full h-full z-0 bg-night-dark">

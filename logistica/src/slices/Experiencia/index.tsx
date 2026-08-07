@@ -22,16 +22,16 @@ const Experiencia: FC<ExperienciaProps> = ({ slice }) => {
           />
         </div>
 
-        <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-gray-200 sm:grid-cols-3 dark:border-white/10 md:grid-cols-4">
+        <div className="flex flex-wrap justify-center overflow-hidden rounded-3xl border border-gray-200 dark:border-white/10">
           {slice.primary.images.map((item, index) => (
             <div
               key={`${item.image.url}-${index}`}
-              className="group flex min-h-32 items-center justify-center border-b border-r border-gray-200 bg-white p-7 transition-colors duration-300 last:border-r-0 hover:bg-gray-50 dark:border-white/10 dark:bg-white/3 dark:hover:bg-white/[0.07] md:min-h-40 md:p-10"
+              className="group flex min-h-32 w-1/2 items-center justify-center bg-white p-7 outline-1 outline-gray-200 -outline-offset-1 transition-colors duration-300 hover:bg-gray-50 dark:bg-white/3 dark:outline-white/10 dark:hover:bg-white/[0.07] md:min-h-40 md:w-1/3 md:p-10"
             >
               {item.image && (
                 <PrismicNextImage
                   field={item.image}
-                  className="max-h-14 max-w-full object-contain grayscale opacity-65 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 dark:brightness-0 dark:invert dark:group-hover:brightness-100 dark:group-hover:invert-0"
+                  className="h-12 w-32 object-contain grayscale opacity-65 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 dark:brightness-0 dark:invert dark:group-hover:brightness-100 dark:group-hover:invert-0 md:h-14 md:w-40"
                 />
               )}
             </div>
