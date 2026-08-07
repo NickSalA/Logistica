@@ -1,8 +1,6 @@
 import nextPlugin from "@next/eslint-plugin-next";
 import tsParser from "@typescript-eslint/parser";
 
-
-
 const eslintConfig = [
   {
     plugins: {
@@ -25,10 +23,8 @@ const eslintConfig = [
     },
   },
   {
-    ignores: [".next/", "node_modules/"],
+    ignores: [".next/", "node_modules/", "**/*.css"],
   },
 ];
 
 export default eslintConfig;
-
-

@@ -5,21 +5,21 @@
 @source "../../slices";
 
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --foreground: #171717;
 }
 
 .dark {
   --background: #0f1d30; /* color-night-dark (azul marino suave y moderno) */
-  --foreground: #ffffff;
+  --foreground: #fff;
 }
 
 @theme {
   --font-primary: var(--font-montserrat);
   --font-secondary: var(--font-roboto);
 
-  /*Colores de texto*/
-  --color-night: #003366;
+  /* Colores de texto */
+  --color-night: #036;
   --color-night-dark: #0f1d30;
   --color-night-mid: #002b55;
   --color-night-deep: #001c3a;
@@ -29,17 +29,17 @@
   --color-charcoal: #2c2c2c;
 
   /* Superficies compartidas */
-  --color-surface: #ffffff;
+  --color-surface: #fff;
   --color-surface-muted: #f8fafc;
   --color-surface-dark: #0b1625;
   --color-surface-dark-elevated: #132338;
 
   /* Elevaciones corporativas */
-  --shadow-accent-glow: 0 0 25px rgba(255, 192, 0, 0.5);
-  --shadow-accent-glow-strong: 0 0 35px rgba(255, 192, 0, 0.7);
-  --shadow-dark-elevated: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+  --shadow-accent-glow: 0 0 25px rgb(255 192 0 / 50%);
+  --shadow-accent-glow-strong: 0 0 35px rgb(255 192 0 / 70%);
+  --shadow-dark-elevated: 0 25px 60px -15px rgb(0 0 0 / 70%);
 
-  /*Tamaño de fuente*/
+  /* Tamaño de fuente */
   --text-md: 1rem;
 
   /* Animaciones */
@@ -49,6 +49,7 @@
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(-50%);
     }
@@ -90,9 +91,9 @@ h6 {
   gap: 0.5rem;
   padding: 0.25rem 0.875rem;
   border-radius: 9999px;
-  background-color: rgba(255, 192, 0, 0.15);
-  border: 1px solid rgba(255, 192, 0, 0.3);
-  color: #003366;
+  background-color: rgb(255 192 0 / 15%);
+  border: 1px solid rgb(255 192 0 / 30%);
+  color: #036;
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
@@ -103,8 +104,8 @@ h6 {
 
 .dark .badge-accent {
   color: #ffc000;
-  background-color: rgba(255, 192, 0, 0.1);
-  border: 1px solid rgba(255, 192, 0, 0.2);
+  background-color: rgb(255 192 0 / 10%);
+  border: 1px solid rgb(255 192 0 / 20%);
 }
 
 .badge-dark {
@@ -113,9 +114,9 @@ h6 {
   gap: 0.5rem;
   padding: 0.25rem 0.875rem;
   border-radius: 9999px;
-  background-color: rgba(0, 17, 34, 0.7);
+  background-color: rgb(0 17 34 / 70%);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgb(255 255 255 / 10%);
   color: #ffc000;
   font-family: var(--font-montserrat), sans-serif;
   font-size: 0.625rem;
@@ -126,16 +127,16 @@ h6 {
 }
 
 .dark .badge-dark {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgb(255 255 255 / 10%);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .glass-card {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgb(255 255 255 / 90%);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(243, 244, 246, 0.8);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgb(243 244 246 / 80%);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 5%);
 }
 
 .section-container {
@@ -146,14 +147,14 @@ h6 {
   padding-right: 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .section-container {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
 
-@media (min-width: 1280px) {
+@media (width >= 1280px) {
   .section-container {
     padding-left: 5rem;
     padding-right: 5rem;
@@ -162,7 +163,7 @@ h6 {
 
 .shadow-super-strong {
   box-shadow:
-    0 35px 70px -12px rgba(0, 0, 0, 0.4),
-    0 35px 35px -5px rgba(0, 0, 0, 0.2),
-    0 10px 20px -5px rgba(0, 0, 0, 0.1);
+    0 35px 70px -12px rgb(0 0 0 / 40%),
+    0 35px 35px -5px rgb(0 0 0 / 20%),
+    0 10px 20px -5px rgb(0 0 0 / 10%);
 }
