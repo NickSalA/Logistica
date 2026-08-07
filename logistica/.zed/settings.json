@@ -1,13 +1,13 @@
 {
   "lsp": {
-    "css-language-server": {
+    "vscode-css-language-server": {
       "settings": {
         "css": {
           "lint": {
-            "unknownAtRules": "ignore"
-          }
-        }
-      }
-    }
-  }
+            "unknownAtRules": "ignore",
+          },
+        },
+      },
+    },
+  },
 }
