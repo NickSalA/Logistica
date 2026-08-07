@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps, PrismicRichText } from "@prismicio/react";
+import Badge from "@/components/ui/badge";
 
 /**
  * Props for `Mapa`.
@@ -15,15 +16,15 @@ const Mapa: FC<MapaProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-slate-50 dark:bg-[#0b1625] py-16 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
+      className="bg-surface-muted dark:bg-surface-dark py-16 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6">
         {/* Cabecera Estilizada */}
         <div className="flex flex-col items-center justify-center text-center mb-10 md:mb-12">
           {slice.primary.badge_text && (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold font-primary uppercase tracking-wider mb-4">
+            <Badge variant="accent" className="mb-4">
               {slice.primary.badge_text}
-            </div>
+            </Badge>
           )}
 
           {slice.primary.title && (

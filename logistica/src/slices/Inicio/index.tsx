@@ -112,7 +112,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
               field={slice.primary.enlace_boton_primario}
               variant="accent"
               size="lg"
-              className="w-full sm:w-auto px-8 md:px-10 py-3.5 md:py-4 text-base md:text-lg shadow-[0_0_25px_rgba(255,192,0,0.5)] hover:shadow-[0_0_35px_rgba(255,192,0,0.7)] hover:-translate-y-1 transition-all rounded-full"
+              className="w-full sm:w-auto px-8 md:px-10 py-3.5 md:py-4 text-base md:text-lg shadow-accent-glow hover:shadow-accent-glow-strong hover:-translate-y-1 transition-all rounded-full"
             >
               {slice.primary.texto_boton_primario}
             </Button>

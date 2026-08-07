@@ -71,12 +71,12 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
       id="cotizacion"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
+      className="bg-surface dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Contenedor relativo para habilitar la superposición en escritorio */}
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         {/* Bloque de Contacto (Azul Corporativo con degradado resplandeciente) - Base del Layout */}
-        <div className="w-full lg:w-2/3 bg-linear-to-br from-night via-[#002b55] to-[#001c3a] dark:from-[#002855] dark:via-[#001d40] dark:to-[#001229] border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-150 flex flex-col justify-center transition-colors duration-300">
+        <div className="w-full lg:w-2/3 bg-linear-to-br from-night via-night-mid to-night-deep border border-transparent dark:border-white/15 text-white px-6 pt-10 pb-24 md:px-12 md:pt-12 md:pb-28 lg:py-24 lg:pl-16 lg:pr-48 rounded-3xl relative overflow-hidden z-0 shadow-xl lg:min-h-150 flex flex-col justify-center transition-colors duration-300">
           {/* Elemento decorativo de fondo */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/15 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 z-0" />
 
@@ -145,7 +145,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
         </div>
 
         {/* Bloque Formulario Superpuesto (Resaltado en modo oscuro) */}
-        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-150 bg-white dark:bg-[#132338] p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-gray-100 dark:border-white/15">
+        <div className="w-full mx-auto lg:mx-0 lg:w-1/2 max-w-150 bg-surface dark:bg-surface-dark-elevated p-6 sm:p-8 md:p-10 rounded-3xl shadow-super-strong dark:shadow-dark-elevated relative z-10 -mt-16 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0 transition-colors duration-300 border border-gray-100 dark:border-white/15">
           <div className="mb-8 text-center lg:text-left">
             <PrismicRichText
               field={slice.primary.cotizacion}
@@ -248,7 +248,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
                   <option
                     key={idx}
                     value={item.servicio ?? ""}
-                    className="bg-white dark:bg-[#0b1d33] text-gray-900 dark:text-white"
+                    className="bg-surface dark:bg-surface-dark text-gray-900 dark:text-white"
                   >
                     {item.servicio}
                   </option>

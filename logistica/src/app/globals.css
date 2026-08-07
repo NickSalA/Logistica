@@ -21,10 +21,23 @@
   /*Colores de texto*/
   --color-night: #003366;
   --color-night-dark: #0f1d30;
+  --color-night-mid: #002b55;
+  --color-night-deep: #001c3a;
   --color-accent: #ffc000;
   --color-accent-hover: #e6ac00;
   --color-sand: #f5f5dc;
   --color-charcoal: #2c2c2c;
+
+  /* Superficies compartidas */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-surface-dark: #0b1625;
+  --color-surface-dark-elevated: #132338;
+
+  /* Elevaciones corporativas */
+  --shadow-accent-glow: 0 0 25px rgba(255, 192, 0, 0.5);
+  --shadow-accent-glow-strong: 0 0 35px rgba(255, 192, 0, 0.7);
+  --shadow-dark-elevated: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
 
   /*Tamaño de fuente*/
   --text-md: 1rem;

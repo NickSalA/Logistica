@@ -19,7 +19,7 @@ const PresentacionInstitucional: FC<PresentacionInstitucionalProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative isolate flex min-h-svh items-center overflow-hidden bg-white pb-20 pt-32 transition-colors duration-300 dark:bg-night-dark md:pb-28 md:pt-40"
+      className="relative isolate flex min-h-svh items-center overflow-hidden bg-surface pb-20 pt-32 transition-colors duration-300 dark:bg-night-dark md:pb-28 md:pt-40"
     >
       <div className="absolute -right-32 top-20 -z-10 h-md w-md rounded-full bg-accent/10 blur-3xl" />
       <div className="absolute -bottom-40 -left-32 -z-10 size-md rounded-full bg-night/5 blur-3xl dark:bg-accent/5" />
@@ -80,7 +80,7 @@ const PresentacionInstitucional: FC<PresentacionInstitucionalProps> = ({
 
         <div className="relative lg:col-span-6">
           {slice.primary.image && (
-            <div className="relative overflow-hidden rounded-4xl border border-gray-200 bg-white p-2 shadow-2xl transition-colors dark:border-white/15 dark:bg-white/5">
+            <div className="relative overflow-hidden rounded-4xl border border-gray-200 bg-surface p-2 shadow-2xl transition-colors dark:border-white/15 dark:bg-white/5">
               <PrismicNextImage
                 field={slice.primary.image}
                 priority

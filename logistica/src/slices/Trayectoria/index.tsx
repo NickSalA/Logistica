@@ -12,7 +12,7 @@ const Trayectoria: FC<TrayectoriaProps> = ({ slice }) => {
       id="trayectoria"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="scroll-mt-24 bg-slate-50 py-16 transition-colors duration-300 dark:bg-[#0b1625] md:py-24"
+      className="scroll-mt-24 bg-surface-muted py-16 transition-colors duration-300 dark:bg-surface-dark md:py-24"
     >
       <div className="section-container">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
@@ -64,7 +64,7 @@ const Trayectoria: FC<TrayectoriaProps> = ({ slice }) => {
             <ol className="relative flex flex-col gap-7 border-l-2 border-accent/40 pl-7 md:pl-10">
               {slice.primary.milestones.map((milestone, index) => (
                 <li key={`${milestone.year}-${index}`} className="relative">
-                  <span className="absolute left-[-2.1rem] top-1 h-4 w-4 rounded-full border-4 border-slate-50 bg-accent dark:border-[#0b1625] md:left-[-2.65rem]" />
+                  <span className="absolute left-[-2.1rem] top-1 h-4 w-4 rounded-full border-4 border-surface-muted bg-accent dark:border-surface-dark md:left-[-2.65rem]" />
                   {milestone.year && (
                     <p className="font-primary text-sm font-bold tracking-widest text-accent">
                       {milestone.year}
