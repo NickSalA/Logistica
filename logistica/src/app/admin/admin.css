@@ -21,6 +21,22 @@
   font-family: var(--font-admin-sans), sans-serif;
 }
 
+.light .admin-app {
+  --ops-ink: #15202a;
+  --ops-muted: #52606d;
+  --ops-faint: #6b7785;
+  --ops-bg: #f3f6f8;
+  --ops-panel: #ffffff;
+  --ops-panel-raised: #f8fafb;
+  --ops-border: rgb(21 32 42 / 13%);
+  --ops-border-strong: rgb(21 32 42 / 22%);
+  --ops-yellow: #8a6200;
+  --ops-yellow-soft: rgb(138 98 0 / 11%);
+  --ops-green: #18794e;
+  --ops-blue: #1769aa;
+  --ops-violet: #6445a5;
+}
+
 .admin-app button,
 .admin-app a {
   -webkit-tap-highlight-color: transparent;

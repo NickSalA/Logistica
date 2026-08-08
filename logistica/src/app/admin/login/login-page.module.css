@@ -19,6 +19,12 @@
   mask-image: linear-gradient(90deg, #000, transparent);
 }
 
+:global(.light) .grid {
+  background-image:
+    linear-gradient(rgb(21 32 42 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(21 32 42 / 7%) 1px, transparent 1px);
+}
+
 .glow {
   position: absolute;
   height: 420px;
@@ -143,6 +149,10 @@
   border-left: 1px solid var(--ops-border);
   background: rgb(16 23 30 / 76%);
   padding: 48px clamp(30px, 7vw, 110px);
+}
+
+:global(.light) .panel {
+  background: rgb(255 255 255 / 88%);
 }
 
 .card {

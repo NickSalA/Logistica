@@ -1,0 +1,27 @@
+.button {
+  position: absolute;
+  top: 32px;
+  right: clamp(24px, 5vw, 76px);
+  z-index: 2;
+  display: grid;
+  height: 40px;
+  width: 40px;
+  place-items: center;
+  border: 1px solid var(--ops-border-strong);
+  background: var(--ops-panel-raised);
+  color: var(--ops-muted);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+}
+
+.button:hover {
+  border-color: var(--ops-yellow);
+  color: var(--ops-yellow);
+}
+
+@media (width <= 760px) {
+  .button {
+    top: 24px;
+    right: 24px;
+  }
+}

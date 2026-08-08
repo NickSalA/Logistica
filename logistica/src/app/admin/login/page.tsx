@@ -1,4 +1,5 @@
 import { GoogleSignInButton } from "../../../features/admin/components/GoogleSignInButton";
+import { AdminThemeToggle } from "../../../features/admin/components/AdminThemeToggle";
 import { Route, ShieldCheck } from "lucide-react";
 import styles from "./login-page.module.css";
 
@@ -14,6 +15,7 @@ export default async function AdminLoginPage({
 
   return (
     <main className={styles.shell}>
+      <AdminThemeToggle />
       <div className={styles.grid} aria-hidden="true" />
       <div
         className={`${styles.glow} ${styles["glow-top"]}`}
