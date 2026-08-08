@@ -1,5 +1,5 @@
 import { GoogleSignInButton } from "../../../features/admin/components/GoogleSignInButton";
-import { LockKeyhole, Route, ShieldCheck } from "lucide-react";
+import { Route, ShieldCheck } from "lucide-react";
 import styles from "./login-page.module.css";
 
 type AdminLoginPageProps = {
@@ -47,10 +47,6 @@ export default async function AdminLoginPage({
 
       <section className={styles.panel} aria-labelledby="login-title">
         <div className={styles.card}>
-          <div className={styles["card-icon"]}>
-            <LockKeyhole size={20} strokeWidth={1.8} aria-hidden="true" />
-          </div>
-          <p className={styles.eyebrow}>Área privada</p>
           <h2 id="login-title">Bienvenido de vuelta.</h2>
           <p className={styles["card-copy"]}>
             Accede con tu cuenta corporativa para revisar y gestionar las

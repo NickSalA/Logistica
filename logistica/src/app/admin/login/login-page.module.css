@@ -150,17 +150,6 @@
   margin: auto;
 }
 
-.card-icon {
-  display: grid;
-  height: 44px;
-  width: 44px;
-  margin-bottom: 27px;
-  place-items: center;
-  border: 1px solid var(--ops-border-strong);
-  background: var(--ops-panel-raised);
-  color: var(--ops-yellow);
-}
-
 .card h2 {
   margin: 17px 0 10px;
   color: var(--ops-ink);
