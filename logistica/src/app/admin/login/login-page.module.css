@@ -1,0 +1,239 @@
+.shell {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  grid-template-columns: minmax(0, 1.1fr) minmax(480px, 0.9fr);
+  overflow: hidden;
+  background: var(--ops-bg);
+}
+
+.grid {
+  position: absolute;
+  inset: 0 50% 0 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgb(208 225 237 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(208 225 237 / 5%) 1px, transparent 1px);
+  background-position: center;
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, #000, transparent);
+}
+
+.glow {
+  position: absolute;
+  height: 420px;
+  width: 420px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.glow-top {
+  top: -260px;
+  left: 33%;
+  background: var(--ops-yellow);
+}
+
+.glow-bottom {
+  right: 2%;
+  bottom: -270px;
+  background: #2c77cc;
+}
+
+.story,
+.panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.story {
+  padding: 48px clamp(38px, 8vw, 132px) 34px clamp(38px, 8vw, 100px);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  letter-spacing: 0.08em;
+}
+
+.brand-mark {
+  display: grid;
+  height: 38px;
+  width: 38px;
+  place-items: center;
+  border: 1px solid var(--ops-yellow);
+  color: var(--ops-yellow);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.brand-lockup strong {
+  display: block;
+  color: var(--ops-ink);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+.brand-lockup small {
+  display: block;
+  margin-top: 3px;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.13em;
+}
+
+.story-copy {
+  max-width: 590px;
+  margin-top: auto;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: var(--ops-yellow);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.status-pulse {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--ops-green);
+  box-shadow: 0 0 0 4px rgb(86 211 154 / 10%);
+}
+
+.story-copy h1 {
+  max-width: 590px;
+  margin: 20px 0 18px;
+  color: var(--ops-ink);
+  font-size: clamp(40px, 5vw, 76px);
+  font-weight: 520;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.story-lead {
+  max-width: 410px;
+  margin: 0;
+  color: var(--ops-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.panel {
+  justify-content: center;
+  border-left: 1px solid var(--ops-border);
+  background: rgb(16 23 30 / 76%);
+  padding: 48px clamp(30px, 7vw, 110px);
+}
+
+.card {
+  width: min(100%, 420px);
+  margin: auto;
+}
+
+.card-icon {
+  display: grid;
+  height: 44px;
+  width: 44px;
+  margin-bottom: 27px;
+  place-items: center;
+  border: 1px solid var(--ops-border-strong);
+  background: var(--ops-panel-raised);
+  color: var(--ops-yellow);
+}
+
+.card h2 {
+  margin: 17px 0 10px;
+  color: var(--ops-ink);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 520;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.card-copy {
+  max-width: 350px;
+  margin: 0;
+  color: var(--ops-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 18px 0 0;
+  border: 1px solid rgb(244 114 182 / 25%);
+  background: rgb(244 114 182 / 8%);
+  padding: 11px 12px;
+  color: #f5a9c8;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.panel-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+@media (width <= 760px) {
+  .shell {
+    display: block;
+  }
+
+  .story {
+    min-height: 260px;
+    padding: 28px 24px 0;
+  }
+
+  .story-copy {
+    margin-top: 70px;
+  }
+
+  .story-copy h1 {
+    max-width: 470px;
+    margin-top: 14px;
+    font-size: 37px;
+  }
+
+  .story-lead {
+    display: none;
+  }
+
+  .panel {
+    min-height: calc(100dvh - 260px);
+    border-top: 1px solid var(--ops-border);
+    border-left: 0;
+    padding: 48px 24px 28px;
+  }
+
+  .panel-note {
+    margin-top: 34px;
+  }
+}

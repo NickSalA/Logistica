@@ -4,12 +4,12 @@ import {
 } from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
 import sm from "../prismic.config.json";
+import { publicEnv } from "@/config/env";
 
 /**
  * The project's Prismic repository name.
  */
-export const repositoryName =
-  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
+export const repositoryName = publicEnv.prismicEnvironment || sm.repositoryName;
 
 // Las rutas se versionan en prismic.config.json y deben coincidir con App Router.
 const routes = sm.routes;
@@ -23,10 +23,9 @@ const routes = sm.routes;
 export const createClient = (config: ClientConfig = {}) => {
   const client = baseCreateClient(repositoryName, {
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: publicEnv.isProduction
+      ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+      : { next: { revalidate: 5 } },
     ...config,
   });
 

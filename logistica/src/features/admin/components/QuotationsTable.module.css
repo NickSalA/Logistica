@@ -1,0 +1,349 @@
+.contentCard {
+  overflow: hidden;
+  border: 1px solid var(--ops-border);
+  background: var(--ops-panel);
+}
+
+.contentCardHeader,
+.contentCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentCardHeader {
+  min-height: 84px;
+  gap: 16px;
+  padding: 20px 22px;
+}
+
+.sectionOverline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contentCard h2 {
+  margin: 7px 0 0;
+  color: var(--ops-ink);
+  font-size: 17px;
+  font-weight: 520;
+  letter-spacing: -0.02em;
+}
+
+.tableTools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.filterButton {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0 10px;
+  color: var(--ops-faint);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.filterButton span {
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+.filterButton:hover,
+.filterButtonActive {
+  border-color: var(--ops-border);
+  background: rgb(255 255 255 / 4%);
+  color: var(--ops-ink);
+}
+
+.filterButtonActive {
+  color: var(--ops-yellow);
+}
+
+.filterButtonIcon {
+  margin-left: 4px;
+  border-color: var(--ops-border);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border-top: 1px solid var(--ops-border);
+}
+
+.requestsTable {
+  width: 100%;
+  min-width: 690px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.requestsTable th {
+  background: rgb(255 255 255 / 2%);
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.requestsTable th,
+.requestsTable td {
+  padding: 15px 22px;
+}
+
+.requestsTable tbody tr {
+  border-top: 1px solid var(--ops-border);
+  transition: background-color 180ms ease;
+}
+
+.requestsTable tbody tr:hover {
+  background: rgb(255 255 255 / 3%);
+}
+
+.requestPerson,
+.requestPersonCopy {
+  display: flex;
+  align-items: center;
+}
+
+.requestPerson {
+  gap: 11px;
+}
+
+.requestAvatar {
+  display: grid;
+  height: 32px;
+  width: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ops-yellow-soft);
+  color: var(--ops-yellow);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.requestPersonCopy {
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.requestPersonCopy strong,
+.serviceName {
+  max-width: 260px;
+  overflow: hidden;
+  color: var(--ops-ink);
+  font-size: 12px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.requestPersonCopy small,
+.servicePhone {
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+.serviceName,
+.servicePhone {
+  display: block;
+}
+
+.servicePhone {
+  margin-top: 5px;
+}
+
+.dateCell {
+  color: var(--ops-muted);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  padding: 5px 8px;
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.status-new {
+  border-color: rgb(117 183 255 / 20%);
+  background: rgb(117 183 255 / 9%);
+  color: var(--ops-blue);
+}
+
+.status-contacted {
+  border-color: rgb(182 155 255 / 20%);
+  background: rgb(182 155 255 / 9%);
+  color: var(--ops-violet);
+}
+
+.status-quote {
+  border-color: rgb(243 200 75 / 20%);
+  background: rgb(243 200 75 / 9%);
+  color: var(--ops-yellow);
+}
+
+.status-won {
+  border-color: rgb(86 211 154 / 20%);
+  background: rgb(86 211 154 / 9%);
+  color: var(--ops-green);
+}
+
+.status-dismissed {
+  border-color: var(--ops-border);
+  background: rgb(255 255 255 / 3%);
+  color: var(--ops-faint);
+}
+
+.statusDot {
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+}
+
+.status-dot-blue {
+  background: var(--ops-blue);
+}
+
+.status-dot-violet {
+  background: var(--ops-violet);
+}
+
+.status-dot-yellow {
+  background: var(--ops-yellow);
+}
+
+.status-dot-green {
+  background: var(--ops-green);
+}
+
+.status-dot-gray {
+  background: var(--ops-faint);
+}
+
+.rowArrow {
+  display: grid;
+  height: 32px;
+  width: 32px;
+  place-items: center;
+  border: 1px solid var(--ops-border);
+  background: transparent;
+  color: var(--ops-faint);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+.rowArrow:hover {
+  border-color: var(--ops-yellow);
+  background: var(--ops-yellow-soft);
+  color: var(--ops-yellow);
+}
+
+.contentCardFooter {
+  min-height: 51px;
+  border-top: 1px solid var(--ops-border);
+  padding: 0 22px;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ops-yellow);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.viewAllLink:hover {
+  color: #ffda70;
+}
+
+.emptyState {
+  display: grid;
+  min-height: 200px;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: var(--ops-muted);
+}
+
+.emptyState strong {
+  color: var(--ops-ink);
+  font-size: 14px;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (width <= 760px) {
+  .contentCardHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .tableTools {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .requestsTable th,
+  .requestsTable td {
+    padding: 13px 16px;
+  }
+
+  .contentCardFooter {
+    padding: 0 16px;
+  }
+}

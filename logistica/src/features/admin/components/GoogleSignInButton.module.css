@@ -1,0 +1,54 @@
+.actions {
+  margin-top: 34px;
+}
+
+.button {
+  display: flex;
+  min-height: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid #747775;
+  border-radius: 4px;
+  background: #fff;
+  padding: 0 12px;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.button:hover:not(:disabled) {
+  background: #f8fafd;
+  box-shadow: 0 1px 2px rgb(60 64 67 / 30%);
+}
+
+.button svg {
+  height: 18px;
+  width: 18px;
+  flex: 0 0 auto;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 18px 0 0;
+  border: 1px solid rgb(244 114 182 / 25%);
+  background: rgb(244 114 182 / 8%);
+  padding: 11px 12px;
+  color: #f5a9c8;
+  font-size: 12px;
+  line-height: 1.45;
+}

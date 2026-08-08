@@ -1,0 +1,193 @@
+.topbar {
+  display: flex;
+  height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ops-border);
+  padding: 0 42px;
+}
+
+.mobileBrand {
+  display: none;
+  align-items: center;
+  gap: 11px;
+  letter-spacing: 0.08em;
+}
+
+.brandMark {
+  display: grid;
+  height: 34px;
+  width: 34px;
+  place-items: center;
+  border: 1px solid var(--ops-yellow);
+  color: var(--ops-yellow);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.mobileBrand strong {
+  display: block;
+  color: var(--ops-ink);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+}
+
+.search {
+  display: flex;
+  width: 270px;
+  align-items: center;
+  gap: 10px;
+  color: var(--ops-faint);
+  font-size: 12px;
+}
+
+.search kbd {
+  margin-left: auto;
+  border: 1px solid var(--ops-border);
+  padding: 3px 6px;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+.actions,
+.userChip,
+.iconButton {
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  gap: 17px;
+}
+
+.iconButton {
+  position: relative;
+  height: 42px;
+  width: 42px;
+  justify-content: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ops-muted);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.iconButton:hover {
+  border-color: var(--ops-border);
+  color: var(--ops-ink);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--ops-yellow);
+  outline-offset: 3px;
+}
+
+.notificationDot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 5px;
+  width: 5px;
+  border: 1px solid var(--ops-bg);
+  border-radius: 50%;
+  background: var(--ops-yellow);
+}
+
+.divider {
+  height: 28px;
+  width: 1px;
+  background: var(--ops-border);
+}
+
+.userChip {
+  gap: 10px;
+}
+
+.userAvatar {
+  display: grid;
+  height: 32px;
+  width: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ops-yellow-soft);
+  color: var(--ops-yellow);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.userChipCopy strong,
+.userChipCopy small {
+  display: block;
+}
+
+.userChipCopy strong {
+  color: var(--ops-ink);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.userChipCopy small {
+  margin-top: 2px;
+  color: var(--ops-faint);
+  font-family: var(--font-admin-mono), monospace;
+  font-size: 9px;
+}
+
+.userChipChevron {
+  margin-left: 7px;
+  color: var(--ops-faint);
+}
+
+@media (width <= 1100px) {
+  .topbar {
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+}
+
+@media (width <= 760px) {
+  .topbar {
+    height: auto;
+    min-height: 70px;
+    gap: 20px;
+    padding: 15px 18px;
+  }
+
+  .mobileBrand {
+    display: flex;
+  }
+
+  .brandMark {
+    height: 30px;
+    width: 30px;
+    font-size: 14px;
+  }
+
+  .mobileBrand strong {
+    font-size: 10px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .actions {
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .userChipCopy,
+  .userChipChevron,
+  .divider {
+    display: none;
+  }
+}

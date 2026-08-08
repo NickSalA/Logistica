@@ -1,0 +1,85 @@
+/* Tokens y reglas transversales de Ops Console. Los estilos visuales viven en CSS Modules. */
+.admin-app {
+  --ops-ink: #edf3f7;
+  --ops-muted: #8d9aa8;
+  --ops-faint: #5b6875;
+  --ops-bg: #0a0f14;
+  --ops-panel: #10171e;
+  --ops-panel-raised: #141d26;
+  --ops-border: rgb(208 225 237 / 11%);
+  --ops-border-strong: rgb(208 225 237 / 18%);
+  --ops-yellow: #f3c84b;
+  --ops-yellow-soft: rgb(243 200 75 / 12%);
+  --ops-green: #56d39a;
+  --ops-blue: #75b7ff;
+  --ops-violet: #b69bff;
+  --font-admin-sans: var(--font-roboto);
+  --font-admin-mono: var(--font-montserrat);
+
+  min-height: 100dvh;
+  color: var(--ops-ink);
+  font-family: var(--font-admin-sans), sans-serif;
+}
+
+.admin-app button,
+.admin-app a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.admin-app button:focus-visible,
+.admin-app a:focus-visible {
+  outline: 2px solid var(--ops-yellow);
+  outline-offset: 3px;
+}
+
+/* Estados dinámicos compartidos por los datos de cotización. */
+.status-dot {
+  display: inline-block;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+}
+
+.status-dot-blue {
+  background: var(--ops-blue);
+}
+.status-dot-violet {
+  background: var(--ops-violet);
+}
+.status-dot-yellow {
+  background: var(--ops-yellow);
+}
+.status-dot-green {
+  background: var(--ops-green);
+}
+.status-dot-gray {
+  background: var(--ops-faint);
+}
+
+.status-new {
+  background: var(--ops-blue);
+}
+.status-contacted {
+  background: var(--ops-violet);
+}
+.status-quote {
+  background: var(--ops-yellow);
+}
+.status-won {
+  background: var(--ops-green);
+}
+.status-dismissed {
+  background: var(--ops-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-app *,
+  .admin-app *::before,
+  .admin-app *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

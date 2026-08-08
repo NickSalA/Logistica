@@ -1,5 +1,7 @@
 import "server-only";
 import { createClient } from "@supabase/supabase-js";
+import { publicEnv } from "@/config/env";
+import { serverEnv } from "@/config/env.server";
 
 export type StoredQuotation = {
   id: number;
@@ -14,24 +16,16 @@ type CreateQuotation = {
   mensaje: string;
 };
 
-function getSupabaseConfig() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const secretKey = process.env.SUPABASE_SECRET_KEY;
-
-  if (!url || !secretKey) {
-    throw new Error("Supabase no está configurado para guardar cotizaciones.");
-  }
-
-  return { url, secretKey };
-}
-
 export async function createQuotation(
   quotation: CreateQuotation,
 ): Promise<StoredQuotation> {
-  const { url, secretKey } = getSupabaseConfig();
-  const supabase = createClient(url, secretKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
+  const supabase = createClient(
+    publicEnv.supabaseUrl,
+    serverEnv.supabaseSecretKey,
+    {
+      auth: { autoRefreshToken: false, persistSession: false },
+    },
+  );
   const { data, error } = await supabase
     .from("cotizaciones")
     .insert({
