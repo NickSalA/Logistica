@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Montserrat, Roboto } from "next/font/google";
-import "./globals.css";
 import clsx from "clsx";
 import { createClient } from "@/prismicio";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
+
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
 });
-
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
@@ -24,17 +25,18 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings.data.title,
     description: settings.data.meta_info,
-    openGraph: {
-      images: [settings.data.og_image.url || ""],
-    },
+    openGraph: { images: [settings.data.og_image.url || ""] },
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const requestHeaders = await headers();
+  const isAdminRoute = requestHeaders.get("x-admin-route") === "true";
+
   return (
     <html
       lang="es"
@@ -48,9 +50,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          {!isAdminRoute && <Header />}
           {children}
-          <Footer />
+          {!isAdminRoute && <Footer />}
         </ThemeProvider>
       </body>
     </html>
