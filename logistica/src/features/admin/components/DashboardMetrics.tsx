@@ -81,10 +81,12 @@ export function DashboardMetrics({
         <strong
           className={`${styles["metric-value"]} ${styles["metric-value-text"]}`}
         >
-          —
+          Sin datos
         </strong>
         <div className={styles["metric-foot"]}>
-          <span className={styles["metric-foot-note"]}>Próximamente</span>
+          <span className={styles["metric-foot-note"]}>
+            Se medirá al responder
+          </span>
         </div>
       </article>
     </section>

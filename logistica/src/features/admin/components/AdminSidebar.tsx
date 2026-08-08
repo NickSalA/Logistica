@@ -65,20 +65,12 @@ export function AdminSidebar({ quotationCount }: AdminSidebarProps) {
         </Link>
       </nav>
       <div className={styles.bottom}>
-        <div className={styles.status}>
-          <span className={styles.statusPulse} />
-          <span>Todos los sistemas operativos</span>
-        </div>
         <form action="/api/admin/logout" method="post">
           <button className={styles.logout} type="submit">
             <LogOut size={17} strokeWidth={1.8} aria-hidden="true" />
             <span>Cerrar sesión</span>
           </button>
         </form>
-        <div className={styles.build}>
-          <span>TRASANDES / OPS</span>
-          <span>v1.0.0</span>
-        </div>
       </div>
     </aside>
   );

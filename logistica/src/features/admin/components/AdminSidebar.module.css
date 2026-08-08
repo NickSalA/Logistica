@@ -118,28 +118,6 @@
   margin-top: auto;
 }
 
-.status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-top: 1px solid var(--ops-border);
-  padding: 17px 12px;
-  color: var(--ops-faint);
-  font-family: var(--font-admin-mono), monospace;
-  font-size: 9px;
-  line-height: 1.5;
-}
-
-.statusPulse {
-  display: inline-block;
-  height: 6px;
-  width: 6px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: var(--ops-green);
-  box-shadow: 0 0 0 4px rgb(86 211 154 / 10%);
-}
-
 .logout {
   display: flex;
   min-height: 44px;

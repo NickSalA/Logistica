@@ -11,7 +11,10 @@
   background: var(--ops-panel-raised);
   color: var(--ops-muted);
   cursor: pointer;
-  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
 .button:hover {
@@ -19,8 +22,12 @@
   color: var(--ops-yellow);
 }
 
+.inline {
+  position: static;
+}
+
 @media (width <= 760px) {
-  .button {
+  .button:not(.inline) {
     top: 24px;
     right: 24px;
   }

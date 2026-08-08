@@ -67,6 +67,8 @@
 
 .metric-value-text {
   color: var(--ops-faint);
+  font-size: 17px;
+  letter-spacing: -0.03em;
 }
 
 .metric-foot {

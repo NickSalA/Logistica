@@ -1,4 +1,5 @@
 import { Bell, ChevronRight, Search } from "lucide-react";
+import { AdminThemeToggle } from "./AdminThemeToggle";
 
 import styles from "./AdminTopbar.module.css";
 
@@ -21,7 +22,6 @@ export function AdminTopbar({ email, firstName }: AdminTopbarProps) {
       <div className={styles.search}>
         <Search size={17} aria-hidden="true" />
         <span>Buscar solicitudes…</span>
-        <kbd>⌘ K</kbd>
       </div>
       <div className={styles.actions}>
         <button
@@ -32,6 +32,7 @@ export function AdminTopbar({ email, firstName }: AdminTopbarProps) {
           <Bell size={18} strokeWidth={1.8} aria-hidden="true" />
           <span className={styles.notificationDot} />
         </button>
+        <AdminThemeToggle inline />
         <div className={styles.divider} />
         <div className={styles.userChip}>
           <span className={styles.userAvatar}>{getInitials(email)}</span>
