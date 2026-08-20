@@ -17,4 +17,8 @@ export const serverEnv = {
     .split(",")
     .map((email) => email.trim().toLowerCase())
     .filter(Boolean),
+  prismicRevalidateSecret: required(
+    "PRISMIC_REVALIDATE_SECRET",
+    process.env.PRISMIC_REVALIDATE_SECRET,
+  ),
 } as const;
