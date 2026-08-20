@@ -27,11 +27,11 @@ export async function createQuotation(
     },
   );
   const { data, error } = await supabase
-    .from("cotizaciones")
+    .from("solicitudes_cotizacion")
     .insert({
       email: quotation.email,
-      celular: quotation.celular,
-      documento: quotation.documento,
+      telefono_contacto: quotation.celular,
+      numero_documento_recibido: quotation.documento,
       servicio: quotation.servicio,
       fecha_servicio: quotation.fechaServicio,
       mensaje: quotation.mensaje,

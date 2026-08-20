@@ -19,7 +19,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import styles from "./dashboard-page.module.css";
 
 function formatDate(value: string, options?: Intl.DateTimeFormatOptions) {
-  return new Intl.DateTimeFormat("es-CL", options).format(new Date(value));
+  return new Intl.DateTimeFormat("es-PE", options).format(new Date(value));
 }
 
 export default async function AdminPage() {
@@ -31,8 +31,10 @@ export default async function AdminPage() {
   if (!isAdminEmail(user.email)) redirect("/admin/login?error=unauthorized");
 
   const { data, error } = await createSupabaseAdminClient()
-    .from("cotizaciones")
-    .select("id,email,celular,servicio,fecha_servicio,estado,created_at")
+    .from("solicitudes_cotizacion")
+    .select(
+      "id,email,telefono_contacto,servicio,fecha_servicio,estado,created_at",
+    )
     .order("created_at", { ascending: false })
     .limit(100);
   if (error) throw new Error("No se pudieron cargar las cotizaciones.");

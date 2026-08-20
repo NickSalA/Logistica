@@ -6,7 +6,7 @@ import styles from "./QuotationsTable.module.css";
 export type Quotation = {
   id: number;
   email: string;
-  celular: string;
+  telefono_contacto: string;
   servicio: string;
   fecha_servicio: string;
   estado: string;
@@ -41,11 +41,11 @@ type QuotationsTableProps = {
 };
 
 function formatDate(value: string, options?: Intl.DateTimeFormatOptions) {
-  return new Intl.DateTimeFormat("es-CL", options).format(new Date(value));
+  return new Intl.DateTimeFormat("es-PE", options).format(new Date(value));
 }
 
 function formatServiceDate(value: string) {
-  return new Intl.DateTimeFormat("es-CL", {
+  return new Intl.DateTimeFormat("es-PE", {
     day: "2-digit",
     month: "short",
   }).format(new Date(`${value}T12:00:00`));
@@ -129,7 +129,7 @@ export function QuotationsTable({ quotations }: QuotationsTableProps) {
                       {quotation.servicio}
                     </span>
                     <small className={styles.servicePhone}>
-                      {quotation.celular}
+                      {quotation.telefono_contacto}
                     </small>
                   </td>
                   <td>
