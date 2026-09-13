@@ -107,7 +107,7 @@ Data persistence and access security MUST follow a Zero-Trust architecture:
 
 ## Architecture and Boundary Constraints
 
-- **Framework & Runtime:** Next.js 16 (App Router with Turbopack), React 19, and TypeScript configured in strict mode.
+- **Framework & Runtime:** Next.js 16 (App Router with Turbopack), React 19, TypeScript configured in strict mode, and Node.js >= 22.12.0 (Active LTS).
 - **Server Components by Default (RSC):** Views and layouts MUST prioritize React Server Components by default to maximize performance and SEO. The `'use client'` directive MUST be restricted strictly to leaf components requiring user interactivity (React hooks, event listeners) or browser-specific APIs.
 - **Styling Architecture:** Tailwind CSS v4 with PostCSS and centralized semantic tokens.
 - **Headless CMS:** Prismic CMS cloud Type Builder, consumed via `@prismicio/client` and `@prismicio/react` in `src/prismicio.ts`.

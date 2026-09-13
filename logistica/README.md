@@ -1,57 +1,60 @@
 # Logística Trasandes
 
-Sitio corporativo de **Logística Trasandes**, construido con **Next.js**, **Tailwind CSS v4** y **Prismic CMS** mediante Slice Machine. La página principal, navegación, pie de página y metadatos se administran desde Prismic.
+Sitio corporativo y plataforma de cotizaciones de **Logística Trasandes**, construido con **Next.js 16**, **Tailwind CSS v4**, **Prismic CMS** (Type Builder cloud) y **Supabase**.
+
+La arquitectura, principios de diseño, testing y compuertas de calidad están regidos formalmente por la [Constitución del Proyecto](.specify/memory/constitution.md) bajo la metodología **Spec Kit**.
 
 ---
 
 ## Tecnologías principales
 
-- **Framework:** [Next.js 16](https://nextjs.org/) (App Router y Turbopack)
-- **UI:** React 19 y TypeScript
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack, React Server Components por defecto)
+- **UI:** React 19 y TypeScript (modo estricto)
+- **Testing:** [Vitest](https://vitest.dev/) + `@vitest/coverage-v8` (TDD, in-memory, cobertura ≥ 80%)
 - **CMS headless:** [Prismic CMS](https://prismic.io/) + [Type Builder](https://prismic.io/docs/type-builder) (cloud) + Prismic CLI
-- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/)
-- **Tema:** `next-themes` (claro/oscuro)
+- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/) con tokens semánticos corporativos
+- **Tema:** `next-themes` (soporte completo claro/oscuro)
 - **Iconos:** `lucide-react`
-- **Datos y autenticación futura:** Supabase
-- **Cliente HTTP interno:** Axios
-- **Gestor de paquetes:** `pnpm`
+- **Base de datos & Auth:** Supabase (PostgreSQL con Row Level Security)
+- **Cliente HTTP interno:** Axios centralizado (`src/api/axiosInstance.ts`)
+- **Gestor de paquetes:** `pnpm` exclusivamente
 
 ---
 
-## Arquitectura de contenido
+## Arquitectura de la Aplicación
 
-La ruta `/` consulta el singleton `homapage` de Prismic y renderiza sus slices con `SliceZone`:
-
-1. `inicio`: hero con carrusel y llamados a la acción.
-2. `experiencia`: marquesina de clientes.
-3. `servicios`: detalle de servicios.
-4. `beneficios`: tarjetas de valor diferencial.
-5. `mapa`: ubicación mediante Google Maps.
-6. `cotizacion`: formulario de contacto.
-
-El singleton `settings` proporciona los metadatos globales, logo, navegación, datos de contacto, redes sociales, footer y menú desplegable de servicios.
-
-> El formulario de `cotizacion` registra solicitudes en Supabase mediante una Route Handler de Next.js. La notificación por correo está implementada como mock y queda lista para conectar un proveedor transaccional.
-
----
-
-## Arquitectura de aplicación
-
-El proyecto mantiene las rutas HTTP en `src/app/api` y separa los módulos por responsabilidad:
+El proyecto sigue una arquitectura en capas estrictamente desacoplada (Principio I y II de la Constitución):
 
 ```text
 src/
-├── api/                  # Clientes Axios y adaptadores por recurso
-├── app/api/              # Route Handlers de Next.js
-├── features/             # Hooks, validación y tipos propios de cada feature
-├── server/               # Repositorios e integraciones exclusivas de servidor
-├── types/api/            # Contratos request/response compartidos
-├── types/database.ts     # Tipos temporales de datos de Supabase
-├── prismicio.ts          # Cliente de Prismic
-└── slices/               # Presentación basada en Slice Machine
+├── api/                  # Adaptadores Axios por recurso para el cliente
+├── app/                  # App Router de Next.js (RSC por defecto)
+│   ├── (site)/           # Rutas públicas corporativas
+│   ├── admin/            # Panel administrativo (pseudo-CRM)
+│   └── api/              # Route Handlers (controladores delgados de transporte HTTP)
+│       ├── cotizaciones/ # Recepción y validación de cotizaciones
+│       └── revalidate/   # Webhook protegido de revalidación on-demand de Prismic
+├── components/           # Componentes UI reutilizables y accesibles (<Button>, etc.)
+├── config/               # Variables de entorno validadas (cliente y server-only)
+├── features/             # Módulos con hooks, validación (Zod/schemas) y lógica propia
+├── lib/                  # Clientes de infraestructura (Supabase cliente y admin)
+├── server/               # Repositorios y servicios server-only (import "server-only")
+│   └── cotizaciones/     # Repositorio y notificaciones de cotizaciones
+├── slices/               # Slices de presentación visual de Prismic
+└── types/                # Contratos de API (src/types/api/) y tipos de base de datos
 ```
 
-El módulo inicial es `cotizaciones`: la UI llama a `src/api/cotizaciones.ts`, la API de Next valida la solicitud y el repositorio server-only la guarda en Supabase. Las claves privilegiadas no se importan en componentes cliente.
+---
+
+## Principios de Diseño Visual (Tailwind CSS v4)
+
+Todos los estilos utilizan tokens semánticos registrados en `src/app/globals.css`:
+
+- **Azul Corporativo:** `bg-night` (`#003366`), `bg-night-dark` (`#001122`).
+- **Amarillo de Realce:** `bg-accent` / `text-accent` (`#FFC000`), `hover:bg-accent-hover` (`#E6AC00`).
+- **Neutros Cálidos:** `bg-sand` (`#F5F5DC`), `bg-charcoal` (`#2C2C2C`), blanco puro.
+- **Diseño "Stitch-Free":** Alternancia de fondos entre secciones contiguas y solapamientos con margen negativo (`-mt-*`) y sombras profundas para evitar cortes visuales planos.
+- **Sintaxis v4:** Uso de sintaxis moderna como `bg-linear-to-b` en gradientes.
 
 ---
 
@@ -59,25 +62,37 @@ El módulo inicial es `cotizaciones`: la UI llama a `src/api/cotizaciones.ts`, l
 
 ### Prerrequisitos
 
-Asegúrate de tener instalado [Node.js](https://nodejs.org/) y `pnpm`:
+- **Node.js** >= 22.12.0 (Active LTS)
+- **pnpm** instalado globalmente:
+  ```bash
+  npm install -g pnpm
+  ```
+
+### Variables de Entorno
+
+Copia el archivo de ejemplo y configura tus credenciales:
 
 ```bash
-npm install -g pnpm
+cp .env.example .env.local
 ```
 
-### Instalación
+Variables necesarias:
 
-Instala las dependencias:
+| Variable | Ámbito | Descripción |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Público | URL del proyecto Supabase |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Público | Clave publicable de Supabase |
+| `SUPABASE_SECRET_KEY` | Servidor | Clave secreta con privilegios de servicio |
+| `ADMIN_EMAILS` | Servidor | Lista de correos autorizados para el panel admin |
+| `PRISMIC_REVALIDATE_SECRET` | Servidor | Secreto compartido para el webhook `/api/revalidate` |
+
+### Instalación
 
 ```bash
 pnpm install
 ```
 
-Si `pnpm` no puede escribir en su caché global —por ejemplo, al trabajar dentro de un sandbox— ejecuta la instalación desde una terminal local con acceso a tu store habitual.
-
 ### Servidor de Desarrollo
-
-Para iniciar el servidor de desarrollo local:
 
 ```bash
 pnpm dev
@@ -87,62 +102,34 @@ Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
 ---
 
-## Prismic Type Builder y CLI
+## Comandos Disponibles
 
-El modelado de contenido se realiza desde el **Type Builder** de la interfaz web de Prismic: Page Types, Custom Types, Slices y fields se guardan directamente en el repositorio cloud.
-
-Después de modificar un modelo en Prismic, sincroniza el proyecto local y sus tipos generados:
-
-```bash
-npx prismic pull
-```
-
-Comandos útiles:
-
-```bash
-npx prismic status  # Compara modelos locales y remotos
-npx prismic pull    # Descarga modelos remotos y genera tipos
-npx prismic gen     # Regenera archivos desde modelos locales sincronizados
-```
-
-> El proyecto aún conserva la configuración heredada de Slice Machine. La migración completa al flujo cloud se hará con `npx prismic init` después de confirmar que no haya cambios locales sin sincronizar. No uses `pnpm slicemachine` como flujo principal.
+| Comando | Descripción |
+| :--- | :--- |
+| `pnpm dev` | Inicia Next.js con Turbopack en desarrollo. |
+| `pnpm build` | Compila la aplicación para producción. |
+| `pnpm start` | Inicia el servidor de producción. |
+| `pnpm lint` | Ejecuta ESLint sobre el proyecto. |
+| `pnpm lint:css` | Ejecuta Stylelint sobre las hojas de estilo CSS. |
+| `pnpm test` | Ejecuta las pruebas unitarias con Vitest (una sola pasada). |
+| `pnpm test:watch` | Inicia Vitest en modo observador interactivo (TDD en caliente). |
+| `pnpm test:coverage`| Genera reporte de cobertura de código con `@vitest/coverage-v8`. |
+| `npx prismic status`| Compara modelos locales con el repositorio cloud de Prismic. |
+| `npx prismic pull` | Sincroniza modelos cloud y actualiza `prismicio-types.d.ts`. |
 
 ---
 
-## Comandos disponibles
+## Flujo de Trabajo y Gobernanza (Spec Kit)
 
-| Comando              | Descripción                                                      |
-| :------------------- | :--------------------------------------------------------------- |
-| `pnpm dev`           | Inicia Next.js con Turbopack en desarrollo.                      |
-| `pnpm build`         | Compila la aplicación para producción.                           |
-| `pnpm start`         | Inicia la compilación de producción.                             |
-| `pnpm lint`          | Ejecuta el script de lint definido en `package.json`.            |
-| `npx prismic status` | Compara los modelos locales con el repositorio cloud de Prismic. |
-| `npx prismic pull`   | Sincroniza modelos cloud y regenera los tipos de Prismic.        |
+El desarrollo de nuevas características sigue el ciclo de vida guiado por la [Constitución del Proyecto](.specify/memory/constitution.md):
 
-Usa los comandos habituales de `pnpm`.
+1. `/speckit-specify <descripción>`: Especifica la funcionalidad y criterios de aceptación.
+2. `/speckit-clarify`: Resuelve ambigüedades técnicas o de alcance antes de planificar.
+3. `/speckit-plan`: Diseña la arquitectura, casos de uso puros y contratos.
+4. `/speckit-tasks`: Desglosa las tareas con enfoque TDD y dependencias ordenadas.
+5. `/speckit-implement`: Ejecuta las tareas verificando pruebas y compuertas de calidad.
 
-## Estado técnico y próximos puntos
-
-- La aplicación requiere que los documentos `homapage` y `settings` estén publicados en el repositorio de Prismic configurado.
-- Las cotizaciones se guardan en `public.cotizaciones` de Supabase con estado inicial `nuevo`. Consulta [`supabase/README.md`](./supabase/README.md) para la operación y variables necesarias.
-- El correo es un mock en `src/server/cotizaciones/notifications.ts`; al elegir proveedor, se reemplaza ese adaptador sin modificar la UI ni la Route Handler.
-- Antes de desplegar, ejecutar `pnpm build` y revisar la navegación, slices, cotizaciones y metadatos con contenido publicado.
-
-## Despliegue y Prismic cloud
-
-Type Builder elimina la necesidad de ejecutar Slice Machine en el servidor o durante el build. El despliegue solo necesita la aplicación Next.js, sus variables de entorno y acceso saliente a la API/CDN de Prismic.
-
-- **Cambios de contenido publicados:** no requieren redeploy. Con la estrategia de caché actual, deben activar una revalidación segura.
-- **Cambios de modelos o slices:** ejecutar `npx prismic pull`, adaptar componentes/tipos, validar, versionar los cambios y desplegar la nueva aplicación.
-- **Previews:** configurar la URL pública de producción y las rutas de preview en el dashboard o con `npx prismic preview`.
-- **Webhooks:** configurar el webhook de Prismic hacia `/api/revalidate` solo después de proteger esa Route Handler con un secreto compartido. La ruta actual no valida autenticación y no debe exponerse como webhook de producción todavía.
-- `README.md` documenta el estado funcional; las convenciones de diseño y contenido viven en [`gemini.md`](./gemini.md).
-
----
-
-## Guía de diseño y estilos
-
-El proyecto implementa una paleta de colores semántica y un sistema de diseño con Tailwind CSS v4 para mantener la consistencia estética y evitar transiciones bruscas ("stitches").
-
-Consulta la documentación detallada del sistema de diseño en [gemini.md](file:///home/daminin/Documents/Repositorios/Logistica/logistica/gemini.md).
+Antes de cualquier integración a `main`, el código debe aprobar:
+- `pnpm test` (cobertura mínima 80% en lógica de negocio).
+- `pnpm lint` & `pnpm lint:css` (cero errores o advertencias).
+- `pnpm build` (cero errores de TypeScript).

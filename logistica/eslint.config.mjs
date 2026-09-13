@@ -12,7 +12,7 @@ const eslintConfig = [
     },
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -23,7 +23,7 @@ const eslintConfig = [
     },
   },
   {
-    ignores: [".next/", "node_modules/", "**/*.css"],
+    ignores: [".next/", "node_modules/", "coverage/", "**/*.css"],
   },
 ];
 
