@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:css": "stylelint \"src/**/*.css\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
@@ -32,6 +35,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/parser": "^8.65.0",
+    "@vitest/coverage-v8": "^5.0.0",
     "eslint": "^9.21.0",
     "eslint-config-next": "16.2.9",
     "prettier": "^3.9.6",
@@ -41,7 +45,8 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-tailwindcss": "^1.0.1",
     "tailwindcss": "^4.3.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
   },
   "packageManager": "pnpm@11.20.0+sha512.9a6f330a95b66446ea088faf1521405a8a01f07fde7124cc9958dfed52d4bb436737e65b08f85f37b46fcba375092558ac51262b816844b22f63406ed166bfee"
 }
