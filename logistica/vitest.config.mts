@@ -17,6 +17,14 @@ export default defineConfig({
         'src/prismicio.ts',
         'src/prismicio-types.d.ts',
       ],
+      thresholds: {
+        'src/features/**/lib/**': {
+          lines: 80,
+          functions: 80,
+          branches: 80,
+          statements: 80,
+        },
+      },
     },
   },
   resolve: {

@@ -62,7 +62,7 @@ Todos los estilos utilizan tokens semánticos registrados en `src/app/globals.cs
 
 ### Prerrequisitos
 
-- **Node.js** >= 20
+- **Node.js** >= 22.12.0 (Active LTS)
 - **pnpm** instalado globalmente:
   ```bash
   npm install -g pnpm
