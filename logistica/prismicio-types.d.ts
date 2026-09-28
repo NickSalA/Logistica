@@ -120,11 +120,11 @@ export type HomapageDocument<Lang extends string = string> = prismic.PrismicDocu
 type PageDocumentDataSlicesSlice = PresentacionInstitucionalSlice | TrayectoriaSlice | MisionVisionSlice | GerenciaSlice
 
 /**
- * Content for pagina documents
+ * Content for quienes somos documents
  */
 interface PageDocumentData {
 	/**
-	 * Slice Zone field in *pagina*
+	 * Slice Zone field in *quienes somos*
 	 *
 	 * - **Field Type**: Slice Zone
 	 * - **Placeholder**: *None*
@@ -133,7 +133,7 @@ interface PageDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/slices
 	 */
 	slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;/**
-	 * Meta Title field in *pagina*
+	 * Meta Title field in *quienes somos*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: A title of the page used for social media and search engines
@@ -144,7 +144,7 @@ interface PageDocumentData {
 	meta_title: prismic.KeyTextField;
 	
 	/**
-	 * Meta Description field in *pagina*
+	 * Meta Description field in *quienes somos*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: A brief summary of the page
@@ -155,7 +155,7 @@ interface PageDocumentData {
 	meta_description: prismic.KeyTextField;
 	
 	/**
-	 * Meta Image field in *pagina*
+	 * Meta Image field in *quienes somos*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -167,7 +167,7 @@ interface PageDocumentData {
 }
 
 /**
- * pagina document from Prismic
+ * quienes somos document from Prismic
  *
  * - **API ID**: `page`
  * - **Repeatable**: `true`

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PrismicNextLink } from "@prismicio/next";
+import AnchorLink from "@/components/ui/anchor-link";
 import { LinkField } from "@prismicio/client";
 import clsx from "clsx";
 
@@ -57,9 +57,9 @@ export default function Button({
   // Si se le pasa un link dinámico de Prismic (objeto LinkField)
   if (field) {
     return (
-      <PrismicNextLink field={field} className={classes}>
+      <AnchorLink field={field} className={classes}>
         {children}
-      </PrismicNextLink>
+      </AnchorLink>
     );
   }
 

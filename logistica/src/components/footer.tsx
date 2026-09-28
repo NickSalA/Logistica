@@ -66,15 +66,17 @@ export default async function Footer() {
               Conócenos
             </h4>
             <nav className="flex flex-col gap-3">
-              {settings.data.nav.map((item, index) => (
-                <PrismicNextLink
-                  key={index}
-                  field={item.link}
-                  className="font-secondary text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors duration-300"
-                >
-                  {item.label}
-                </PrismicNextLink>
-              ))}
+              {settings.data.nav
+                .filter((item) => !item.special)
+                .map((item, index) => (
+                  <PrismicNextLink
+                    key={index}
+                    field={item.link}
+                    className="font-secondary text-sm text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors duration-300"
+                  >
+                    {item.label}
+                  </PrismicNextLink>
+                ))}
             </nav>
           </div>
 

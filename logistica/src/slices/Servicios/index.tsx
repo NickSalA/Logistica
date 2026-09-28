@@ -54,6 +54,7 @@ function getServiceIcon(tituloField: any, index: number) {
 const Servicios: FC<ServiciosProps> = ({ slice }) => {
   return (
     <section
+      id="servicios"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-white dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"

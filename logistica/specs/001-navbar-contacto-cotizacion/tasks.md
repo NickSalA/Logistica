@@ -14,8 +14,8 @@ description: "Task list for simplifying contact navigation"
 
 **Purpose**: Confirm the existing editorial and runtime surfaces before implementation.
 
-- [ ] T001 [P] Review `customtypes/settings/index.json`, `customtypes/homapage/index.json`, `src/components/navbar.tsx`, `src/components/footer.tsx`, `src/slices/Inicio/index.tsx`, and `src/slices/Cotizacion/index.tsx` against `specs/001-navbar-contacto-cotizacion/contracts/navigation.md`
-- [ ] T002 [P] Confirm the existing quotation anchor `id="cotizacion"` in `src/slices/Cotizacion/index.tsx` and record any conflicting link destinations in `specs/001-navbar-contacto-cotizacion/quickstart.md`
+- [x] T001 [P] Review `customtypes/settings/index.json`, `customtypes/homapage/index.json`, `src/components/navbar.tsx`, `src/components/footer.tsx`, `src/slices/Inicio/index.tsx`, and `src/slices/Cotizacion/index.tsx` against `specs/001-navbar-contacto-cotizacion/contracts/navigation.md`
+- [x] T002 [P] Confirm the existing quotation anchor `id="cotizacion"` in `src/slices/Cotizacion/index.tsx` and record any conflicting link destinations in `specs/001-navbar-contacto-cotizacion/quickstart.md`
 
 ---
 
@@ -40,10 +40,10 @@ description: "Task list for simplifying contact navigation"
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Update `src/components/navbar.tsx` to consume the Contacto link configured in Prismic and preserve its `#cotizacion` destination without hardcoding a replacement URL
-- [ ] T008 [US1] Implement repeated Contacto activation handling in `src/components/navbar.tsx` so selecting the same `#cotizacion` destination again performs a visible scroll or focus on the target section
-- [ ] T009 [US1] Preserve desktop/mobile Contacto behavior and close the mobile menu after activation in `src/components/navbar.tsx`
-- [ ] T010 [P] [US1] Verify `src/components/ui/button.tsx` and the Prismic link rendering path preserve internal hash links for hero and quotation CTAs without regressing external phone/WhatsApp links
+- [x] T007 [US1] Update `src/components/navbar.tsx` to consume the Contacto link configured in Prismic and preserve its `#cotizacion` destination without hardcoding a replacement URL
+- [x] T008 [US1] Implement repeated Contacto activation handling in `src/components/navbar.tsx` so selecting the same `#cotizacion` destination again performs a visible scroll or focus on the target section
+- [x] T009 [US1] Preserve desktop/mobile Contacto behavior and close the mobile menu after activation in `src/components/navbar.tsx`
+- [x] T010 [P] [US1] Verify `src/components/ui/button.tsx` and the Prismic link rendering path preserve internal hash links for hero and quotation CTAs without regressing external phone/WhatsApp links
 
 **Checkpoint**: User Story 1 is independently functional and testable using the scenarios in `specs/001-navbar-contacto-cotizacion/quickstart.md`.
 
@@ -57,10 +57,10 @@ description: "Task list for simplifying contact navigation"
 
 ### Implementation for User Story 2
 
-- [ ] T011 [US2] Remove the legacy Services dropdown rendering and unused Services-menu behavior from `src/components/navbar.tsx` while retaining all non-special navigation items
-- [ ] T012 [US2] Add a defensive filter for legacy `special` Services entries in `src/components/navbar.tsx` so stale Prismic content cannot recreate the desktop dropdown or mobile accordion
-- [ ] T013 [US2] Filter the retired Services navigation entry from `src/components/footer.tsx` without removing phone, WhatsApp, email, social, or remaining navigation links
-- [ ] T014 [P] [US2] Add the stable `id="servicios"` anchor to `src/slices/Servicios/index.tsx` and preserve the Services CTA at `#servicios` plus the quotation service fields in `src/slices/Servicios/model.json` and `src/slices/Cotizacion/model.json`
+- [x] T011 [US2] Remove the legacy Services dropdown rendering and unused Services-menu behavior from `src/components/navbar.tsx` while retaining all non-special navigation items
+- [x] T012 [US2] Add a defensive filter for legacy `special` Services entries in `src/components/navbar.tsx` so stale Prismic content cannot recreate the desktop dropdown or mobile accordion
+- [x] T013 [US2] Filter the retired Services navigation entry from `src/components/footer.tsx` without removing phone, WhatsApp, email, social, or remaining navigation links
+- [x] T014 [P] [US2] Add the stable `id="servicios"` anchor to `src/slices/Servicios/index.tsx` and preserve the Services CTA at `#servicios` plus the quotation service fields in `src/slices/Servicios/model.json` and `src/slices/Cotizacion/model.json`
 
 **Checkpoint**: User Story 2 is independently functional and testable on desktop, mobile, light theme, dark theme, and keyboard navigation.
 
@@ -73,7 +73,7 @@ description: "Task list for simplifying contact navigation"
 - [ ] T015 [P] Run `pnpm lint` and resolve only lint issues caused by the navigation change
 - [ ] T016 [P] Run `pnpm build` and verify generated Prismic types and all navigation components compile without TypeScript errors
 - [ ] T017 Execute all desktop/mobile, repeated-click, light/dark theme, keyboard-focus, CTA, and phone/WhatsApp scenarios in `specs/001-navbar-contacto-cotizacion/quickstart.md`
-- [ ] T018 [P] Review `specs/001-navbar-contacto-cotizacion/contracts/navigation.md` against the final implementation and document any Prismic follow-up still required
+- [x] T018 [P] Review `specs/001-navbar-contacto-cotizacion/contracts/navigation.md` against the final implementation and document any Prismic follow-up still required
 
 ---
 
@@ -133,3 +133,15 @@ Task T014: Verify preservation of Services/Cotización models in src/slices/Serv
 - Every task follows the required checklist format: checkbox, sequential ID, optional `[P]` marker, optional story label, and concrete file path or Prismic location.
 - Prismic tasks are explicit because content configuration is part of the feature and cannot be completed only through repository code.
 - The `#cotizacion` destination remains editorial; repeated activation behavior is a runtime responsibility because the browser may not emit a new hash-change event for the same hash.
+
+---
+
+## Phase 6: Convergence
+
+**Purpose**: Close gaps found after comparing the current implementation with the specification, especially repeated hash navigation and reusable CTA behavior.
+
+- [x] T019 [US1] Create a reusable editorial anchor-link component in `src/components/ui/anchor-link.tsx` that consumes a Prismic link field, detects internal hash destinations, performs smooth scrolling and visible focus on every activation, updates the hash without relying only on `hashchange`, and preserves external/route links
+- [x] T020 [US1] Refactor `src/components/navbar.tsx` to use the reusable anchor-link behavior for Contacto and remove duplicated `#cotizacion` scroll handling while preserving mobile-menu closing
+- [x] T021 [US1] Integrate the reusable anchor-link behavior into `src/components/ui/button.tsx` and the CTA consumers in `src/slices/Inicio/index.tsx` so hero and “Cotiza con nosotros” links animate smoothly and work on repeated clicks to `#cotizacion`
+- [x] T022 [US2] Integrate the reusable anchor-link behavior into the Services CTA in `src/slices/Servicios/index.tsx` so the editorial `#servicios` link scrolls smoothly and remains functional on repeated clicks
+- [ ] T023 [P] Run diagnostics for `src/components/ui/anchor-link.tsx`, `src/components/ui/button.tsx`, `src/components/navbar.tsx`, `src/slices/Inicio/index.tsx`, and `src/slices/Servicios/index.tsx`; then run `pnpm lint` and `pnpm build` when the local pnpm store is available

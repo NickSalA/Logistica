@@ -69,6 +69,7 @@ const Cotizacion: FC<CotizacionProps> = ({ slice }) => {
   return (
     <section
       id="cotizacion"
+      tabIndex={-1}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-white dark:bg-night-dark py-12 md:py-24 scroll-mt-24 transition-colors duration-300 relative overflow-hidden"
