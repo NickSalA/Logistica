@@ -35,10 +35,10 @@ export default async function Footer() {
       <div className="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-transparent via-accent to-transparent opacity-70"></div>
 
       {/* Contenedor Principal */}
-      <div className="container mx-auto px-6 md:px-12 xl:px-20 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="container mx-auto px-6 md:px-12 xl:px-20 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-8">
           {/* Columna 1: Marca y Descripción */}
-          <div className="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col gap-5 md:gap-6 items-center md:items-start text-center md:text-left pb-8 md:pb-0 border-b border-gray-100 dark:border-white/10 md:border-b-0">
             <Link
               href="/"
               className="inline-block hover:opacity-90 transition-opacity"
@@ -61,7 +61,7 @@ export default async function Footer() {
           </div>
 
           {/* Columna 2: Enlaces (Conócenos) */}
-          <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left pb-8 md:pb-0 border-b border-gray-100 dark:border-white/10 md:border-b-0">
             <h4 className="font-primary text-night dark:text-white font-bold uppercase tracking-wider text-sm">
               Conócenos
             </h4>
@@ -81,7 +81,7 @@ export default async function Footer() {
           </div>
 
           {/* Columna 3: Contacto */}
-          <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left pb-8 md:pb-0 border-b border-gray-100 dark:border-white/10 md:border-b-0">
             <h4 className="font-primary text-night dark:text-white font-bold uppercase tracking-wider text-sm">
               Contáctanos
             </h4>

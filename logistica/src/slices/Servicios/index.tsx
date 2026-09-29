@@ -57,16 +57,16 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
       id="servicios"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white dark:bg-night-dark py-16 md:py-24 relative overflow-hidden transition-colors duration-300"
+      className="scroll-mt-24 bg-white dark:bg-night-dark py-12 md:py-24 relative overflow-hidden transition-colors duration-300"
     >
       {/* Círculos difuminados de fondo para dar profundidad y evitar sensación de vacío */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-night/5 dark:bg-accent/5 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3 transition-colors duration-300" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3 transition-colors duration-300" />
 
       <div className="section-container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Columna Izquierda (8/12): Contenido, Lista de Servicios y Botón */}
-          <div className="lg:col-span-8 flex flex-col gap-6">
+          <div className="lg:col-span-8 flex flex-col gap-5 md:gap-6">
             {/* Badge de Categoría / Sección */}
             {slice.primary.badge_text && (
               <Badge variant="accent" className="w-fit">
@@ -140,9 +140,9 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
             <div className="flex flex-col">
               {slice.primary.servicios.map((item, index) => (
                 <div key={index} className="flex flex-col">
-                  <div className="flex gap-4 items-start p-4 -mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default">
+                  <div className="flex gap-3 md:gap-4 items-start p-3 md:p-4 -mx-3 md:-mx-4 rounded-2xl border border-transparent hover:border-gray-100 dark:hover:border-white/10 hover:bg-gray-50/80 dark:hover:bg-white/5 hover:shadow-xs transition-all duration-350 group cursor-default">
                     {/* Contenedor del Icono */}
-                    <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
+                    <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 dark:bg-white/10 rounded-2xl shrink-0 transition-colors duration-300 group-hover:bg-accent/20">
                       {getServiceIcon(item.titulo, index)}
                     </div>
 
@@ -194,14 +194,14 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
           </div>
 
           {/* Columna Derecha (4/12): Imagen Circular Premium con Aura de Acento */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center">
+          <div className="lg:col-span-4 flex flex-col items-center justify-center mt-2 md:mt-0">
             {slice.primary.imagen && (
               <div className="relative flex flex-col items-center">
                 {/* Aura/Brillo decorativo difuminado en el fondo de la imagen */}
                 <div className="absolute -inset-6 bg-accent/10 rounded-full blur-2xl -z-10 animate-pulse" />
 
                 {/* Contenedor circular con borde offset y padding */}
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-85 lg:h-85 rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
+                <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-85 lg:h-85 rounded-full border border-gray-300 dark:border-white/20 p-2 flex items-center justify-center bg-white dark:bg-night shadow-xl transition-all duration-500 hover:border-accent">
                   <PrismicNextImage
                     field={slice.primary.imagen}
                     className="w-full h-full rounded-full object-cover"
@@ -214,7 +214,7 @@ const Servicios: FC<ServiciosProps> = ({ slice }) => {
                     field={slice.primary.texto_imagen}
                     components={{
                       paragraph: ({ children }) => (
-                        <p className="mt-6 text-xs md:text-sm text-gray-500 font-secondary italic text-center">
+                        <p className="mt-4 md:mt-6 max-w-xs text-xs md:text-sm text-gray-600 dark:text-gray-300 font-secondary italic text-center leading-relaxed">
                           {children}
                         </p>
                       ),

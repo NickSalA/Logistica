@@ -36,13 +36,13 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
 
   // Estilo Yape: Título súper grande, centrado y con mucho impacto
   const titleClass =
-    "font-primary text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-white font-extrabold leading-[1.05] tracking-tight";
+    "font-primary text-4xl sm:text-5xl md:text-7xl lg:text-[5rem] text-white font-extrabold leading-[1.05] tracking-tight";
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden transition-all duration-300 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-10 after:bg-linear-to-b after:from-transparent after:to-white dark:after:to-night-dark md:after:h-10"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden transition-all duration-300 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-10 after:bg-linear-to-b after:from-transparent after:to-white dark:after:to-night-dark md:after:h-10"
     >
       {/* Carrusel de Fondo */}
       <div className="absolute inset-0 w-full h-full z-0 bg-night-dark">
@@ -61,19 +61,19 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
       </div>
 
       {/* Degradado Suave y Elegante para legibilidad sin oscurecer en exceso la foto */}
-      <div className="absolute inset-0 z-10 bg-linear-to-b from-night-dark via-night-dark/85 to-night-dark/80"></div>
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-night-dark/90 via-night-dark/70 to-night-dark/75 md:from-night-dark md:via-night-dark/85 md:to-night-dark/80"></div>
 
       {/* Contenido principal (Textos y Botones Centrados) */}
-      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 md:px-12 py-32 flex flex-col items-center text-center mt-12">
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-5 md:px-12 py-24 md:py-32 flex flex-col items-center text-center mt-8 md:mt-12">
         {/* Subtítulo (Amarillo) */}
         {slice.primary.subtitulo && (
-          <span className="text-accent font-primary font-bold text-sm md:text-base lg:text-lg uppercase tracking-[0.2em] mb-6">
+          <span className="text-accent font-primary font-bold text-xs sm:text-sm md:text-base lg:text-lg uppercase tracking-[0.18em] mb-4 md:mb-6">
             {slice.primary.subtitulo}
           </span>
         )}
 
         {/* Título Principal (Extra Grande) */}
-        <div className="mb-8">
+        <div className="mb-6 md:mb-8">
           <PrismicRichText
             field={slice.primary.titulo}
             components={{
@@ -94,7 +94,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
         </div>
 
         {/* Descripción */}
-        <div className="font-primary text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl mb-10">
+        <div className="font-primary text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-white/90 max-w-3xl mb-8 md:mb-10">
           <PrismicRichText
             field={slice.primary.descripcion}
             components={{
@@ -106,13 +106,13 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
         </div>
 
         {/* Botones estilo Yape (Redondeados con resplandor) */}
-        <div className="flex flex-col sm:flex-row gap-5 items-center justify-center w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-5 items-center justify-center w-full sm:w-auto">
           {slice.primary.texto_boton_primario && (
             <Button
               field={slice.primary.enlace_boton_primario}
               variant="accent"
               size="lg"
-              className="w-full sm:w-auto px-8 md:px-10 py-3.5 md:py-4 text-base md:text-lg shadow-accent-glow hover:shadow-accent-glow-strong hover:-translate-y-1 transition-all rounded-full"
+              className="w-full sm:w-auto px-7 md:px-10 py-3 md:py-4 text-sm md:text-lg shadow-accent-glow hover:shadow-accent-glow-strong hover:-translate-y-1 transition-all rounded-full"
             >
               {slice.primary.texto_boton_primario}
             </Button>
@@ -122,7 +122,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
               field={slice.primary.enlace_boton_secundario}
               variant="outline-white"
               size="lg"
-              className="w-full sm:w-auto px-8 md:px-10 py-3.5 md:py-4 text-base md:text-lg bg-white/5 backdrop-blur-sm hover:-translate-y-1 transition-all rounded-full"
+              className="w-full sm:w-auto px-7 md:px-10 py-3 md:py-4 text-sm md:text-lg bg-white/5 backdrop-blur-sm hover:-translate-y-1 transition-all rounded-full"
             >
               {slice.primary.texto_boton_secundario}
             </Button>
@@ -132,7 +132,7 @@ const Inicio: FC<InicioProps> = ({ slice }) => {
 
       {/* Controles del Carrusel (Flechas y Puntos al estilo Yape) */}
       {totalSlides > 1 && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6 z-30">
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-4 md:gap-6 z-30">
           <button
             onClick={() => changeSlide(-1)}
             className="w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white backdrop-blur-md transition-all group"

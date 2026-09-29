@@ -59,7 +59,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white dark:bg-night-dark pt-16 pb-12 md:pt-24 md:pb-16 relative overflow-hidden transition-colors duration-300"
+      className="bg-white dark:bg-night-dark pt-12 pb-10 md:pt-24 md:pb-16 relative overflow-hidden transition-colors duration-300"
     >
       {/* Círculo decorativo de fondo */}
       <div className="absolute -top-12 -left-12 w-80 h-80 bg-night/5 dark:bg-accent/5 rounded-full blur-3xl -z-10 pointer-events-none transition-colors duration-300" />
@@ -73,7 +73,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
         />
 
         {/* Grilla de Tarjetas de Beneficios */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {slice.primary.cards?.map((item, index) => {
             const IconComponent = getIcon(item.card_icon);
             const isActive = activeIndex === index;
@@ -87,7 +87,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
                 aria-label={`${isActive ? "Ocultar" : "Mostrar"} detalles de ${item.card_title}`}
                 onClick={() => handleCardClick(index)}
                 onKeyDown={(event) => handleCardKeyDown(event, index)}
-                className={`group relative aspect-3/4 rounded-2rem overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
+                className={`group relative aspect-4/3 sm:aspect-3/4 rounded-2rem overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent transition-all duration-500 ease-out bg-night-dark cursor-pointer select-none ${
                   isActive ? "-translate-y-2 shadow-2xl ring-2 ring-accent" : ""
                 }`}
               >
@@ -115,7 +115,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
                 />
 
                 {/* Contenido flotante */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end items-start z-20">
+                <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-end items-start z-20">
                   {/* Píldora del Icono y Número */}
                   <div className="w-full flex items-center justify-between">
                     <Badge variant="dark" className="pl-2 pr-3.5 shadow-inner">
@@ -144,7 +144,7 @@ const Beneficios: FC<BeneficiosProps> = ({ slice }) => {
                   {/* Título de la Tarjeta */}
                   {item.card_title && (
                     <h3
-                      className={`font-primary text-white text-lg md:text-xl font-bold mt-4 leading-snug transition-colors duration-300 ${
+                      className={`font-primary text-white text-base sm:text-lg md:text-xl font-bold mt-3 sm:mt-4 leading-snug transition-colors duration-300 ${
                         isActive ? "text-accent" : "group-hover:text-accent"
                       }`}
                     >
