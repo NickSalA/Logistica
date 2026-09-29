@@ -34,3 +34,5 @@
 - The feature reuses the existing editorial WhatsApp channel instead of defining a new hardcoded number.
 - The fallback behavior for a missing WhatsApp link is explicitly defined.
 - Desktop, mobile, keyboard, contrast, overlap, and reduced-motion scenarios are covered.
+- The WhatsApp configuration is defined as individual fields in the Prismic `Settings` singleton, not as a repeatable group.
+- The local custom type is synchronized: `customtypes/settings/index.json` contains `wsp_activo`, `wsp_enlace`, `wsp_etiqueta`, and `wsp_tooltip`.

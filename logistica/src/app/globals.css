@@ -25,6 +25,7 @@
   --color-night-deep: #001c3a;
   --color-accent: #ffc000;
   --color-accent-hover: #e6ac00;
+  --color-whatsapp: #25d366;
   --color-sand: #f5f5dc;
   --color-charcoal: #2c2c2c;
 
@@ -167,4 +168,3 @@ h6 {
     0 35px 35px -5px rgb(0 0 0 / 20%),
     0 10px 20px -5px rgb(0 0 0 / 10%);
 }
-

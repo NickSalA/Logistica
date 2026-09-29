@@ -167,6 +167,40 @@
           "placeholder": ""
         },
         "type": "StructuredText"
+      },
+      "wsp_activo": {
+        "config": {
+          "default_value": true,
+          "label": "wsp_activo",
+          "placeholder_false": "false",
+          "placeholder_true": "true"
+        },
+        "type": "Boolean"
+      },
+      "wsp_enlace": {
+        "config": {
+          "allowTargetBlank": true,
+          "allowText": true,
+          "label": "wsp_enlace",
+          "placeholder": "",
+          "repeat": false,
+          "select": null
+        },
+        "type": "Link"
+      },
+      "wsp_etiqueta": {
+        "config": {
+          "label": "wsp_etiqueta",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "wsp_tooltip": {
+        "config": {
+          "label": "wsp_tooltip",
+          "placeholder": ""
+        },
+        "type": "Text"
       }
     }
   },

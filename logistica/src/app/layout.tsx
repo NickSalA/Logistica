@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { createClient } from "@/prismicio";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import FloatingWhatsApp from "@/components/floating-whatsapp";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -36,6 +37,9 @@ export default async function RootLayout({
 }) {
   const requestHeaders = await headers();
   const isAdminRoute = requestHeaders.get("x-admin-route") === "true";
+  const settings = isAdminRoute
+    ? null
+    : await createClient().getSingle("settings");
 
   return (
     <html
@@ -52,6 +56,9 @@ export default async function RootLayout({
         >
           {!isAdminRoute && <Header />}
           {children}
+          {!isAdminRoute && settings && (
+            <FloatingWhatsApp settings={settings} />
+          )}
           {!isAdminRoute && <Footer />}
         </ThemeProvider>
       </body>

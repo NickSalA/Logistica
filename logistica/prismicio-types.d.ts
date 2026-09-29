@@ -401,6 +401,51 @@ interface SettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
 	 */
 	derechos: prismic.RichTextField;
+	
+	/**
+	 * wsp_activo field in *Settings*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: true
+	 * - **API ID Path**: settings.wsp_activo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	wsp_activo: prismic.BooleanField;
+	
+	/**
+	 * wsp_enlace field in *Settings*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.wsp_enlace
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	wsp_enlace: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+	
+	/**
+	 * wsp_etiqueta field in *Settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.wsp_etiqueta
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	wsp_etiqueta: prismic.KeyTextField;
+	
+	/**
+	 * wsp_tooltip field in *Settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.wsp_tooltip
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	wsp_tooltip: prismic.KeyTextField;
 }
 
 /**

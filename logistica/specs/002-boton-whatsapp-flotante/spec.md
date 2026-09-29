@@ -41,15 +41,15 @@ Como visitante del sitio, quiero encontrar un botón de WhatsApp siempre visible
 ### Functional Requirements
 
 - **FR-001**: El sitio MUST mostrar un botón flotante de WhatsApp en la esquina inferior derecha de las páginas públicas.
-- **FR-002**: El botón MUST usar el enlace de WhatsApp configurado en Prismic y no un número o URL comercial hardcodeado en la interfaz.
+- **FR-002**: El botón MUST usar el enlace de WhatsApp configurado en `Settings.wsp_enlace` y no un número o URL comercial hardcodeado en la interfaz.
 - **FR-003**: El botón MUST abrir el destino editorial de WhatsApp al activarse con ratón, teclado o tecnología asistiva.
-- **FR-004**: El botón MUST tener un nombre accesible que indique su acción, por ejemplo “Contactar por WhatsApp”.
+- **FR-004**: El botón MUST usar `Settings.wsp_etiqueta` como nombre accesible que indique su acción.
 - **FR-005**: El botón MUST tener foco visible y un área táctil adecuada en desktop y móvil.
 - **FR-006**: El botón MUST mantenerse disponible al desplazarse por el sitio sin desaparecer por cambios de sección, tema o tamaño de pantalla.
-- **FR-007**: Si el enlace de WhatsApp no está configurado, el sitio MUST evitar mostrar un control que conduzca a un destino inválido.
+- **FR-007**: Si `Settings.wsp_activo` es falso o `Settings.wsp_enlace` no está configurado, el sitio MUST evitar mostrar un control que conduzca a un destino inválido.
 - **FR-008**: El botón MUST mantener suficiente contraste con los fondos claro y oscuro y no cubrir contenido o controles esenciales.
 - **FR-009**: El botón MUST respetar la configuración de movimiento reducido del dispositivo y evitar animaciones permanentes o distractoras.
-- **FR-010**: El botón MUST mostrar el mensaje contextual “Contáctanos por WhatsApp” al recibir hover o foco, manteniendo además su nombre accesible para lectores de pantalla.
+- **FR-010**: El botón MUST mostrar `Settings.wsp_tooltip` al recibir hover o foco, manteniendo además `Settings.wsp_etiqueta` como nombre accesible para lectores de pantalla.
 
 ### Key Entities _(include if feature involves data)_
 
@@ -69,6 +69,8 @@ Como visitante del sitio, quiero encontrar un botón de WhatsApp siempre visible
 
 ## Assumptions
 
+- La configuración del botón vive directamente en el singleton `Settings` de Prismic mediante campos individuales, no en un grupo repetible.
+- `Settings` ya contiene los campos individuales `wsp_activo`, `wsp_enlace`, `wsp_etiqueta` y `wsp_tooltip`.
 - El enlace de WhatsApp ya existe o se configurará en el documento Settings de Prismic, reutilizando el canal editorial existente.
 - “Siempre presente” significa visible en todas las páginas públicas y durante el desplazamiento, no necesariamente durante áreas administrativas o pantallas de autenticación.
 - El botón será un acceso directo a WhatsApp y no abrirá un formulario adicional.
